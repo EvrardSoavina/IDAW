@@ -1,3 +1,5 @@
 # IDAW
 
-Premier site web en HTML
+Mon CV sous forme de Site Web
+
+La page principale est index.html
