@@ -3,7 +3,7 @@
             <!-- Projets-->
             <section class="resume-section" id="awards">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Projets</h2>
+                    <h2 class="mb-5">Projects</h2>
                     <ul class="fa-ul mb-0">
                         <li>
                             <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
@@ -15,7 +15,7 @@
                         </li>
                         <li>
                             <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                            Entreprenariat (pre-college program - 2017 - Amherst University)
+                            Entrepreneurship (pre-college program - 2017 - Amherst University)
                         </li>
                     </ul>
                 </div>

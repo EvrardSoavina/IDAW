@@ -1,13 +1,13 @@
 <?php
-    function renderMenuToHTML($currentPageId) {
+    function renderMenuToHTML($currentPageId,$currentPageLanguage) {
         // un tableau qui définit la structure du site
         $mymenu = array(
             // idPage tite
-            'accueil' => array('Accueil'),
-            'cv' => array('Cv'),
-            'projet' => array('Mes Projets'),
-            'infos-technique' => array('Informations Techniques'),
-            'contact' => array('Contacts')
+            'accueil' => array('Accueil', 'Home'),
+            'cv' => array('Cv', 'Resume'),
+            'projet' => array('Mes Projets', 'My Projects'),
+            'infos-technique' => array('Informations Techniques', 'Technical Information'),
+            'contact' => array('Contacts', 'Contacts')
         );
 
         echo 
@@ -19,16 +19,26 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav">';
-        foreach($mymenu as $pageId => $pageParameters) {         
-            if ($pageId == $currentPageId) {
-                echo '<li class="nav-item"><a id="currentpage" class="nav-link js-scroll-trigger" href="index.php?page='.$pageId.'">'.$pageParameters[0].'</a></li>';
+        foreach($mymenu as $pageId => $pageParameters) {    
+            if ($currentPageLanguage == 'fr') {
+                if ($pageId == $currentPageId) {
+                    echo '<li class="nav-item"><a id="currentpage" class="nav-link js-scroll-trigger" href="index.php?page='.$pageId.'&lang='.$currentPageLanguage.'">'.$pageParameters[0].'</a></li>';
+                } else {
+                    echo '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page='.$pageId.'&lang='.$currentPageLanguage.'">'.$pageParameters[0].'</a></li>';
+                }
             } else {
-                echo '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page='.$pageId.'">'.$pageParameters[0].'</a></li>';
-            }
+                if ($pageId == $currentPageId) {
+                    echo '<li class="nav-item"><a id="currentpage" class="nav-link js-scroll-trigger" href="index.php?page='.$pageId.'&lang='.$currentPageLanguage.'">'.$pageParameters[1].'</a></li>';
+                } else {
+                    echo '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page='.$pageId.'&lang='.$currentPageLanguage.'">'.$pageParameters[1].'</a></li>';
+                }
+            }   
         };
         echo
 '       </ul>
 </div>
+<a id="currentpage" class="nav-link js-scroll-trigger" href="index.php?page='.$currentPageId.'&lang=en">English</a>
+<a id="currentpage" class="nav-link js-scroll-trigger" href="index.php?page='.$currentPageId.'&lang=fr">Français</a>
 </nav>
         ';
     }
