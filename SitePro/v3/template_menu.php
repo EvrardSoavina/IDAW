@@ -10,6 +10,8 @@
             'contact' => array('Contacts', 'Contacts')
         );
 
+        $langId = $currentPageLanguage == 'fr' ? 0 : 1;
+
         echo 
 '<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
     <a class="navbar-brand js-scroll-trigger" href="#page-top">
@@ -19,20 +21,12 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav">';
-        foreach($mymenu as $pageId => $pageParameters) {    
-            if ($currentPageLanguage == 'fr') {
+        foreach($mymenu as $pageId => $pageParameters) {     
                 if ($pageId == $currentPageId) {
-                    echo '<li class="nav-item"><a id="currentpage" class="nav-link js-scroll-trigger" href="index.php?page='.$pageId.'&lang='.$currentPageLanguage.'">'.$pageParameters[0].'</a></li>';
+                    echo '<li class="nav-item"><a id="currentpage" class="nav-link js-scroll-trigger" href="index.php?page='.$pageId.'&lang='.$currentPageLanguage.'">'.$pageParameters[$langId].'</a></li>';
                 } else {
-                    echo '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page='.$pageId.'&lang='.$currentPageLanguage.'">'.$pageParameters[0].'</a></li>';
-                }
-            } else {
-                if ($pageId == $currentPageId) {
-                    echo '<li class="nav-item"><a id="currentpage" class="nav-link js-scroll-trigger" href="index.php?page='.$pageId.'&lang='.$currentPageLanguage.'">'.$pageParameters[1].'</a></li>';
-                } else {
-                    echo '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page='.$pageId.'&lang='.$currentPageLanguage.'">'.$pageParameters[1].'</a></li>';
-                }
-            }   
+                    echo '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page='.$pageId.'&lang='.$currentPageLanguage.'">'.$pageParameters[$langId].'</a></li>';
+                }      
         };
         echo
 '       </ul>

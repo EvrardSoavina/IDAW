@@ -3,41 +3,43 @@
             <!-- Experience-->
             <section class="resume-section" id="experience">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Experiences EN ANGLAIS</h2>
+                    <h2 class="mb-5">Experiences</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">Ingénieur en Deep Learning</h3>
+                            <h3 class="mb-0">Deep Learning Engineer</h3>
                             <div class="subheading mb-3">Kapsch TrafficCom AG</div>
-                            <li>Gestion de projet basés sur la plateforme de Deep Learning Video de Kapsch</li>
-                            <li>GEntrainement de réseaux de neurones pour la gestion intelligente du trafic routier. Travail avec Python, TensorFlow, Docker.</li>
+                            <li>Product management and engineering based on the Kapsch Deep Learning Video Platform</li>
+                            <li>Training of neural networks for intelligent road traffic management. Working with Python, TensorFlow, Docker.</li>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Septembre 2022 - Mars 2023</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary">Spetember 2022 - March 2023</span></div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">Stage en Risk management</h3>
+                            <h3 class="mb-0">Risk Analyst</h3>
                             <div class="subheading mb-3">Pharo Management</div>
-                            <li>Construction de modèles statistiques pour décrire les pays ayant fait défaut sur leurs dettes et la dévaluation de leur monnaie.</li>
-                            <li>Soutien à la modélisation quantitative du risque, notamment en contribuant à l'écriture et au test de code python, ainsi qu'à la collecte et à la validation de données.</li>
+                            <li>Investigated the historical defaults and devaluation of sovereign debt and built statistical models to describe the probability distribution of events.</li>
+                            <li>Helped expand the existing risk framework, focusing on the quantitative librairies and Dash apps</li>
+                            <li>Provided support for quantitative risk modelling, including assisting with writing and testing code, and collection and validation of data.</li>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Mai - Septembre 2022</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary">May - September 2022</span></div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">Stage dans le département IT</h3>
-                            <div class="subheading mb-3">TEXTRON AVIATION Incorporated</div>
-                            <li>Ré-insourcing de l'infrastructure informatique : j'ai rejoint une équipe de 15 ingénieurs américains dans la migration de plus de 600 serveurs et 33 000 postes de travail situés dans 25 pays.</li>
-                            <li>Collecte et reporting des indicateurs de performance du Service Desk mondial</li>
+                            <h3 class="mb-0">IT Project Management and Delivery intern</h3>
+                            <div class="subheading mb-3">TEXTRON AVIATION Inc.</div>
+                            <li>Re-insourcing of the IT infrastructure from DXC: I joined a team of 15 American engineers in the migration of 600+ servers and 33,000 workstations located in 25 countries.</li>
+                            <li>Collected and reported the performance metrics of the worldwide Service Desk.</li>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Mai - Août 2021</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary">May - August 2021</span></div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">Chargé informatique</h3>
+                            <h3 class="mb-0">IT Manager</h3>
                             <div class="subheading mb-3">JUNIOR-ENTREPRISE IMT NORD-EUROPE</div>
-                            <li>Développement du site internet de la junior entreprise. Mise en place d'automatisation au sein de Google Workplace pour favoriser le travail entre les pôles de la junior</li>
+                            <li>Redesigned the Junior-Entreprise website to meet the 2021 standards</li>
+                            <li>Programmed automated business procedures, consolidated the drives to a single common infrastructure</li>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Octobre 2020 - Mai 2022</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary">October 2020 - May 2022</span></div>
                     </div>
                 </div>
             </section>
@@ -50,9 +52,9 @@
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Institut Mines-Telecom Nord Europe</h3>
                             <div class="subheading mb-3">Master of Science</div>
-                            <li>Tronc commun : Mathématiques, Statisiques, Physique, Informatique, Economie</li>
-                            <li>Mineur en Data Science : utilisation de Scikit-Learn, Numpy, Pandas, Data Visualisation (création de Dashboard)</li>
-                            <li>Mineur en Ingénieur d'affaires : fondamentaux de la vente, prospection, négociation</li>
+                            <li>Major in engineering (Maths, Physics, Computer Science, Statistics)</li>
+                            <li>Minor in Data Science: Using Scikit-Learn, Numpy, Pandas Data Visualisation (creating dashoards)</li>
+                            <li>Minor in Business Engineering: fundamentals of sales, prospecting, negotiation</li>
                         </div>
                         <div class="flex-shrink-0"><span class="text-primary">August 2006 - May 2010</span></div>
                     </div>
@@ -60,7 +62,8 @@
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Lycée Stanislas</h3>
                             <div>Classe préparatoire aux grandes écoles</div>
-                            <li>Mathématiques, Physique, Chimie</li>
+                            <li>An intensive two-year study course preparing for the competitive entrance examinations to the ‘Grandes Écoles’</li>
+                            <li>Mathematics (Complex Analysis, Linear Algebra, Differential Geometry), Physics (Electromagnetism, Thermodynamics, Mechanics, Wave Optics), Chemistry, Philosophy</li>
                         </div>
                         <div class="flex-shrink-0"><span class="text-primary">August 2002 - May 2006</span></div>
                     </div>
@@ -79,13 +82,13 @@
                         <li class="list-inline-item"><i class="fa-brands fa-python"></i></i></li>
                     </ul>
                     <li>Public Speaking and Debate (pre-college program - 2018 - UCLA, Los Angeles · 2017 - Amherst University, Boston)</li>
-                    <li>Entreprenariat (pre-college program - 2017 - Amherst University)</li>
+                    <li>Entrepreneurship (pre-college program - 2017 - Amherst University)</li>
                 </div>
             </section>
             <!-- Centre d’intérêts-->
             <section class="resume-section" id="interet">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Centre d'intérêts</h2>
+                    <h2 class="mb-5">Hobbies</h2>
                     <li>Kitesurfing</li>
                     <li>Snowboarding</li>
                 </div>

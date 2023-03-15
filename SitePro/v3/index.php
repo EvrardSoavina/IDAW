@@ -13,7 +13,7 @@
 ?>
 
 <header class="bandeau_haut">
-    <h1 class="titre">Evrard SOAVINA</h1>
+    <h3 class="titre">Evrard SOAVINA</h1>
 </header>
 
 <?php
