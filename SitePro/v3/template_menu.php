@@ -3,10 +3,11 @@
         // un tableau qui définit la structure du site
         $mymenu = array(
             // idPage tite
-            'index' => array('Accueil'),
+            'accueil' => array('Accueil'),
             'cv' => array('Cv'),
             'projet' => array('Mes Projets'),
-            'infos-technique' => array('Informations Techniques')
+            'infos-technique' => array('Informations Techniques'),
+            'contact' => array('Contacts')
         );
 
         echo 
@@ -20,9 +21,9 @@
         <ul class="navbar-nav">';
         foreach($mymenu as $pageId => $pageParameters) {         
             if ($pageId == $currentPageId) {
-                echo '<li class="nav-item"><a id="currentpage" class="nav-link js-scroll-trigger" href="'.$pageId.'.php">'.$pageParameters[0].'</a></li>';
+                echo '<li class="nav-item"><a id="currentpage" class="nav-link js-scroll-trigger" href="index.php?page='.$pageId.'">'.$pageParameters[0].'</a></li>';
             } else {
-                echo '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="'.$pageId.'.php">'.$pageParameters[0].'</a></li>';
+                echo '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page='.$pageId.'">'.$pageParameters[0].'</a></li>';
             }
         };
         echo
