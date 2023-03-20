@@ -12,6 +12,7 @@
     <?php
 
     $_SESSION['login'] = $_POST['login'];
+    $_SESSION['password'] = $_POST['password'];
 
         echo "Vous êtes connecté en tant que ".$_SESSION['login']; 
         echo "<br>";

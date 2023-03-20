@@ -10,8 +10,9 @@
     </head>
     <body>
     <?php
-    
-
+    unset($_SESSION['login']);
+    unset($_SESSION['password']);
+    session_destroy();
     ?>
 
     </body>
