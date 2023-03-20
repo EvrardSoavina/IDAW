@@ -20,6 +20,8 @@ catch (PDOException $erreur) {
     echo 'Erreur : '.$erreur->getMessage();
 }
 
+echo "<br>";
+print_r($_POST);
 
 if(isset($_POST['name'])){
     $var1=$_POST['name'];
@@ -78,7 +80,7 @@ $resultat = $request->fetchAll(PDO::FETCH_ASSOC);
                   <th>Id</th>
                   <th>Nom</th>
                   <th>Email</th>
-                  <th></th>
+                  <th>Action</th>
                 </tr>';
                 foreach($resultat as $data) {
                     echo 
@@ -116,7 +118,6 @@ $resultat = $request->fetchAll(PDO::FETCH_ASSOC);
 
             <form id="login_form" action="users.php" method="POST">
             <table> 
-            <input type="hidden" name="hide" value="secret" />
                 <tr>
                     <td>Name :</td>
                     <td><input type="text" name="name"></td>
