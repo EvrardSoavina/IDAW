@@ -24,8 +24,6 @@ $request = $pdo->prepare("select * from users");
 $request->execute();
 
 $resultat = $request->fetchAll(PDO::FETCH_ASSOC);
-
-
 ?>
 
 <!DOCTYPE html>
@@ -37,8 +35,6 @@ $resultat = $request->fetchAll(PDO::FETCH_ASSOC);
     <body>
         <h1>Bases de données MySQL</h1>  
         <?php
-            
-
             /*echo '<pre>';
             print_r($resultat);
             echo '</pre>';*/
@@ -62,8 +58,10 @@ $resultat = $request->fetchAll(PDO::FETCH_ASSOC);
                 };
             echo '</table>';
 
-            /*$request = $pdo->prepare("INSERT INTO `users` (`id`, `name`, `email`) VALUES (NULL, 'londre', 'londres@gmail.com')");
-            $request->execute();*/
+            $request = $pdo->prepare("INSERT INTO `users` (`id`, `name`, `email`) VALUES (NULL, 'prague', 'prague@gmail.com')");
+            $request->execute();
+
+            echo 'Entrée ajoutée dans la table';
 
             $pdo = null;
         ?>
