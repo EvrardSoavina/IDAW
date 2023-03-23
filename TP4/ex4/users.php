@@ -56,6 +56,20 @@ $request->execute();
 $resultat = $request->fetchAll(PDO::FETCH_ASSOC);
 
 
+// EN UTILISANT L'API:
+$url = "http://localhost:8888/IDAW/TP4/ex5/restapi.php";
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+    CURLOPT_URL => $url, // URL de l'API
+    CURLOPT_RETURNTRANSFER => true, // Retourner le résultat dans une variable
+));
+$response = curl_exec($curl);
+curl_close($curl);
+//echo $response;
+echo "<br>";
+
+
 ?>
 
 <!DOCTYPE html>
