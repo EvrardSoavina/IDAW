@@ -114,7 +114,7 @@ echo "<br>";
                             </tr>
                         </table>
                         </form>
-                        <form style="display: inline-block" id="login_form" action="users.php" method="POST">
+                        <form style="display: inline-block" id="login_form" action="index.php" method="POST">
                         <table> 
                         <input type="hidden" name="deleterow" value='.$data['id'].' />
                             <tr>
@@ -130,7 +130,7 @@ echo "<br>";
             echo '</table>';
         ?>
 
-            <form id="login_form" action="users.php" method="POST">
+            <form id="login_form" action="index.php" method="POST">
             <table> 
                 <tr>
                     <td>Name :</td>

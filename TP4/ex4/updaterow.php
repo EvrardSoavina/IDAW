@@ -7,7 +7,7 @@
     <body>
         <h1>Bases de données MySQL</h1>  
 
-            <form id="update_form" action="users.php" method="POST">
+            <form id="update_form" action="index.php" method="POST">
             <table> 
             <input type="hidden" name="updaterowid" value=<?php echo $_POST['inforowid']?> />
                 <tr>

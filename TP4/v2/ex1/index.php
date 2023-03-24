@@ -72,6 +72,7 @@ margin-bottom: 100px;
 
 <script>
     let selectedRow = null;
+    let students = [];
 
     $("#addStudentForm").submit(function(event) {
         event.preventDefault();
@@ -83,26 +84,13 @@ margin-bottom: 100px;
 
         if (nom.trim() !== '') {
             if (selectedRow) { // Si une ligne est sélectionnée, on la modifie
-                selectedRow.children().eq(0).text(nom);
-                selectedRow.children().eq(1).text(prenom);
-                selectedRow.children().eq(2).text(dateNaissance);
-                selectedRow.children().eq(3).text(aimeLeCours ? 'Oui' : 'Non');
-                selectedRow.children().eq(4).text(remarques);
+                let index = selectedRow.attr('data-index');
+                students[index] = {nom, prenom, dateNaissance, aimeLeCours, remarques};
+                updateTable();
                 selectedRow = null; // On désélectionne la ligne
             } else { // Sinon, on ajoute une nouvelle ligne
-                $("#studentsTableBody").append(`
-                    <tr>
-                        <td>${nom}</td>
-                        <td>${prenom}</td>
-                        <td>${dateNaissance}</td>
-                        <td>${aimeLeCours ? 'Oui' : 'Non'}</td>
-                        <td>${remarques}</td>
-                        <td>
-                            <button type="button" class="btn btn-warning" onclick="onEdit(this)">Editer</button>
-                            <button type="button" class="btn btn-danger" onclick="onDelete(this)">Supprimer</button>
-                        </td>
-                    </tr>
-                `);
+                students.push({nom, prenom, dateNaissance, aimeLeCours, remarques});
+                updateTable();
             }
             // On réinitialise le formulaire
             $("#addStudentForm").trigger("reset");
@@ -110,19 +98,46 @@ margin-bottom: 100px;
         }
     });
 
+    function updateTable() {
+        let tableBody = $("#studentsTableBody");
+        tableBody.empty();
+        for (let i = 0; i < students.length; i++) {
+            let student = students[i];
+            tableBody.append(`
+                <tr data-index="${i}">
+                    <td>${student.nom}</td>
+                    <td>${student.prenom}</td>
+                    <td>${student.dateNaissance}</td>
+                    <td>${student.aimeLeCours ? 'Oui' : 'Non'}</td>
+                    <td>${student.remarques}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning" onclick="onEdit(this)">Editer</button>
+                        <button type="button" class="btn btn-danger" onclick="onDelete(this)">Supprimer</button>
+                    </td>
+                </tr>
+            `);
+        }
+    }
+
     function onEdit(button) {
         selectedRow = $(button).closest("tr");
-        $("#inputNom").val(selectedRow.children().eq(0).text());
-        $("#inputPrenom").val(selectedRow.children().eq(1).text());
-        $("#inputDateNaissance").val(selectedRow.children().eq(2).text());
-        $("#inputAimeLeCours").prop('checked', selectedRow.children().eq(3).text() === 'Oui');
-        $("#inputRemarques").val(selectedRow.children().eq(4).text());
+        let index = selectedRow.attr('data-index');
+        let student = students[index];
+        $("#inputNom").val(student.nom);
+        $("#inputPrenom").val(student.prenom);
+        $("#inputDateNaissance").val(student.dateNaissance);
+        $("#inputAimeLeCours").prop('checked', student.aimeLeCours);
+        $("#inputRemarques").val(student.remarques);
     }
 
     function onDelete(button) {
-        $(button).closest("tr").remove();
+        let row = $(button).closest("tr");
+        let index = row.attr('data-index');
+        students.splice(index, 1);
+        updateTable();
     }
 </script>
+
 
 </body>
 </html>
