@@ -13,7 +13,7 @@ margin-bottom: 100px;
 }
 </style>
 </head>
-<body>
+<body onload="updateTable()">
 <table class="table">
    <thead>
     <tr>
@@ -77,6 +77,8 @@ margin-bottom: 100px;
 require_once('config.php');
 require_once('connexionBD.php');
 
+header("Access-Control-Allow-Origin:*");
+
 // Création de la table "Utilisateur"
 $sql = "CREATE TABLE IF NOT EXISTS Utilisateur (
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -90,18 +92,12 @@ $sql = "CREATE TABLE IF NOT EXISTS Utilisateur (
 if ($pdo->query($sql) === FALSE) {
     die("Erreur lors de la création de la table : " . $pdo->errorInfo()[2]);
 }
-
-echo "<br>";
-print_r($_POST);
-
-$request = $pdo->prepare("select * from users");
-$request->execute();
-
-$resultat = $request->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 <script>
+    let apifolder = '<?php 
+    require_once('config.php');
+    echo _APIURL;?>';
     let selectedRow = null;
     let students = [];
 
@@ -121,15 +117,10 @@ $resultat = $request->fetchAll(PDO::FETCH_ASSOC);
                 selectedRow = null; // On désélectionne la ligne
             } else { // Sinon, on ajoute une nouvelle ligne
                 $.ajax({
-                    url: "addUser.php",
-                    method: "POST",
-                    data: {
-                        nom: nom,
-                        prenom: prenom,
-                        date_naissance: dateNaissance,
-                        aime_le_cours: aimeLeCours,
-                        remarques: remarques
-                    },
+                    url: apifolder + '/restapi.php',
+                    type: "POST",
+                    data: JSON.stringify({"nom": nom, "prenom": prenom, "date_naissance": dateNaissance, "aime_le_cours": aimeLeCours, "remarques": remarques}),
+                    contentType: "application/json",
                     success: function(data) {
                         console.log(data);
                         // Si la requête a réussi, on ajoute l'utilisateur dans le tableau
@@ -149,67 +140,51 @@ $resultat = $request->fetchAll(PDO::FETCH_ASSOC);
         }
     };
 
-    function updateTable() {
+    function updateTable() { 
         let tableBody = $("#studentsTableBody");
         tableBody.empty();
-
-
         $.ajax({
-                    url: "getUsers.php",
-                    method: "GET",
-                    data: {
-                        nom: nom,
-                        prenom: prenom,
-                        date_naissance: dateNaissance,
-                        aime_le_cours: aimeLeCours,
-                        remarques: remarques
-                    },
-                    success: function(data) {
-                        console.log(data);
-                        // Si la requête a réussi, on ajoute l'utilisateur dans le tableau
-                        students.push({nom, prenom, dateNaissance, aimeLeCours, remarques});
-                        updateTable();                        
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        alert("Erreur lors de l'ajout de l'utilisateur.");
-                        console.log(textStatus, errorThrown);
-                    }
-
-                });
-
-
-
-        for (let i = 0; i < students.length; i++) {
-            let student = students[i];
-            tableBody.append(`
-                <tr data-index="${i}">
+            url: apifolder + '/restapi.php',
+            method: "GET",
+            success: function(students) {
+            for (let i = 0; i < students.length; i++) {
+                let student = students[i];
+                tableBody.append(`
+                <tr data-index="${student.id}">
                     <td>${student.nom}</td>
                     <td>${student.prenom}</td>
-                    <td>${student.dateNaissance}</td>
-                    <td>${student.aimeLeCours ? 'Oui' : 'Non'}</td>
+                    <td>${student.date_naissance}</td>
+                    <td>${student.aime_le_cours ? 'Oui' : 'Non'}</td>
                     <td>${student.remarques}</td>
                     <td>
                         <button type="button" class="btn btn-warning" onclick="onEdit(this)">Editer</button>
                         <button type="button" class="btn btn-danger" onclick="onDelete(this)">Supprimer</button>
                     </td>
                 </tr>
-            `);
-        }
+                `);
+            }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert("Erreur pour récupere les données de la table MySQL");
+                console.log(textStatus, errorThrown);
+            }
+        });
     }
+
+    
 
     function onEdit(button) {
         selectedRow = $(button).closest("tr");
-        let index = selectedRow.attr('data-index');
-        let student = students[index];
-        $("#inputNom").val(student.nom);
-        $("#inputPrenom").val(student.prenom);
-        $("#inputDateNaissance").val(student.dateNaissance);
-        $("#inputAimeLeCours").prop('checked', student.aimeLeCours);
-        $("#inputRemarques").val(student.remarques);
+        let id = selectedRow.attr('data-index');
 
-        /*$("#addStudentForm").off('submit').submit(function(event) {
+        $("#inputNom").val(selectedRow.children().eq(0).text());
+        $("#inputPrenom").val(selectedRow.children().eq(1).text());
+        $("#inputDateNaissance").val(selectedRow.children().eq(2).text());
+        $("#inputAimeLeCours").prop('checked', selectedRow.children().eq(3).text() === 'Oui');
+        $("#inputRemarques").val(selectedRow.children().eq(4).text());
+
+        $("#addStudentForm").off('submit').submit(function(event) {
             event.preventDefault();
-            let id = selectedRow.attr('id');
             let nom = $("#inputNom").val();
             let prenom = $("#inputPrenom").val();
             let dateNaissance = $("#inputDateNaissance").val();
@@ -217,14 +192,14 @@ $resultat = $request->fetchAll(PDO::FETCH_ASSOC);
             let remarques = $("#inputRemarques").val();
 
             $.ajax({
-                url: 'editUser.php',
-                type: 'POST',
-                data: {id: id, nom: nom, prenom: prenom, dateNaissance: dateNaissance, aimeLeCours: aimeLeCours, remarques: remarques},
+                url: apifolder + '/restapi.php',
+                type: 'PUT',
+                data: JSON.stringify({id: id, nom: nom, prenom: prenom, date_naissance: dateNaissance, aime_le_cours: aimeLeCours, remarques: remarques}),
+                //Content-Type: 'application/json',
                 success: function(response) {
                     // Mettre à jour la ligne modifiée avec les nouvelles informations
-                    let index = selectedRow.attr('data-index');
-                    students[index] = {nom, prenom, dateNaissance, aimeLeCours, remarques};
-                    updateTable();
+                    // students[index] = {nom, prenom, dateNaissance, aimeLeCours, remarques};
+                    updateTable(); // UPDATER UNIQUEMENT LA LIGNE ET NE PAS UTILISER CETTE FONCTION QUI RECHARGE TOUTES LA TABLE
                     selectedRow = null;
                     // Réinitialiser le formulaire
                     $("#addStudentForm").trigger("reset");
@@ -234,13 +209,23 @@ $resultat = $request->fetchAll(PDO::FETCH_ASSOC);
                     console.log(textStatus, errorThrown);
                 }
             });
-        });*/
+        });
     }
 
     function onDelete(button) {
         let row = $(button).closest("tr");
         let index = row.attr('data-index');
         students.splice(index, 1);
+        $.ajax({
+            url: apifolder + '/restapi.php',
+            method: "DELETE",
+            success: function(data) {            
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert("Erreur pour récupere les données de la table MySQL");
+                console.log(textStatus, errorThrown);
+            }
+        });
         updateTable();
     }
 </script>

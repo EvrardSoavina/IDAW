@@ -158,11 +158,12 @@ if ($pdo->query($sql) === FALSE) {
     en GET à un fichier getUsers.php qui retourne la liste des utilisateurs. Pour la fonctionnalité "Update", on doit 
     envoyer une requête AJAX en POST à un fichier updateUser.php qui modifie un utilisateur. Pour la fonctionnalité 
     "Delete", on doit envoyer une requête AJAX en POST à un fichier deleteUser.php qui supprime un utilisateur. 
-    Les fichiers PHP doivent exécuter les requêtes SQL pour effectuer les opérations correspondantes sur la base de données.
+    Les fichiers PHP doivent exécuter les requêtes SQL pour effectuer les opérations correspondantes sur la base de données. Bukielski robin
     */
 
     function onEdit(button) {
         selectedRow = $(button).closest("tr");
+        let id = selectedRow.attr('id');
         $("#inputNom").val(selectedRow.children().eq(0).text());
         $("#inputPrenom").val(selectedRow.children().eq(1).text());
         $("#inputDateNaissance").val(selectedRow.children().eq(2).text());
@@ -171,7 +172,6 @@ if ($pdo->query($sql) === FALSE) {
 
         $("#addStudentForm").off('submit').submit(function(event) {
             event.preventDefault();
-            let id = selectedRow.attr('id');
             let nom = $("#inputNom").val();
             let prenom = $("#inputPrenom").val();
             let dateNaissance = $("#inputDateNaissance").val();
@@ -206,7 +206,7 @@ if ($pdo->query($sql) === FALSE) {
     }
 
     function onDelete(button) {
-        let row = $(button).closest('tr');
+        let row = $(button).closest('tr'); //event.target == button
         let nom = row.find('td:first').text();
         let prenom = row.find('td:nth-child(2)').text();
 

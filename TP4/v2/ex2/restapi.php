@@ -44,7 +44,7 @@ switch($request_method)
 function getAllUsers() {
     global $pdo;
     // Récupération des utilisateurs
-    $request = $pdo->prepare('select * from users');
+    $request = $pdo->prepare('select * from Utilisateur');
     $request->execute();
     $users = $request->fetchAll(PDO::FETCH_OBJ);
     
@@ -61,24 +61,16 @@ function createUser() {
     global $pdo;
     $userData = json_decode(file_get_contents('php://input'),true);
 
-    $name = $userData['name'];
-    $email = $userData['email'];
+    $nom = $userData['nom'];
+    $prenom = $userData['prenom'];
+    $date_naissance = $userData['dateNaissance'];
+    $aime_le_cours = $userData['aimeLeCours'];
+    $remarques = $userData['remarques'];
 
-    $stmt = $pdo->prepare("INSERT INTO users (name, email) VALUES (:name, :email)");
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':email', $email);
+    $stmt = $pdo->prepare("INSERT INTO Utilisateur (nom, prenom, date_naissance, aime_le_cours, remarques) VALUES ( ? , ? , ? , ? , ? )");
 
-    $userInfo = array(
-        //'id' => $newUserId,
-        'name' => $name,
-        'email' => $email
-      );
-
-    if($stmt->execute()) {
-        echo 'Data inserted successfully!';
+    if($stmt->execute([$nom, $prenom, $date_naissance, $aime_le_cours, $remarques])) {
         http_response_code(201);
-        //echo json_encode($userInfo);
-
     } else {
         echo 'Error inserting data';
     }
@@ -88,24 +80,27 @@ function createUser() {
 function updateUser(){
     $userData = json_decode(file_get_contents('php://input'),true);
 
+    // Récupérer les données envoyées depuis le formulaire
     $id = $userData['id'];
-    $nom = $userData['name'];
-    $email = $userData['email'];
-    if (empty($id) || empty($nom) || empty($email)) {
-        header('HTTP/1.1 400 Bad Request');
-        echo 'Missing parameter';
-        return;
-    }
-    
-    // Connexion à la base de données
-    global $pdo;
-    
-    // Modification de l'utilisateur dans la base de données
-    $stmt = $pdo->prepare('UPDATE users SET name = ?, email = ? WHERE id = ?');
-    $stmt -> execute([$nom, $email, $id]);
-    
-    // Envoi de la réponse HTTP
-    header('HTTP/1.1 204 No Content');
+    $nom = $userData['nom'];
+    $prenom = $userData['prenom'];
+    $date_naissance = $userData['date_naissance'];
+    $aime_le_cours = $userData['aime_le_cours'];
+    $remarques = $userData['remarques'];
+
+    require_once('config.php');
+    require_once('connexionBD.php');
+
+    // Préparer la requête d'insertion des données dans la table "utilisateurs"
+    $stmt = $pdo->prepare('UPDATE Utilisateur SET nom = ?, prenom = ?, date_naissance = ?, aime_le_cours = ?, remarques = ? WHERE id = ?');
+    $stmt -> execute([$nom, $prenom, $date_naissance, $aime_le_cours, $remarques, $id]);
+
+    // Fermer la connexion à la base de données
+    $pdo = null;
+
+    // Renvoyer une réponse JSON à la requête AJAX
+    $response = array('status' => 'success', 'message' => 'Utilisateur ajouté avec succès');
+    echo json_encode($response);
 }
 
 
@@ -120,7 +115,7 @@ function updateUser(){
         }
         global $pdo;
         // Suppression de l'utilisateur de la base de données
-        $stmt = $pdo->prepare('DELETE FROM users WHERE id = ?');
+        $stmt = $pdo->prepare('DELETE FROM Utilisateur WHERE id = ?');
         $stmt -> execute([$id]);
         
         // Envoi de la réponse HTTP
