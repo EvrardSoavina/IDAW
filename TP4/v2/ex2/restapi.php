@@ -1,22 +1,7 @@
 <?php
+
 require_once('config.php');
-
-$connectionString = "mysql:host="._MYSQL_HOST;
-
-if(defined('_MYSQL_PORT'))
-    $connectionString .= ";port="._MYSQL_PORT;
-
-$connectionString .= ";dbname="._MYSQL_DBNAME;
-$options = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8' );
-
-$pdo = NULL;
-try {
-    $pdo = new PDO($connectionString,_MYSQL_USER,_MYSQL_PASSWORD,$options);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch (PDOException $erreur) {
-    echo 'Erreur : '.$erreur->getMessage();
-};
+require_once('connexionBD.php');
 
 $request_method = $_SERVER["REQUEST_METHOD"];
 
@@ -63,8 +48,8 @@ function createUser() {
 
     $nom = $userData['nom'];
     $prenom = $userData['prenom'];
-    $date_naissance = $userData['dateNaissance'];
-    $aime_le_cours = $userData['aimeLeCours'];
+    $date_naissance = $userData['date_naissance'];
+    $aime_le_cours = $userData['aime_le_cours'];
     $remarques = $userData['remarques'];
 
     $stmt = $pdo->prepare("INSERT INTO Utilisateur (nom, prenom, date_naissance, aime_le_cours, remarques) VALUES ( ? , ? , ? , ? , ? )");
@@ -78,6 +63,7 @@ function createUser() {
 }
 
 function updateUser(){
+    global $pdo;
     $userData = json_decode(file_get_contents('php://input'),true);
 
     // Récupérer les données envoyées depuis le formulaire
@@ -87,9 +73,6 @@ function updateUser(){
     $date_naissance = $userData['date_naissance'];
     $aime_le_cours = $userData['aime_le_cours'];
     $remarques = $userData['remarques'];
-
-    require_once('config.php');
-    require_once('connexionBD.php');
 
     // Préparer la requête d'insertion des données dans la table "utilisateurs"
     $stmt = $pdo->prepare('UPDATE Utilisateur SET nom = ?, prenom = ?, date_naissance = ?, aime_le_cours = ?, remarques = ? WHERE id = ?');
@@ -105,7 +88,6 @@ function updateUser(){
 
 
     function deleteUser() {
-        // Vérification des paramètres
         $userData = json_decode(file_get_contents('php://input'),true);
         $id = $userData['id'];
         if (empty($id)) {

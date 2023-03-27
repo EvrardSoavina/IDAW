@@ -112,14 +112,30 @@ if ($pdo->query($sql) === FALSE) {
         if (nom.trim() !== '') {
             if (selectedRow) { // Si une ligne est sélectionnée, on la modifie
                 let index = selectedRow.attr('data-index');
-                students[index] = {nom, prenom, dateNaissance, aimeLeCours, remarques};
-                updateTable();
-                selectedRow = null; // On désélectionne la ligne
+                //students[index] = {nom, prenom, dateNaissance, aimeLeCours, remarques};
+                $.ajax({
+                    url: apifolder + '/restapi.php',
+                    type: 'PUT',
+                    data: JSON.stringify({id: index, nom: nom, prenom: prenom, date_naissance: dateNaissance, aime_le_cours: aimeLeCours, remarques: remarques}),
+                    success: function(response) {
+                        // Mettre à jour la ligne modifiée avec les nouvelles informations
+                        console.log(response);
+                        updateTable(); // UPDATER UNIQUEMENT LA LIGNE ET NE PAS UTILISER CETTE FONCTION QUI RECHARGE TOUTES LA TABLE
+                        selectedRow = null;
+                        // Réinitialiser le formulaire
+                        $("#addStudentForm").trigger("reset");
+                        $("#inputNom").focus();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                    }
+                });
+                // selectedRow = null; // On désélectionne la ligne
             } else { // Sinon, on ajoute une nouvelle ligne
                 $.ajax({
                     url: apifolder + '/restapi.php',
                     type: "POST",
-                    data: JSON.stringify({"nom": nom, "prenom": prenom, "date_naissance": dateNaissance, "aime_le_cours": aimeLeCours, "remarques": remarques}),
+                    data: JSON.stringify({nom: nom, prenom: prenom, date_naissance: dateNaissance, aime_le_cours: aimeLeCours, remarques: remarques}),
                     contentType: "application/json",
                     success: function(data) {
                         console.log(data);
@@ -171,8 +187,6 @@ if ($pdo->query($sql) === FALSE) {
         });
     }
 
-    
-
     function onEdit(button) {
         selectedRow = $(button).closest("tr");
         let id = selectedRow.attr('data-index');
@@ -182,51 +196,24 @@ if ($pdo->query($sql) === FALSE) {
         $("#inputDateNaissance").val(selectedRow.children().eq(2).text());
         $("#inputAimeLeCours").prop('checked', selectedRow.children().eq(3).text() === 'Oui');
         $("#inputRemarques").val(selectedRow.children().eq(4).text());
-
-        $("#addStudentForm").off('submit').submit(function(event) {
-            event.preventDefault();
-            let nom = $("#inputNom").val();
-            let prenom = $("#inputPrenom").val();
-            let dateNaissance = $("#inputDateNaissance").val();
-            let aimeLeCours = $("#inputAimeLeCours").prop('checked');
-            let remarques = $("#inputRemarques").val();
-
-            $.ajax({
-                url: apifolder + '/restapi.php',
-                type: 'PUT',
-                data: JSON.stringify({id: id, nom: nom, prenom: prenom, date_naissance: dateNaissance, aime_le_cours: aimeLeCours, remarques: remarques}),
-                //Content-Type: 'application/json',
-                success: function(response) {
-                    // Mettre à jour la ligne modifiée avec les nouvelles informations
-                    // students[index] = {nom, prenom, dateNaissance, aimeLeCours, remarques};
-                    updateTable(); // UPDATER UNIQUEMENT LA LIGNE ET NE PAS UTILISER CETTE FONCTION QUI RECHARGE TOUTES LA TABLE
-                    selectedRow = null;
-                    // Réinitialiser le formulaire
-                    $("#addStudentForm").trigger("reset");
-                    $("#inputNom").focus();
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus, errorThrown);
-                }
-            });
-        });
     }
 
     function onDelete(button) {
-        let row = $(button).closest("tr");
-        let index = row.attr('data-index');
-        students.splice(index, 1);
+        let selectedRow = $(button).closest("tr");
+        let index = selectedRow.attr('data-index');
+        //students.splice(index, 1);
         $.ajax({
             url: apifolder + '/restapi.php',
             method: "DELETE",
-            success: function(data) {            
+            data: JSON.stringify({id: index}),
+            success: function(response) { 
+                updateTable();           
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert("Erreur pour récupere les données de la table MySQL");
                 console.log(textStatus, errorThrown);
             }
         });
-        updateTable();
     }
 </script>
 
