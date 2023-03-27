@@ -117,9 +117,9 @@ if ($pdo->query($sql) === FALSE) {
                     url: apifolder + '/restapi.php',
                     type: 'PUT',
                     data: JSON.stringify({id: index, nom: nom, prenom: prenom, date_naissance: dateNaissance, aime_le_cours: aimeLeCours, remarques: remarques}),
-                    success: function(response) {
+                    success: function(responsejson) {
                         // Mettre à jour la ligne modifiée avec les nouvelles informations
-                        console.log(response);
+                        console.log(responsejson);
                         updateTable(); // UPDATER UNIQUEMENT LA LIGNE ET NE PAS UTILISER CETTE FONCTION QUI RECHARGE TOUTES LA TABLE
                         selectedRow = null;
                         // Réinitialiser le formulaire

@@ -35,11 +35,13 @@ function getAllUsers() {
     
     // Conversion en JSON
     $json = json_encode($users);
+    echo $json;
 
     // HTPP response of 200 OK
     header('HTTP/1.1 200 OK');
+    http_response_code(200);
     header('Content-Type: application/json');
-    echo $json;
+    
 }
 
 function createUser() {
@@ -83,7 +85,7 @@ function updateUser(){
 
     // Renvoyer une réponse JSON à la requête AJAX
     $response = array('status' => 'success', 'message' => 'Utilisateur ajouté avec succès');
-    echo json_encode($response);
+    //echo json_encode($response);
 }
 
 
