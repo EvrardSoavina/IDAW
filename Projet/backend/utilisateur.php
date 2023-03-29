@@ -13,9 +13,6 @@ switch($request_method)
     case 'POST':
         createUser();
         break;
-    case 'GET':
-        checkvalidcredentials();
-        break;
     case 'PUT':
         updateUser();
         break;
@@ -27,27 +24,6 @@ switch($request_method)
     break;
 };
 
-function checkvalidcredentials() {
-
-    $userData = json_decode(file_get_contents('php://input'),true);
-    $login = $userData["login"];
-    $password = $userData["motdepasse"];
-    
-    global $pdo;
-    $query = "SELECT COUNT(*) FROM utilisateur WHERE login = :login AND motdepasse = :password";
-    $statement = $pdo->prepare($query);
-    $statement->bindParam(":login", $login);
-    $statement->bindParam(":password", $password);
-    $statement->execute();
-
-    $count = $statement->fetchColumn();
-
-    if ($count == 1) {
-        echo "Valid credentials";
-    } else {
-        echo "Invalid credentials";
-    }
-}
 
 function getuserbylogin() {
     global $pdo;
