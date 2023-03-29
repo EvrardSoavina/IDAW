@@ -1,17 +1,20 @@
 <?php
 
 require_once('config.php');
-require_once('connexionBD.php');
+require_once('init_pdo.php');
 
 $request_method = $_SERVER["REQUEST_METHOD"];
 
 switch($request_method)
 {
     case 'GET':
-        getAllUsers();
+        getuserbylogin();
         break;
     case 'POST':
         createUser();
+        break;
+    case 'GET':
+        checkvalidcredentials();
         break;
     case 'PUT':
         updateUser();
@@ -24,12 +27,32 @@ switch($request_method)
     break;
 };
 
-// Ne pas oublier les ORDER BY pour afficher des tables trié (ascendant: default, sinon ajouter DESC)
+function checkvalidcredentials() {
 
-function templateGET() {
+    $userData = json_decode(file_get_contents('php://input'),true);
+    $login = $userData["login"];
+    $password = $userData["motdepasse"];
+    
+    global $pdo;
+    $query = "SELECT COUNT(*) FROM utilisateur WHERE login = :login AND motdepasse = :password";
+    $statement = $pdo->prepare($query);
+    $statement->bindParam(":login", $login);
+    $statement->bindParam(":password", $password);
+    $statement->execute();
+
+    $count = $statement->fetchColumn();
+
+    if ($count == 1) {
+        echo "Valid credentials";
+    } else {
+        echo "Invalid credentials";
+    }
+}
+
+function getuserbylogin() {
     global $pdo;
     // Récupération des utilisateurs
-    $request = $pdo->prepare('select * from Utilisateur');
+    $request = $pdo->prepare('select * from utilisateur where login= ?');
     $request->execute();
     $users = $request->fetchAll(PDO::FETCH_OBJ);
     
@@ -42,21 +65,29 @@ function templateGET() {
     
 }
 
-function templatePOST() {
+function createUser() {
     global $pdo;
     $userData = json_decode(file_get_contents('php://input'),true);
 
-    $nom = $userData['nom'];
+    $login = $userData['login'];
+    $motdepasse = $userData['motdepasse'];
     $prenom = $userData['prenom'];
+    $nom = $userData['nom'];
+    $email = $userData['email'];
+    $date_de_naissance = $userData['date_de_naissance'];
+    $id_sexe = $userData['id_sexe'];
+    $id_tranche_age = $userData['id_tranche_age'];
+    $id_niveau = $userData['id_niveau'];
+    $taille = $userData['taille'];
+    $poids = $userData['poids'];
 
-    $stmt = $pdo->prepare("INSERT INTO Utilisateur (nom, prenom) VALUES ( ? , ?)");
+    $stmt = $pdo->prepare("INSERT INTO Utilisateur (login, motdepasse, prenom, nom, email, date_de_naissance, taille, poids, id_sexe, id_tranche_age, id_niveau) VALUES ( ? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-    if($stmt->execute([$nom, $prenom])) {
+    if($stmt->execute([$login, $motdepasse, $prenom, $nom, $email, $date_de_naissance, $taille, $poids, $id_sexe, $id_tranche_age, $id_niveau])) {
         http_response_code(201);
     } else {
         echo 'Error inserting data';
     }
-    
 }
 
 function templatePUT(){

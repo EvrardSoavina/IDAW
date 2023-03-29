@@ -6,7 +6,7 @@
 
 | Action | HTTP | Payload | URL | Description |
 |---    |:-:    |:-:    |:-:    |--:    |
-|  |  |  |  |  |
+| Create | POST | json | /utilisateur.php | Create a user with his info in the json payload |
 |  |  |  |  |  |
 |  |  |  |  |  |
 |  |  |  |  |  |
