@@ -4,5 +4,4 @@ define('_MYSQL_PORT',8889);
 define('_MYSQL_DBNAME','eat_s_me');
 define('_MYSQL_USER','root');
 define('_MYSQL_PASSWORD','root');
-define('_APIURL','http://localhost:8888/IDAW/Projet');
 ?>
