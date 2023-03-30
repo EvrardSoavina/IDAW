@@ -1,63 +1,41 @@
-<?php
-$currentPageId = 'accueil';
-if (isset($_GET['page'])) {
-    $currentPageId = $_GET['page']; // récupère la valeur de la variable 'page' dans l'URL, sinon définit la valeur par défaut 'accueil'
-}
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $currentPageId ?></title>
+	<title>Login Page</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="login.js"></script>
 </head>
 <body>
+	<h2>Login Page</h2>
+	<form id="login-form">
+		<label for="username">Username:</label>
+		<input type="text" name="username" id="username"><br>
+		<label for="password">Password:</label>
+		<input type="password" name="password" id="password"><br>
+		<input type="submit" value="Login">
+	</form>
+	<div id="error-message"></div>
+</body>
+</html>
 
-<header class="bandeau_haut">
-    <form>
-        <label for="login">Login:</label>
-        <input type="text" id="login" name="login" required><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <input type="submit" value="Submit" onclick="onloginSubmit()">
-    </form>
-</header>
-
-<section class="corps">
-
-</section>
-
-<script> // A METTRE DANS CRUD.JS
-    function onloginSubmit() {
-    let login = $("#login").val();
-    let password = $("#motdepasse").val();
-    if (nom.trim() !== '') {
-        $.ajax({
-            url: apifolder + '/login.php',
-            method: "POST",
-            data: JSON.stringify({ "login": login, "motdepasse": password }),
-            success: function (response) {
-                echo(response);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert("Erreur pour vérifier les credentials");
-                console.log(textStatus, errorThrown);
-            }
-        });
-    }
-}
+<script>
+    $(document).ready(function() {
+	$('#login-form').submit(function(event) {
+		event.preventDefault();
+		var username = $('#username').val();
+		var password = $('#password').val();
+		$.ajax({
+			type: 'POST',
+			url: 'http://localhost:8888/IDAW/Projet/backend/login.php',
+			data: JSON.stringify({ "login": username, "motdepasse": password }),
+			success: function(data) {
+				if (data == 'Valid credentials') {
+					window.location.href = 'welcome.php';
+				} else {
+					$('#error-message').html('Invalid credentials');
+				}
+			}
+		});
+	});
+});
 </script>
-
-<?php
-function renderFooterToHTML($currentPageId) {
-        echo 
-        '<footer>
-            <p> Vous êtes sur le footer de la page' . $currentPageId . '</p>
-        </footer>
-        </body>
-        </html>';
-}
-?>

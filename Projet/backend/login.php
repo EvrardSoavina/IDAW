@@ -16,8 +16,8 @@ switch($request_method)
 };
 
 function checkvalidcredentials() {
-    echo file_get_contents('php://input');
-    exit(0);
+    /*echo file_get_contents('php://input');
+    exit(0);*/
     $userData = json_decode(file_get_contents('php://input'),true);
     $login = $userData["login"];
     $password = $userData["motdepasse"];
