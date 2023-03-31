@@ -66,22 +66,33 @@ function createUser() {
     }
 }
 
-function templatePUT(){
+
+function updateUser() {
     global $pdo;
-    $userData = json_decode(file_get_contents('php://input'),true);
+    $userData = json_decode(file_get_contents('php://input'), true);
 
-    // Récupérer les données envoyées depuis le formulaire
-    $id = $userData['id'];
+    $login = $userData['login'];
+    $motdepasse = $userData['motdepasse'];
+    $prenom = $userData['prenom'];
     $nom = $userData['nom'];
+    $email = $userData['email'];
+    $date_de_naissance = $userData['date_de_naissance'];
+    $taille = $userData['taille'];
+    $poids = $userData['poids'];
+    $id_sexe = $userData['id_sexe'];
+    $id_tranche_age = $userData['id_tranche_age'];
+    $id_niveau = $userData['id_niveau'];
 
-    $stmt = $pdo->prepare('UPDATE Utilisateur SET nom = ?WHERE id = ?');
+    $stmt = $pdo->prepare("UPDATE utilisateur SET motdepasse=?, prenom=?, nom=?, email=?, date_de_naissance=?, taille=?, poids=?, id_sexe=?, id_tranche_age=?, id_niveau=? WHERE login=?");
 
-    $stmt -> execute([$nom, $id]);
-
-    // OPTIONNEL: Renvoyer une réponse JSON à la requête AJAX à afficher avec console.log
-    $response = array('status' => 'success', 'message' => 'Utilisateur ajouté avec succès');
-    echo json_encode($response);
+    if ($stmt->execute([$motdepasse, $prenom, $nom, $email, $date_de_naissance, $taille, $poids, $id_sexe, $id_tranche_age, $id_niveau, $login])) {
+        $response = array('status' => 'success', 'message' => 'Utilisateur mis à jour avec succès');
+        echo json_encode($response);
+    } else {
+        echo 'Error updating data';
+    }
 }
+
 
 
 function templateDELETE() {
@@ -100,6 +111,24 @@ function templateDELETE() {
     // Envoi de la réponse HTTP
     header('HTTP/1.1 204 No Content');
 }
+
+function deleteUser() {
+    global $pdo;
+    $userData = json_decode(file_get_contents('php://input'), true);
+    $login = $userData['login'];
+    if (empty($login)) {
+        header('HTTP/1.1 400 Bad Request');
+        echo 'Missing parameter';
+        return;
+    }
+    // Suppression de l'utilisateur de la base de données
+    $stmt = $pdo->prepare('DELETE FROM Utilisateur WHERE login = ?');
+    $stmt->execute([$login]);
+    
+    // Envoi de la réponse HTTP
+    header('HTTP/1.1 204 No Content');
+}
+
 
     $pdo = null;
 ?>
