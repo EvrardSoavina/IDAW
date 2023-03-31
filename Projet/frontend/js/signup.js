@@ -40,7 +40,7 @@ $(document).ready(function () {
                 }),
                 success: function (response) {
                     console.log("User created with success !");
-                    window.location.href = "myspace.php";
+                    window.location.href = "dashboard.php";
                 }
             });
         }

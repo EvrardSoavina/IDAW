@@ -12,7 +12,7 @@ $(document).ready(function () {
 			}),
 			success: function (data) {
 				if (data == 'Valid credentials') {
-					window.location.href = 'welcome.php';
+					window.location.href = 'dashboard.php';
 				} else {
 					$('#error-message').html('Invalid credentials');
 				}
