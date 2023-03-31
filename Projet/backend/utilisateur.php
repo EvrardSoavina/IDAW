@@ -126,8 +126,7 @@ function deleteUser() {
     $stmt = $pdo->prepare('DELETE FROM Utilisateur WHERE login = ?');
     $stmt->execute([$login]);
     
-    // Envoi de la réponse HTTP
-    header('HTTP/1.1 204 No Content');
+    http_response_code(200);
 }
 
 

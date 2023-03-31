@@ -9,19 +9,19 @@ switch($request_method)
 {
     case 'GET':
         if(isset($_GET['id'])){
-            templateGETone($_GET['id']);
+            getone($_GET['id']);
         }else{
-            templateGET();
+            getall();
         }
         break;
     case 'POST':
-        createUser();
+        add();
         break;
     case 'PUT':
-        updateUser();
+        modify();
         break;
     case 'DELETE':
-        deleteUser();
+        delete();
         break;
     default:
     header("HTTP/1.0 405 Method Not ALlowed");
@@ -30,7 +30,7 @@ switch($request_method)
 
 // Ne pas oublier les ORDER BY pour afficher des tables trié (ascendant: default, sinon ajouter DESC)
 
-function templateGET() {
+function getall() {
     global $pdo;
     // Récupération des utilisateurs
     $request = $pdo->prepare('select * from Utilisateur');
@@ -46,7 +46,7 @@ function templateGET() {
     
 }
 
-function templateGETone($id) {
+function getone($id) {
     global $pdo;
     // Récupération des utilisateurs
     $stmt = $pdo->prepare("SELECT * FROM Utilisateur WHERE id = ?");
@@ -62,7 +62,7 @@ function templateGETone($id) {
     
 }
 
-function templatePOST() {
+function add() {
     global $pdo;
     $userData = json_decode(file_get_contents('php://input'),true);
 
@@ -79,7 +79,7 @@ function templatePOST() {
     
 }
 
-function templatePUT(){
+function modify(){
     global $pdo;
     $userData = json_decode(file_get_contents('php://input'),true);
 
@@ -97,7 +97,7 @@ function templatePUT(){
 }
 
 
-function templateDELETE() {
+function delete() {
     global $pdo;
     $userData = json_decode(file_get_contents('php://input'),true);
     $id = $userData['id'];
@@ -109,9 +109,6 @@ function templateDELETE() {
     // Suppression de l'utilisateur de la base de données
     $stmt = $pdo->prepare('DELETE FROM Utilisateur WHERE id = ?');
     $stmt -> execute([$id]);
-    
-    // Envoi de la réponse HTTP
-    header('HTTP/1.1 204 No Content');
 }
 
     $pdo = null;

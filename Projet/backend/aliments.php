@@ -57,12 +57,13 @@ function createAliment() {
     global $pdo;
     $alimentData = json_decode(file_get_contents('php://input'), true);
 
+    $id_aliment = $alimentData['id_aliment'];
     $nom = $alimentData['nom'];
     $id_type = $alimentData['id_type'];
 
-    $stmt = $pdo->prepare("INSERT INTO aliments (nom, id_type) VALUES (?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO aliments (id_aliment, nom, id_type) VALUES (?, ?, ?)");
 
-    if ($stmt->execute([$nom, $id_type])) {
+    if ($stmt->execute([$id_aliment, $nom, $id_type])) {
         http_response_code(201);
     } else {
         echo 'Error inserting data';
@@ -98,7 +99,8 @@ function deleteAliment() {
     }
     $stmt = $pdo->prepare('DELETE FROM aliments WHERE id_aliment = ?');
     $stmt->execute([$id_aliment]);
-    header('HTTP/1.1 204 No Content');
+
+    http_response_code(200);
 }
 
 $pdo = null;

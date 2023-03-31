@@ -3,7 +3,6 @@
 <head>
 	<title>Login Page</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="login.js"></script>
 </head>
 <body>
 	<h2>Login Page</h2>
@@ -31,7 +30,7 @@
 		event.preventDefault();
 		$.ajax({
 			type: 'GET',
-			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/utilisateur.php',
+			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/objectif.php',
 			success: function(data) {
 					$('#display-result').html(data);
 			}
@@ -41,7 +40,7 @@
 		event.preventDefault();
 		$.ajax({
 			type: 'GET',
-			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/utilisateur.php?login=Ezz_87',
+			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/objectif.php?login=Ezz_87',
 			success: function(data) {
 					$('#display-result').html(data);
 			}
@@ -51,8 +50,8 @@
 		event.preventDefault();
 		$.ajax({
 			type: 'POST',
-			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/utilisateur.php',
-			data: JSON.stringify({$login : "",$motdepasse : "", $prenom : "", $nom : "", $email : "", $date_de_naissance : "", $id_sexe : "", $id_tranche_age : "", $id_niveau: "", $taille: "", $poids: ""}),
+			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/objectif.php',
+			data: JSON.stringify({id_indicateur: "1",login: "Lelea",quantite: "100"}),
 			success: function(data) {
 					$('#display-result').html(data);
 			}
@@ -62,8 +61,8 @@
 		event.preventDefault();
 		$.ajax({
 			type: 'PUT',
-			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/utilisateur.php',
-			data: JSON.stringify({$login : "",$motdepasse : "", $prenom : "", $nom : "", $email : "", $date_de_naissance : "", $id_sexe : "", $id_tranche_age : "", $id_niveau: "", $taille: "", $poids: ""}),
+			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/objectif.php',
+			data: JSON.stringify({id_indicateur: "1",login: "Lelea",quantite: "49"}),
 			success: function(data) {
 					$('#display-result').html(data);
 			}
@@ -73,8 +72,8 @@
 		event.preventDefault();
 		$.ajax({
 			type: 'DELETE',
-			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/utilisateur.php',
-			data: JSON.stringify({$login : ""}),
+			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/objectif.php',
+			data: JSON.stringify({id_indicateur: "1",login: "Lelea"}),
 			success: function(data) {
 					$('#display-result').html(data);
 			}
