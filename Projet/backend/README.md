@@ -14,4 +14,4 @@
 
 endpoint d'authentification pour dire si le login mdp et ok ou pas.
 
-Vérifier que le front-end ne peux pas accéder à l'API
+Vérifier que le front-end ne peux pas accéder à l'API.
