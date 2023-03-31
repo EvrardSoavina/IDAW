@@ -52,10 +52,14 @@
 		$.ajax({
 			type: 'POST',
 			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/utilisateur.php',
-			data: JSON.stringify({$login : "",$motdepasse : "", $prenom : "", $nom : "", $email : "", $date_de_naissance : "", $id_sexe : "", $id_tranche_age : "", $id_niveau: "", $taille: "", $poids: ""}),
+			data: JSON.stringify({login : "Al-BD",motdepasse : "password", prenom : "Evrard", nom : "Soavina", email : "evr@gmail.com", date_de_naissance : "2001-07-04", id_sexe : "1", id_tranche_age : "2", id_niveau: "1", taille: "180", poids: "90"}),
 			success: function(data) {
 					$('#display-result').html(data);
 			}
+			error: function(jqXHR, textStatus, errorThrown) {
+                        alert("Erreur lors de l'ajout de l'utilisateur.");
+                        console.log(textStatus, errorThrown);
+                    }
 		});
 	});
 	$('#put-form').submit(function(event) {
@@ -63,7 +67,7 @@
 		$.ajax({
 			type: 'PUT',
 			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/utilisateur.php',
-			data: JSON.stringify({$login : "",$motdepasse : "", $prenom : "", $nom : "", $email : "", $date_de_naissance : "", $id_sexe : "", $id_tranche_age : "", $id_niveau: "", $taille: "", $poids: ""}),
+			data: JSON.stringify({login : "evrsvna",motdepasse : "supersecretpassword", prenom : "Evrard", nom : "Soavina", email : "evr@gmail.com", date_de_naissance : "2001-07-04", id_sexe : "1", id_tranche_age : "2", id_niveau: "1", taille: "180", poids: "90"}),
 			success: function(data) {
 					$('#display-result').html(data);
 			}
@@ -74,7 +78,7 @@
 		$.ajax({
 			type: 'DELETE',
 			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/utilisateur.php',
-			data: JSON.stringify({$login : ""}),
+			data: JSON.stringify({login : "evrsvna"}),
 			success: function(data) {
 					$('#display-result').html(data);
 			}
