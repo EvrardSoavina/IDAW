@@ -35,27 +35,27 @@ require_once('header.php');
       <div class="row">
         <div class="col-lg-10">
 
-          <form action="#" method="post">
+          <form id="signup-form" method="post">
 
             <div class="row">
               <div class="col-md-6 form-group">
-                <label for="name">Name*</label>
-                <input type="text" id="name" class="form-control " required>
+                <label for="prenom">Name*</label>
+                <input type="text" id="prenom" class="form-control " required>
               </div>
               <div class="col-md-6 form-group">
-                <label for="lastname">Last name*</label>
-                <input type="text" id="lastname" class="form-control " required>
+                <label for="nom">Last name*</label>
+                <input type="text" id="nom" class="form-control " required>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-6 form-group">
-                <label for="username">Username*</label>
-                <input type="text" id="username" class="form-control " required>
+                <label for="login">Username*</label>
+                <input type="text" id="login" class="form-control " required>
               </div>
               <div class="col-md-6 form-group">
-                <label for="sexe">Sexe*</label>
-                <select id="sexe" class="form-control" required>
+                <label for="id_sexe">Sexe*</label>
+                <select id="id_sexe" class="form-control" required>
                   <option value="">Select your gender</option>
                   <option value="1">Male</option>
                   <option value="2">Female</option>
@@ -65,26 +65,26 @@ require_once('header.php');
 
             <div class="row">
               <div class="col-md-12 form-group">
-                <label for="birth_date">Birth date*</label>
-                <input type="date" id="birth_date" class="form-control " required>
+                <label for="date_de_naissance">Birth date*</label>
+                <input type="date" id="date_de_naissance" class="form-control " required>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-6 form-group">
-                <label for="height">Height*</label>
-                <input type="text" id="height" class="form-control " placeholder="Enter your height in centimeters" required>
+                <label for="taille">Height*</label>
+                <input type="number" id="taille" class="form-control " placeholder="Enter your height in centimeters" required>
               </div>
               <div class="col-md-6 form-group">
-                <label for="weight">Weight*</label>
-                <input type="text" id="weight" class="form-control " placeholder="Enter your weight in kilograms" required>
+                <label for="poids">Weight*</label>
+                <input type="number" id="poids" class="form-control " placeholder="Enter your weight in kilograms" required>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-6 form-group">
-                <label for="age">Age range*</label>
-                <select id="age" class="form-control" required>
+                <label for="id_tranche_age">Age range*</label>
+                <select id="id_tranche_age" class="form-control" required>
                   <option value="">Select your age range (13+)</option>
                   <option value="1">13-25</option>
                   <option value="2">26-35</option>
@@ -96,8 +96,8 @@ require_once('header.php');
                 </select>
               </div>
               <div class="col-md-6 form-group">
-                <label for="sport_level">Level of sport practice*</label>
-                <select id="sport_level" class="form-control" required>
+                <label for="id_niveau">Level of sport practice*</label>
+                <select id="id_niveau" class="form-control" required>
                   <option value="">Select your level</option>
                   <option value="1">beginner</option>
                   <option value="2">Intermediate</option>
@@ -115,20 +115,14 @@ require_once('header.php');
 
             <div class="row">
               <div class="col-md-12 form-group">
-                <label for="password">Password*</label>
-                <input type="password" id="password" class="form-control " placeholder="Choose a strong password" required>
+                <label for="motdepasse">Password*</label>
+                <input type="password" id="motdepasse" class="form-control " placeholder="Choose a strong password" required>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12 form-group">
-                <label for="password">Password*</label>
-                <input type="password" id="password" class="form-control " placeholder="Choose a strong password" required>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 form-group">
-                <label for="confirm-password"></label>
-                <input type="password" id="confirm-password" class="form-control " placeholder="Confirm your password" required>
+                <label for="confirme-motdepasse"></label>
+                <input type="password" id="confirme-motdepasse" class="form-control " placeholder="Confirm your password" required>
               </div>
             </div>
 

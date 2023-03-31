@@ -32,26 +32,32 @@ require_once('header.php');
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
+
           <form id="login-form">
+
             <div class="row">
               <div class="col-md-12 form-group">
                 <label for="name">Username</label>
                 <input type="text" id="username" class="form-control ">
               </div>
             </div>
+
             <div class="row">
               <div class="col-md-12 form-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" class="form-control ">
               </div>
             </div>
+
             <div class="row">
               <div class="col-md-6 form-group">
                 <input type="submit" value="Connect" class="btn btn-primary">
                 <span id="error-message"></div>
               </div>
             </div>
+            
           </form>
+
         </div>
       </div>
     </div>
