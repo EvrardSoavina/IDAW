@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : dim. 26 mars 2023 à 15:20
+-- Généré le : ven. 31 mars 2023 à 13:01
 -- Version du serveur : 5.7.39
 -- Version de PHP : 8.2.0
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `Eat's Me`
+-- Base de données : `eat_s_me`
 --
 
 -- --------------------------------------------------------
@@ -39,7 +39,7 @@ CREATE TABLE `aliments` (
 
 INSERT INTO `aliments` (`id_aliment`, `nom`, `id_type`) VALUES
 (1000, 'Pastis', 603),
-(1001, 'Eau de vie', 603),
+(1001, 'Eau de vie:', 603),
 (1002, 'Gin', 603),
 (1003, 'Liqueur', 603),
 (1004, 'Rhum', 603),
@@ -3230,24 +3230,13 @@ INSERT INTO `aliments` (`id_aliment`, `nom`, `id_type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `composition`
---
-
-CREATE TABLE `composition` (
-  `id_repas` int(11) NOT NULL,
-  `id_aliment` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `consommation`
 --
 
 CREATE TABLE `consommation` (
-  `id_indicateur` int(11) NOT NULL,
-  `id_utilisateur` varchar(18) NOT NULL,
-  `quantite` int(11) NOT NULL
+  `id_journal` int(11) NOT NULL,
+  `id_aliment` int(11) NOT NULL,
+  `quantite` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3346,13 +3335,14 @@ INSERT INTO `indicateur_nutritionnel` (`id_indicateur`, `nom`, `recommandation_o
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ingere`
+-- Structure de la table `journal`
 --
 
-CREATE TABLE `ingere` (
-  `id_utilisateur` varchar(18) NOT NULL,
-  `id_aliment` int(11) NOT NULL,
-  `quantite` int(11) NOT NULL
+CREATE TABLE `journal` (
+  `id_journal` int(11) NOT NULL,
+  `id_type_repas` int(11) NOT NULL,
+  `login` varchar(18) NOT NULL,
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3371,9 +3361,21 @@ CREATE TABLE `niveau_de_pratique_sportive` (
 --
 
 INSERT INTO `niveau_de_pratique_sportive` (`id_niveau`, `niveau`) VALUES
-(1, 'bas'),
-(2, 'moyen'),
-(3, 'élevé');
+(1, 'Peu actif'),
+(2, 'Actif'),
+(3, 'Très actif');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `objectif`
+--
+
+CREATE TABLE `objectif` (
+  `id_indicateur` int(11) NOT NULL,
+  `login` varchar(18) NOT NULL,
+  `quantite` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3385,17 +3387,6 @@ CREATE TABLE `pourcentage` (
   `id_plat` int(11) NOT NULL,
   `id_aliment` int(11) NOT NULL,
   `pourcentage_composition` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `repas`
---
-
-CREATE TABLE `repas` (
-  `id_repas` int(11) NOT NULL,
-  `repas` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3525,16 +3516,40 @@ INSERT INTO `type_aliment` (`id_type`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `type_repas`
+--
+
+CREATE TABLE `type_repas` (
+  `id_type_repas` int(11) NOT NULL,
+  `type_repas` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `type_repas`
+--
+
+INSERT INTO `type_repas` (`id_type_repas`, `type_repas`) VALUES
+(1, 'Petit déjeuner'),
+(2, 'déjeuner'),
+(3, 'Dîner'),
+(4, 'Snack'),
+(5, 'Eau');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `utilisateur`
 --
 
 CREATE TABLE `utilisateur` (
   `login` varchar(18) NOT NULL,
+  `motdepasse` varchar(20) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   `date_de_naissance` date NOT NULL,
   `taille` int(11) NOT NULL,
+  `poids` int(2) NOT NULL,
   `id_sexe` int(11) NOT NULL,
   `id_tranche_age` int(11) NOT NULL,
   `id_niveau` int(11) NOT NULL
@@ -3544,32 +3559,32 @@ CREATE TABLE `utilisateur` (
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`login`, `prenom`, `nom`, `email`, `date_de_naissance`, `taille`, `id_sexe`, `id_tranche_age`, `id_niveau`) VALUES
-('Al-BD', 'Alexandre', 'FAVREAU', 'alexandre.favreau@etu.imt-lille-douai.fr', '1998-02-04', 180, 1, 1, 3),
-('Alex_P1', 'Alexis', 'POIROT', 'alexis.poirot@etu.imt-lille-douai.fr', '1999-03-13', 171, 1, 1, 2),
-('AntGou_0', 'Anthony', 'GOUTHIER', 'anthony.gouthier@etu.imt-lille-douai.fr', '1999-03-16', 174, 1, 1, 2),
-('AntoLam4', 'Antoine', 'LAMBERT', 'antoine.lambert@etu.imt-lille-douai.fr', '1999-02-14', 172, 1, 1, 3),
-('Arm_jd', 'Armand', 'SUMO MOUDJIE TCHAMABE', 'armand.sumo@etu.imt-lille-douai.fr', '1998-08-20', 178, 1, 1, 3),
-('EmemEm', 'Emil', 'PEROUSE', 'emil.perouse@etu.imt-lille-douai.fr', '2001-01-27', 185, 1, 1, 1),
-('Ezz_87', 'Ezzat', 'AL ZAHABI', 'ezzat.al.zahabi@etu.imt-lille-douai.fr', '1999-08-22', 180, 1, 1, 2),
-('Gaeelllll', 'Gaelle', 'ERHART', 'gaelle.erhart@etu.imt-lille-douai.fr', '1999-09-23', 181, 2, 1, 3),
-('GuI_sdg', 'Guillaume', 'FAURE', 'guillaume.faure@etu.imt-lille-douai.fr', '1999-10-18', 176, 1, 1, 1),
-('Hati-98S', 'Hatim', 'HEBBOUL', 'hatim.hebboul@etu.imt-lille-douai.fr', '1999-05-19', 177, 1, 1, 2),
-('Hug65', 'Hugo', 'LIM', 'hugo.lim@etu.imt-lille-douai.fr', '1999-01-25', 183, 1, 1, 2),
-('Jo_Gau87', 'Johan', 'GAUDIN', 'johan.gaudin@etu.imt-lille-douai.fr', '1999-04-17', 175, 1, 1, 3),
-('Jul342', 'Julia', 'ZINK', 'julia.zink@etu.imt-lille-douai.fr', '1999-06-03', 179, 2, 1, 2),
-('KanlH', 'Kanlanfaye', 'DJAMOINE', 'kanlanfaye.djamoine@etu.imt-lille-douai.fr', '1999-01-30', 188, 1, 1, 1),
-('Lelea', 'Lea', 'GRUMIAUX', 'lea.grumiaux@etu.imt-lille-douai.fr', '1999-01-28', 186, 2, 1, 2),
-('LuLu', 'Lucas', 'ARIB', 'lucas.arib@etu.imt-lille-douai.fr', '1999-01-24', 182, 1, 1, 1),
-('Mathi6552', 'Mathis', 'JOLIVEL', 'mathis.jolivel@etu.imt-lille-douai.fr', '1999-02-21', 179, 1, 1, 1),
-('maxLamenace', 'Maxime', 'DE VEYRAC', 'maxime.de.veyrac@etu.imt-lille-douai.fr', '2000-02-01', 177, 1, 1, 3),
-('mekkkkk', 'Mekki', 'BEN HAMIDOUCHE', 'mekki.ben.hamidouche@etu.imt-lille-douai.fr', '1999-02-02', 178, 1, 1, 1),
-('Nil-0DEVA', 'Nilavan', 'DEVA', 'nilavan.deva@etu.imt-lille-douai.fr', '1999-02-05', 181, 1, 1, 1),
-('Pierrot3', 'Pierre', 'MARTIN', 'pierre.martin@etu.imt-lille-douai.fr', '1999-04-29', 187, 1, 1, 3),
-('Sacha-2', 'Sacha', 'SICOLI', 'sacha.sicoli@etu.imt-lille-douai.fr', '1999-03-26', 184, 1, 1, 3),
-('TengTen3', 'Tanguy', 'FEENSTRA', 'tanguy.feenstra@etu.imt-lille-douai.fr', '1999-07-31', 189, 1, 1, 2),
-('W-12N', 'William', 'NGUYEN', 'william.nguyen@etu.imt-lille-douai.fr', '1999-01-12', 170, 1, 1, 1),
-('x-lCed', 'Cedric', 'PRAST', 'cedric.prast@etu.imt-lille-douai.fr', '1999-11-15', 173, 1, 1, 1);
+INSERT INTO `utilisateur` (`login`, `motdepasse`, `prenom`, `nom`, `email`, `date_de_naissance`, `taille`, `poids`, `id_sexe`, `id_tranche_age`, `id_niveau`) VALUES
+('Al-BD', 'password', 'Alexandre', 'FAVREAU', 'alexandre.favreau@etu.imt-lille-douai.fr', '1998-02-04', 180, 86, 1, 1, 3),
+('Alex_P1', 'password', 'Alexis', 'POIROT', 'alexis.poirot@etu.imt-lille-douai.fr', '1999-03-13', 171, 73, 1, 1, 2),
+('AntGou_0', 'password', 'Anthony', 'GOUTHIER', 'anthony.gouthier@etu.imt-lille-douai.fr', '1999-03-16', 174, 93, 1, 1, 2),
+('AntoLam4', 'password', 'Antoine', 'LAMBERT', 'antoine.lambert@etu.imt-lille-douai.fr', '1999-02-14', 172, 75, 1, 1, 3),
+('Arm_jd', 'password', 'Armand', 'SUMO MOUDJIE TCHAMABE', 'armand.sumo@etu.imt-lille-douai.fr', '1998-08-20', 178, 75, 1, 1, 3),
+('EmémEm', 'password', 'Emil', 'PEROUSE', 'emil.perouse@etu.imt-lille-douai.fr', '2001-01-27', 185, 86, 1, 1, 1),
+('Ezz_87', 'password', 'Ezzat', 'AL ZAHABI', 'ezzat.al.zahabi@etu.imt-lille-douai.fr', '1999-08-22', 180, 82, 1, 1, 2),
+('Gaeelllll', 'password', 'Gaelle', 'ERHART', 'gaelle.erhart@etu.imt-lille-douai.fr', '1999-09-23', 181, 86, 2, 1, 3),
+('GuI_sdg', 'password', 'Guillaume', 'FAURE', 'guillaume.faure@etu.imt-lille-douai.fr', '1999-10-18', 176, 76, 1, 1, 1),
+('Hati-98S', 'password', 'Hatim', 'HEBBOUL', 'hatim.hebboul@etu.imt-lille-douai.fr', '1999-05-19', 177, 73, 1, 1, 2),
+('Hug65', 'password', 'Hugo', 'LIM', 'hugo.lim@etu.imt-lille-douai.fr', '1999-01-25', 183, 78, 1, 1, 2),
+('Jo_Gau87', 'password', 'Johan', 'GAUDIN', 'johan.gaudin@etu.imt-lille-douai.fr', '1999-04-17', 175, 77, 1, 1, 3),
+('Jul342', 'password', 'Julia', 'ZINK', 'julia.zink@etu.imt-lille-douai.fr', '1999-06-03', 179, 79, 2, 1, 2),
+('KanlH', 'password', 'Kanlanfaye', 'DJAMOINE', 'kanlanfaye.djamoine@etu.imt-lille-douai.fr', '1999-01-30', 188, 75, 1, 1, 1),
+('Lelea', 'password', 'Lea', 'GRUMIAUX', 'lea.grumiaux@etu.imt-lille-douai.fr', '1999-01-28', 186, 72, 2, 1, 2),
+('LuLu', 'password', 'Lucas', 'ARIB', 'lucas.arib@etu.imt-lille-douai.fr', '1999-01-24', 182, 79, 1, 1, 1),
+('Mathi6552', 'password', 'Mathis', 'JOLIVEL', 'mathis.jolivel@etu.imt-lille-douai.fr', '1999-02-21', 179, 79, 1, 1, 1),
+('maxLamenace', 'password', 'Maxime', 'DE VEYRAC', 'maxime.de.veyrac@etu.imt-lille-douai.fr', '2000-02-01', 177, 73, 1, 1, 3),
+('mekkkkk', 'password', 'Mekki', 'BEN HAMIDOUCHE', 'mekki.ben.hamidouche@etu.imt-lille-douai.fr', '1999-02-02', 178, 69, 1, 1, 1),
+('Nil-0DEVA', 'password', 'Nilavan', 'DEVA', 'nilavan.deva@etu.imt-lille-douai.fr', '1999-02-05', 181, 72, 1, 1, 1),
+('Pierrot3', 'password', 'Pierre', 'MARTIN', 'pierre.martin@etu.imt-lille-douai.fr', '1999-04-29', 187, 73, 1, 1, 3),
+('Sacha-2', 'password', 'Sacha', 'SICOLI', 'sacha.sicoli@etu.imt-lille-douai.fr', '1999-03-26', 184, 83, 1, 1, 3),
+('TengTen3', 'password', 'Tanguy', 'FEENSTRA', 'tanguy.feenstra@etu.imt-lille-douai.fr', '1999-07-31', 189, 70, 1, 1, 2),
+('W-12N', 'password', 'William', 'NGUYEN', 'william.nguyen@etu.imt-lille-douai.fr', '1999-01-12', 170, 70, 1, 1, 1),
+('x-lCed', 'password', 'Cedric', 'PRAST', 'cedric.prast@etu.imt-lille-douai.fr', '1999-11-15', 173, 90, 1, 1, 1);
 
 --
 -- Index pour les tables déchargées
@@ -3583,18 +3598,11 @@ ALTER TABLE `aliments`
   ADD KEY `id_type` (`id_type`);
 
 --
--- Index pour la table `composition`
---
-ALTER TABLE `composition`
-  ADD KEY `id_repas` (`id_repas`),
-  ADD KEY `id_aliment` (`id_aliment`);
-
---
 -- Index pour la table `consommation`
 --
 ALTER TABLE `consommation`
-  ADD KEY `consommation_ibfk_2` (`id_utilisateur`),
-  ADD KEY `id_indicateur` (`id_indicateur`);
+  ADD KEY `id_journal` (`id_journal`),
+  ADD KEY `id_aliment` (`id_aliment`);
 
 --
 -- Index pour la table `contenu`
@@ -3610,11 +3618,12 @@ ALTER TABLE `indicateur_nutritionnel`
   ADD PRIMARY KEY (`id_indicateur`);
 
 --
--- Index pour la table `ingere`
+-- Index pour la table `journal`
 --
-ALTER TABLE `ingere`
-  ADD KEY `ingere_ibfk_1` (`id_utilisateur`),
-  ADD KEY `id_aliment` (`id_aliment`);
+ALTER TABLE `journal`
+  ADD PRIMARY KEY (`id_journal`),
+  ADD KEY `id_type_repas` (`id_type_repas`),
+  ADD KEY `login` (`login`);
 
 --
 -- Index pour la table `niveau_de_pratique_sportive`
@@ -3623,17 +3632,18 @@ ALTER TABLE `niveau_de_pratique_sportive`
   ADD PRIMARY KEY (`id_niveau`);
 
 --
+-- Index pour la table `objectif`
+--
+ALTER TABLE `objectif`
+  ADD KEY `id_indicateur` (`id_indicateur`),
+  ADD KEY `objectif_login` (`login`);
+
+--
 -- Index pour la table `pourcentage`
 --
 ALTER TABLE `pourcentage`
   ADD KEY `id_aliment` (`id_aliment`),
   ADD KEY `id_plat` (`id_plat`);
-
---
--- Index pour la table `repas`
---
-ALTER TABLE `repas`
-  ADD PRIMARY KEY (`id_repas`);
 
 --
 -- Index pour la table `sexe`
@@ -3652,6 +3662,12 @@ ALTER TABLE `tranche_age`
 --
 ALTER TABLE `type_aliment`
   ADD PRIMARY KEY (`id_type`);
+
+--
+-- Index pour la table `type_repas`
+--
+ALTER TABLE `type_repas`
+  ADD PRIMARY KEY (`id_type_repas`);
 
 --
 -- Index pour la table `utilisateur`
@@ -3673,16 +3689,16 @@ ALTER TABLE `indicateur_nutritionnel`
   MODIFY `id_indicateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
+-- AUTO_INCREMENT pour la table `journal`
+--
+ALTER TABLE `journal`
+  MODIFY `id_journal` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `niveau_de_pratique_sportive`
 --
 ALTER TABLE `niveau_de_pratique_sportive`
   MODIFY `id_niveau` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT pour la table `repas`
---
-ALTER TABLE `repas`
-  MODIFY `id_repas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `sexe`
@@ -3697,6 +3713,12 @@ ALTER TABLE `tranche_age`
   MODIFY `id_tranche_age` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT pour la table `type_repas`
+--
+ALTER TABLE `type_repas`
+  MODIFY `id_type_repas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- Contraintes pour les tables déchargées
 --
 
@@ -3707,18 +3729,11 @@ ALTER TABLE `aliments`
   ADD CONSTRAINT `aliments_ibfk_1` FOREIGN KEY (`id_type`) REFERENCES `type_aliment` (`id_type`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `composition`
---
-ALTER TABLE `composition`
-  ADD CONSTRAINT `composition_ibfk_2` FOREIGN KEY (`id_repas`) REFERENCES `repas` (`id_repas`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `composition_ibfk_3` FOREIGN KEY (`id_aliment`) REFERENCES `aliments` (`id_aliment`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Contraintes pour la table `consommation`
 --
 ALTER TABLE `consommation`
-  ADD CONSTRAINT `consommation_ibfk_2` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`login`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `consommation_ibfk_3` FOREIGN KEY (`id_indicateur`) REFERENCES `indicateur_nutritionnel` (`id_indicateur`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `id_aliment` FOREIGN KEY (`id_aliment`) REFERENCES `aliments` (`id_aliment`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `id_journal` FOREIGN KEY (`id_journal`) REFERENCES `journal` (`id_journal`) ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `contenu`
@@ -3728,11 +3743,18 @@ ALTER TABLE `contenu`
   ADD CONSTRAINT `contenu_ibfk_3` FOREIGN KEY (`id_aliment`) REFERENCES `aliments` (`id_aliment`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `ingere`
+-- Contraintes pour la table `journal`
 --
-ALTER TABLE `ingere`
-  ADD CONSTRAINT `ingere_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`login`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ingere_ibfk_2` FOREIGN KEY (`id_aliment`) REFERENCES `aliments` (`id_aliment`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `journal`
+  ADD CONSTRAINT `id_type_repas` FOREIGN KEY (`id_type_repas`) REFERENCES `type_repas` (`id_type_repas`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `login` FOREIGN KEY (`login`) REFERENCES `utilisateur` (`login`) ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `objectif`
+--
+ALTER TABLE `objectif`
+  ADD CONSTRAINT `id_indicateur` FOREIGN KEY (`id_indicateur`) REFERENCES `indicateur_nutritionnel` (`id_indicateur`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `objectif_login` FOREIGN KEY (`login`) REFERENCES `utilisateur` (`login`) ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `pourcentage`
