@@ -14,7 +14,7 @@ function renderMenuToHTML($currentPageId) {
     $menuItems = array(
       'index.php' => 'Home',
       'recipes.php' => 'Recipes',
-      'signin.php' => 'Sign In',
+      'signup.php' => 'Sign Up',
       'news.php' => 'News'
     );
     
@@ -32,7 +32,7 @@ function renderMenuToHTML($currentPageId) {
   
     echo '<ul class="navbar-nav ml-auto">';
     echo '<li class="nav-item cta-btn">';
-    echo '<a class="nav-link" href="#">Contact Us</a>';
+    echo '<a class="nav-link" href="signin.php">Sign in</a>';
     echo '</li>';
     echo '</ul>';
   

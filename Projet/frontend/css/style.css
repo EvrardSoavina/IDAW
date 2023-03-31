@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5 {
 .form-control {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  height: 46px;
+  height: 46px !important;
   border-width: 1px;
 }
 
