@@ -8,7 +8,11 @@ $request_method = $_SERVER["REQUEST_METHOD"];
 switch($request_method)
 {
     case 'GET':
-        getAllUsers();
+        if(isset($_GET['id'])){
+            templateGETone($_GET['id']);
+        }else{
+            templateGET();
+        }
         break;
     case 'POST':
         createUser();
@@ -31,6 +35,22 @@ function templateGET() {
     // Récupération des utilisateurs
     $request = $pdo->prepare('select * from Utilisateur');
     $request->execute();
+    $users = $request->fetchAll(PDO::FETCH_OBJ);
+    
+    // Conversion en JSON
+    $json = json_encode($users);
+    echo $json; // on envoie la réponse de la requête 
+
+    // HTPP response of 200 OK
+    http_response_code(200);
+    
+}
+
+function templateGETone($id) {
+    global $pdo;
+    // Récupération des utilisateurs
+    $stmt = $pdo->prepare("SELECT * FROM Utilisateur WHERE id = ?");
+    $stmt->execute([$id]);
     $users = $request->fetchAll(PDO::FETCH_OBJ);
     
     // Conversion en JSON

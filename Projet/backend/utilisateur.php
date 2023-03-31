@@ -8,7 +8,11 @@ $request_method = $_SERVER["REQUEST_METHOD"];
 switch($request_method)
 {
     case 'GET':
-        getuserbylogin();
+        if(isset($_GET['login'])){
+            getuserbylogin($_GET['login']);
+        }else{
+            getalluser();
+        }
         break;
     case 'POST':
         createUser();
@@ -25,10 +29,26 @@ switch($request_method)
 };
 
 
-function getuserbylogin() {
+function getuserbylogin($login) {
     global $pdo;
     // Récupération des utilisateurs
-    $request = $pdo->prepare('select * from utilisateur where login= ?');
+    $request = $pdo->prepare('SELECT * FROM utilisateur WHERE login = ?');
+    $request->execute([$login]);
+    $users = $request->fetchAll(PDO::FETCH_OBJ);
+    
+    // Conversion en JSON
+    $json = json_encode($users);
+    echo $json; // on envoie la réponse de la requête 
+
+    // HTPP response of 200 OK
+    http_response_code(200);
+    
+}
+
+function getalluser() {
+    global $pdo;
+    // Récupération des utilisateurs
+    $request = $pdo->prepare('SELECT * FROM utilisateur ORDER BY nom ASC');
     $request->execute();
     $users = $request->fetchAll(PDO::FETCH_OBJ);
     
@@ -91,25 +111,6 @@ function updateUser() {
     } else {
         echo 'Error updating data';
     }
-}
-
-
-
-function templateDELETE() {
-    global $pdo;
-    $userData = json_decode(file_get_contents('php://input'),true);
-    $id = $userData['id'];
-    if (empty($id)) {
-        header('HTTP/1.1 400 Bad Request');
-        echo 'Missing parameter';
-        return;
-    }
-    // Suppression de l'utilisateur de la base de données
-    $stmt = $pdo->prepare('DELETE FROM Utilisateur WHERE id = ?');
-    $stmt -> execute([$id]);
-    
-    // Envoi de la réponse HTTP
-    header('HTTP/1.1 204 No Content');
 }
 
 function deleteUser() {
