@@ -47,7 +47,7 @@ require_once('header.php');
             </div>
             <div class="row">
               <div class="col-md-6 form-group">
-                <input type="submit" value="Create" class="btn btn-primary">
+                <input type="submit" value="Connect" class="btn btn-primary">
                 <span id="error-message"></div>
               </div>
             </div>
