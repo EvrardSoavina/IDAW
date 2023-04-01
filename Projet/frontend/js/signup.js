@@ -39,9 +39,12 @@ $(document).ready(function () {
                     id_niveau: id_niveau
                 }),
                 success: function (response) {
-                    console.log("User created with success !");
-                    window.location.href = "signin.php";
-                }
+                    if (response == "Data inserted") {
+                        window.location.href = "dashboard.php";
+                    } else {
+                        alert("Error. Login already used");
+                    }
+                },
             });
         }
     });
