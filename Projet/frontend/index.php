@@ -15,7 +15,6 @@ require_once('header.php');
   <div class="slider-wrap">
     <section class="home-slider owl-carousel">
 
-
       <div class="slider-item" style="background-image: url('img/hero_1.jpg');">
 
         <div class="container">
@@ -34,7 +33,7 @@ require_once('header.php');
           <div class="row slider-text align-items-center justify-content-center">
             <div class="col-md-8 text-center col-sm-12 ">
               <h1 data-aos="fade-up">Delecious Food</h1>
-              <p data-aos="fade-up" data-aos-delay="200"><a href="#" class="btn btn-white btn-outline-white">Get Started</a></p>
+              <p data-aos="fade-up" data-aos-delay="200"><a href="#" class="btn btn-white btn-outline-white">Sign Up</a></p>
             </div>
           </div>
         </div>
@@ -73,7 +72,6 @@ require_once('header.php');
     </div>
   </section>
 
-
   <section class="section pb-0">
     <div class="container">
       <div class="row mb-5 justify-content-center" data-aos="fade">
@@ -95,7 +93,9 @@ require_once('header.php');
         </div>
       </div>
     </div>
+    
   </section>
+
 
   <section class="section bg-light pt-0 bottom-slant-gray">
 
@@ -161,58 +161,6 @@ require_once('header.php');
 
         </div>
       </div>
-
-      <div class="row no-gutters">
-        <div class="col-md-6">
-          <div class="sched d-block d-lg-flex">
-            <div class="bg-image order-2" style="background-image: url('img/dishes_4.jpg');" data-aos="fade"></div>
-            <div class="text order-1">
-              <h3>Grilled Caesar salad, shaved reggiano</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
-              <p class="text-primary h3">612 kcal</p>
-            </div>
-
-          </div>
-
-          <div class="sched d-block d-lg-flex">
-            <div class="bg-image" style="background-image: url('img/dishes_1.jpg');" data-aos="fade"></div>
-            <div class="text">
-              <h3>Spicy Calamari and beans</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
-              <p class="text-primary h3">432 kcal</p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="col-md-6">
-          <div class="sched d-block d-lg-flex">
-            <div class="bg-image order-2" style="background-image: url('img/dishes_2.jpg');" data-aos="fade"></div>
-            <div class="text order-1">
-              <h3>Bacon wrapped wild gulf prawns</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
-              <p class="text-primary h3">739 kcal</p>
-
-            </div>
-
-          </div>
-
-          <div class="sched d-block d-lg-flex">
-            <div class="bg-image" style="background-image: url('img/dishes_3.jpg');" data-aos="fade"></div>
-            <div class="text">
-              <h3>Seared ahi tuna fillet*, honey-ginger sauce</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
-              <p class="text-primary h3">712 kcal</p>
-
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-
 
     </div>
   </section> <!-- .section -->
