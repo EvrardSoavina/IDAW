@@ -26,7 +26,7 @@ $(document).ready(function () {
                 type: 'post',
                 data: JSON.stringify({
                     prenom: prenom,
-                    nom: nom,z
+                    nom: nom,
                     date_de_naissance: date_de_naissance,
                     email: email,
                     login: login,
