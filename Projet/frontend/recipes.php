@@ -95,58 +95,6 @@ require_once('header.php');
         </div>
       </div>
 
-      <div class="row no-gutters">
-        <div class="col-md-6">
-          <div class="sched d-block d-lg-flex">
-            <div class="bg-image order-2" style="background-image: url('img/dishes_4.jpg');" data-aos="fade"></div>
-            <div class="text order-1">
-              <h3>Grilled Caesar salad, shaved reggiano</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
-              <p class="text-primary h3">612 kcal</p>
-            </div>
-
-          </div>
-
-          <div class="sched d-block d-lg-flex">
-            <div class="bg-image" style="background-image: url('img/dishes_1.jpg');" data-aos="fade"></div>
-            <div class="text">
-              <h3>Spicy Calamari and beans</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
-              <p class="text-primary h3">432 kcal</p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="col-md-6">
-          <div class="sched d-block d-lg-flex">
-            <div class="bg-image order-2" style="background-image: url('img/dishes_2.jpg');" data-aos="fade"></div>
-            <div class="text order-1">
-              <h3>Bacon wrapped wild gulf prawns</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
-              <p class="text-primary h3">739 kcal</p>
-
-            </div>
-
-          </div>
-
-          <div class="sched d-block d-lg-flex">
-            <div class="bg-image" style="background-image: url('img/dishes_3.jpg');" data-aos="fade"></div>
-            <div class="text">
-              <h3>Seared ahi tuna fillet*, honey-ginger sauce</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
-              <p class="text-primary h3">712 kcal</p>
-
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-
-
     </div>
   </section> <!-- .section -->
 
@@ -225,7 +173,7 @@ require_once('header.php');
   <?php
   require_once('loader.php');
   ?>
-
+  </nav>
 </body>
 
 </html>

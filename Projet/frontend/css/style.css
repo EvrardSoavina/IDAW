@@ -1263,6 +1263,52 @@ header .navbar .cta-btn a:hover {
   width: 100%;
 }
 
+
+
+
+.site-footer-dashboard {
+  position: relative;
+  z-index: 5;
+  padding: 5em 0;
+  margin-top: 15em;
+}
+
+.site-footer-dashboard:before {
+  content: "";
+  width: 100%;
+  height: 240px;
+  z-index: -1;
+  top: 0px;
+  background-color: #f8f9fa;
+  left: 0;
+  position: absolute;
+  -webkit-transform: skewY(-6deg);
+  -ms-transform: skewY(-6deg);
+  transform: skewY(-6deg);
+  -webkit-transform-origin: top left;
+  -ms-transform-origin: top left;
+  transform-origin: top left;
+}
+
+.site-footer-dashboard p:last-child {
+  margin-bottom: 0;
+}
+
+.site-footer-dashboard h3 {
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.site-footer-dashboard .footer-link li {
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.site-footer-dashboard hr {
+  width: 100%;
+}
+
 .footer-social a {
   line-height: 0;
   border-radius: 50%;
@@ -1279,6 +1325,7 @@ header .navbar .cta-btn a:hover {
   border-color: #fff;
   color: #000;
 }
+
 
 .link-thumbnail {
   display: block;
