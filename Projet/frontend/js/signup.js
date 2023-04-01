@@ -26,7 +26,7 @@ $(document).ready(function () {
                 type: 'post',
                 data: JSON.stringify({
                     prenom: prenom,
-                    nom: nom,
+                    nom: nom,z
                     date_de_naissance: date_de_naissance,
                     email: email,
                     login: login,
@@ -39,9 +39,12 @@ $(document).ready(function () {
                     id_niveau: id_niveau
                 }),
                 success: function (response) {
-                    console.log("User created with success !");
-                    window.location.href = "dashboard.php";
-                }
+                    if (response == "Data inserted") {
+                        window.location.href = "dashboard.php";
+                    } else {
+                        alert("Error. Login already used");
+                    }
+                },
             });
         }
     });

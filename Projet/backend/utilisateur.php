@@ -80,7 +80,7 @@ function createUser() {
     $stmt = $pdo->prepare("INSERT INTO Utilisateur (login, motdepasse, prenom, nom, email, date_de_naissance, taille, poids, id_sexe, id_tranche_age, id_niveau) VALUES ( ? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     if($stmt->execute([$login, $motdepasse, $prenom, $nom, $email, $date_de_naissance, $taille, $poids, $id_sexe, $id_tranche_age, $id_niveau])) {
-        http_response_code(201);
+        echo 'Data inserted';
     } else {
         echo 'Error inserting data';
     }
