@@ -1799,3 +1799,8 @@ header .navbar .cta-btn a:hover {
 #error-message {
   margin-left: 5%;
 }
+
+.pb-5, .py-5 {
+  padding-bottom: 0 !important;
+}
+

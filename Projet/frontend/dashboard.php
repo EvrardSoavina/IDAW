@@ -75,6 +75,7 @@ require_once('header.php');
 
     <section class="section pb-0">
         <div class="container">
+
             <div class="row mb-5 justify-content-center" data-aos="fade">
                 <div class="col-md-7 text-center heading-wrap">
                     <h2 data-aos="fade-up">My dashboard</h2>
@@ -85,29 +86,66 @@ require_once('header.php');
                     </p>
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4">
-                    <img src="img/dishes_1.jpg" alt="Free website template by Free-Template.co" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="200">
-                </div>
-                <div class="col-lg-4">
-                    <img src="img/about_1.jpg" alt="Free website template by Free-Template.co" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="300">
-                    <img src="img/about_2.jpg" alt="Free website template by Free-Template.co" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="400">
-                </div>
-                <div class="col-lg-4">
-                    <img src="img/dishes_3.jpg" alt="Free website template by Free-Template.co" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="500">
-                </div>
-            </div>
-        </div>
 
-        <div class="clearfix mb-5 pb-5">
-            <div class="container-fluid">
-                <div class="row" data-aos="fade">
-                    <div class="col-md-12 text-center heading-wrap">
-                        <h2></h2>
+            <div>
+                <div class="row" style="display: flex; align-items: flex-end;">
+
+                    <div class="col-md-4 form-group">
+                        <label for="breakfast">Breakfast</label>
+                        <select id="breakfast" class="form-control">
+                        </select>
                     </div>
+                    <div class="col-md-2 form-group">
+                        <button type="button" class="btn btn-primary add-btn">Add</button>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="snacks">Snacks</label>
+                        <select id="snacks" class="form-control">
+                        </select>
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <button type="button" class="btn btn-primary add-btn" style="background-color: #f4b214; border-color: #f4b214;">Add</button>
+                    </div>
+
+                </div>
+
+
+                <div class="row" style="display: flex; align-items: flex-end;">
+
+                    <div class="col-md-4 form-group">
+                        <label for="lunch">Lunch</label>
+                        <select id="lunch" class="form-control">
+                        </select>
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <button type="button" class="btn btn-primary add-btn">Add</button>
+                    </div>
+
+                    <div class="col-md-4 form-group ">
+                        <label for="water ">Water</label>
+                        <input type="number" id="water" class="form-control " placeholder="Glasses of water">
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <button type="button" class="btn btn-primary add-btn" style="background-color: #5AC8D8; border-color: #5AC8D8;">Add</button>
+                    </div>
+
+                </div>
+
+                <div class="row" style="display: flex; align-items: flex-end;">
+
+                    <div class="col-md-4 form-group">
+                        <label for="dinner">Dinner</label>
+                        <select id="dinner" class="form-control">
+                        </select>
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <button type="button" class="btn btn-primary add-btn">Add</button>
+                    </div>
+
                 </div>
             </div>
-        </div>
+
 
     </section>
 
@@ -163,7 +201,6 @@ require_once('header.php');
     <?php
     require_once('loader.php');
     ?>
-
 </body>
 
 </html>
