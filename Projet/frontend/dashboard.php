@@ -88,65 +88,136 @@ require_once('header.php');
             </div>
 
             <div>
+                <!-- first Row -->
                 <div class="row" style="display: flex; align-items: flex-end;">
 
+                    <!-- breakfast select bar + button -->
                     <div class="col-md-4 form-group">
                         <label for="breakfast">Breakfast</label>
                         <select id="breakfast" class="form-control">
                         </select>
                     </div>
                     <div class="col-md-2 form-group">
-                        <button type="button" class="btn btn-primary add-btn">Add</button>
+                        <button type="button" class="btn btn-primary add-btn" id="add-breakfast">Add</button>
                     </div>
+                    <!-- breakfast select bar  + button -->
 
+                    <!-- snacks select bar  + button -->
                     <div class="col-md-4 form-group">
                         <label for="snacks">Snacks</label>
                         <select id="snacks" class="form-control">
                         </select>
                     </div>
                     <div class="col-md-2 form-group">
-                        <button type="button" class="btn btn-primary add-btn" style="background-color: #f4b214; border-color: #f4b214;">Add</button>
+                        <button type="button" class="btn btn-primary add-btn" id="add-snacks">Add</button>
                     </div>
+                    <!-- breakfast select bar  + button -->
+
+                    <!-- breakfast table meal -->
+                    <div class="col-md-6 form-group">
+                        <table class="table table-striped" id="add-breakfast-table">
+                            <thead>
+                                <tr>
+                                    <th>Add breakfast</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- breakfast table meal -->
+
+                    <!-- snacks table meal -->
+                    <div class="col-md-6 form-group">
+                        <table class="table table-striped" id="add-snacks-table">
+                            <thead>
+                                <tr>
+                                    <th>Add Snacks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- snacks table meal -->
 
                 </div>
+                <!-- first Row -->
 
-
+                <!-- Second Row -->
                 <div class="row" style="display: flex; align-items: flex-end;">
 
+                    <!-- lunch select bar + button -->
                     <div class="col-md-4 form-group">
                         <label for="lunch">Lunch</label>
                         <select id="lunch" class="form-control">
                         </select>
                     </div>
                     <div class="col-md-2 form-group">
-                        <button type="button" class="btn btn-primary add-btn">Add</button>
+                        <button type="button" class="btn btn-primary add-btn" id="add-lunch">Add</button>
                     </div>
+                    <!-- lunch select bar + button -->
 
+                    <!-- water select bar + button -->
                     <div class="col-md-4 form-group ">
                         <label for="water ">Water</label>
                         <input type="number" id="water" class="form-control " placeholder="Glasses of water">
                     </div>
                     <div class="col-md-2 form-group">
-                        <button type="button" class="btn btn-primary add-btn" style="background-color: #5AC8D8; border-color: #5AC8D8;">Add</button>
+                        <button type="button" class="btn btn-primary add-btn" id="add-water">Add</button>
                     </div>
+                    <!-- water select bar + button -->
+
+                    <!-- lunch table meal -->
+                    <div class="col-md-6 form-group">
+                        <table class="table table-striped" id="add-lunch-table">
+                            <thead>
+                                <tr>
+                                    <th>Add Lunch</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- lunch table meal -->
 
                 </div>
+                <!-- Second Row -->
 
+                <!-- third Row -->
                 <div class="row" style="display: flex; align-items: flex-end;">
 
+                    <!-- dinner select bar + button -->
                     <div class="col-md-4 form-group">
                         <label for="dinner">Dinner</label>
                         <select id="dinner" class="form-control">
                         </select>
                     </div>
                     <div class="col-md-2 form-group">
-                        <button type="button" class="btn btn-primary add-btn">Add</button>
+                        <button type="button" class="btn btn-primary add-btn" id="add-dinner">Add</button>
                     </div>
+                    <!-- dinner select bar + button -->
 
                 </div>
+
+                <!-- dinner table meal -->
+                <div class="col-md-6 form-group">
+                    <table class="table table-striped" id="add-dinner-table">
+                        <thead>
+                            <tr>
+                                <th>Add Dinner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- dinner table meal -->
+
             </div>
-
-
+            <!-- third Row -->
+        </div>
     </section>
 
     <footer class="site-footer-dashboard" role="contentinfo">

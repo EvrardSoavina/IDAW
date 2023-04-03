@@ -84,6 +84,19 @@ textarea.form-control {
   background: #ff9037;
 }
 
+#add-water{
+  border-color: #5AC8D8;
+  background: #5AC8D8;
+}
+#add-water:hover,  #add-water:active {
+  border-color: #6cddee;
+  background: #6cddee;
+}
+#add-water:focus {
+  border-color: #3fb0c2;
+  background: #3fb0c2;
+}
+
 .btn.btn-sm {
   font-size: 12px;
 }
