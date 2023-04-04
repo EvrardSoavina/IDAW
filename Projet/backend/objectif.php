@@ -63,7 +63,7 @@ function add() {
     $stmt = $pdo->prepare("INSERT INTO objectif (id_indicateur, login, quantite) VALUES (?, ?, ?)");
 
     if($stmt->execute([$id_indicateur, $login, $quantite])) {
-        http_response_code(201);
+        echo 'Data inserted';
     } else {
         echo 'Error inserting data';
     }

@@ -72,7 +72,7 @@ function add() {
     $stmt = $pdo->prepare("INSERT INTO Utilisateur (nom, prenom) VALUES ( ? , ?)");
 
     if($stmt->execute([$nom, $prenom])) {
-        http_response_code(201);
+        echo 'Data inserted';
     } else {
         echo 'Error inserting data';
     }

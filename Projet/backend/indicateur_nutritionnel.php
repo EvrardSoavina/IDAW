@@ -63,7 +63,7 @@ function add() {
         $indicateur = array('id_indicateur' => $id, 'nom' => $nom, 'recommandation_oms' => $recommandation_oms);
         $json = json_encode($indicateur);
         echo $json;
-        http_response_code(201);
+        echo 'Data inserted';
     }else{
         echo 'Error inserting data';
     }
