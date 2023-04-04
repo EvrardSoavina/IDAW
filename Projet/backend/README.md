@@ -14,6 +14,7 @@
 ||||||
 | Read | GET | - | /aliments.php | Returns all the food |
 | Read | GET | - | /aliments.php?id_aliment= | Returns a single food |
+| Read | GET | - | /aliments.php?nom= | Returns a single food |
 | Create | POST | {id_aliment: nom: ,id_type: } | /aliments.php | Add a new food |
 | Update | PUT | {id_aliment: nom: ,id_type: } | /aliments.php | Modifiy a food |
 | Delete | DELETE | {id_aliment: } | /aliments.php | Delete a food |
@@ -40,6 +41,8 @@
 | Create | POST | {id_type_repas: ,login: ,date: } | /journal.php | |
 | Update | PUT | {id_journal: ,id_type_repas: ,login: ,date: } | /journal.php |  |
 | Delete | DELETE | {id_journal: } | /journal.php |  |
+| Read | GET | - | /type_repas.php |  |
+| Read | GET | - | /type_repas.php?nom_repas= |  |
 | Read | GET | - | /.php |  |
 | Read | GET | - | /.php?= |  |
 | Create | POST | {: } | /.php | |

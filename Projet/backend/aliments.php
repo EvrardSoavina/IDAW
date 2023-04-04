@@ -10,7 +10,9 @@ switch($request_method)
     case 'GET':
         if(isset($_GET['id_aliment'])){
             getAliment($_GET['id_aliment']);
-        }else{
+        } else if (isset($_GET['nom'])) {
+            getId($_GET['nom']);
+        } else{
             getAllAliments();
         }
         break;
@@ -48,6 +50,16 @@ function getAliment($id_aliment){
         echo json_encode(["error" => "Aliment introuvable"]);
         return;
     }
+    $json = json_encode($aliment);
+    echo $json;
+    http_response_code(200);
+}
+
+function getId($nom){
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT * FROM aliments WHERE nom = ?");
+    $stmt->execute([$nom]);
+    $aliment = $stmt->fetchAll(PDO::FETCH_OBJ);
     $json = json_encode($aliment);
     echo $json;
     http_response_code(200);

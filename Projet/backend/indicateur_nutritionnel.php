@@ -1,7 +1,7 @@
 <?php
 
 require_once('config.php');
-require_once('connexionBD.php');
+require_once('init_pdo.php');
 
 $request_method = $_SERVER["REQUEST_METHOD"];
 
@@ -63,7 +63,6 @@ function add() {
         $indicateur = array('id_indicateur' => $id, 'nom' => $nom, 'recommandation_oms' => $recommandation_oms);
         $json = json_encode($indicateur);
         echo $json;
-        echo 'Data inserted';
     }else{
         echo 'Error inserting data';
     }

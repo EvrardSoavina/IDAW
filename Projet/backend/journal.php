@@ -1,7 +1,7 @@
 <?php
 
 require_once('config.php');
-require_once('connexionBD.php');
+require_once('init_pdo.php');
 
 $request_method = $_SERVER["REQUEST_METHOD"];
 
