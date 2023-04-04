@@ -7,6 +7,7 @@ function renderMenuToHTML($currentPageId)
       'recipes.php' => 'Recipes',
       'signup.php' => 'Sign Up',
       'news.php' => 'News',
+      'objectives.php' => 'My Objectives',
       'dashboard.php' => 'Mon Dashboard'
     );
   } else {
@@ -14,7 +15,7 @@ function renderMenuToHTML($currentPageId)
       'index.php' => 'Home',
       'recipes.php' => 'Recipes',
       'signup.php' => 'Sign Up',
-      'news.php' => 'News'
+      'news.php' => 'News',
     );
   }
 

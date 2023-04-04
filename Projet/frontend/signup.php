@@ -138,6 +138,8 @@ require_once('header.php');
 
     </section>
 
+    <!-- .section -->
+
     <section class="section bg-light pt-0 relative-higher">
 
       <div class="clearfix mb-5 pb-5 ">
@@ -199,7 +201,8 @@ require_once('header.php');
 
 
       </div>
-    </section> <!-- .section -->
+    </section> 
+    <!-- .section -->
 
 
     <footer class="site-footer" role="contentinfo">

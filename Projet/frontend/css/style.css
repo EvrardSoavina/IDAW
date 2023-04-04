@@ -84,6 +84,19 @@ textarea.form-control {
   background: #ff9037;
 }
 
+#add-water{
+  border-color: #5AC8D8;
+  background: #5AC8D8;
+}
+#add-water:hover,  #add-water:active {
+  border-color: #6cddee;
+  background: #6cddee;
+}
+#add-water:focus {
+  border-color: #3fb0c2;
+  background: #3fb0c2;
+}
+
 .btn.btn-sm {
   font-size: 12px;
 }
@@ -1799,3 +1812,8 @@ header .navbar .cta-btn a:hover {
 #error-message {
   margin-left: 5%;
 }
+
+.pb-5, .py-5 {
+  padding-bottom: 0 !important;
+}
+
