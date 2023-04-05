@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mer. 05 avr. 2023 à 12:04
+-- Généré le : mer. 05 avr. 2023 à 11:42
 -- Version du serveur : 5.7.39
 -- Version de PHP : 8.2.0
 
@@ -3752,6 +3752,12 @@ ALTER TABLE `type_repas`
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `aliments`
+--
+ALTER TABLE `aliments`
+  ADD CONSTRAINT `aliments_ibfk_1` FOREIGN KEY (`id_type`) REFERENCES `type_aliment` (`id_type`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `consommation`
