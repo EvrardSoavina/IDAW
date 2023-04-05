@@ -60,8 +60,8 @@ function add() {
     $stmt = $pdo->prepare("INSERT INTO indicateur_nutritionnel (nom, recommandation_oms) VALUES (?, ?)");
     if($stmt->execute([$nom, $recommandation_oms])){
         $id = $pdo->lastInsertId();
-        $indicateur = array('id_indicateur' => $id, 'nom' => $nom, 'recommandation_oms' => $recommandation_oms);
-        $json = json_encode($indicateur);
+        $data = array('id_indicateur' => $id, 'nom' => $nom, 'recommandation_oms' => $recommandation_oms);
+        $json = json_encode($data);
         echo $json;
     }else{
         echo 'Error inserting data';

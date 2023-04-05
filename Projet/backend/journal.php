@@ -70,7 +70,10 @@ function addjournal() {
     $stmt = $pdo->prepare("INSERT INTO journal (id_type_repas, login, date) VALUES (?, ?, ?)");
 
     if($stmt->execute([$id_type_repas, $login, $date])) {
-        http_response_code(201);
+        $id = $pdo->lastInsertId();
+        $data = array('id_journal' => $id, 'id_type_repas' => $id_type_repas, 'login' => $login, 'date' => $date);
+        $json = json_encode($data);
+        echo $json;
     } else {
         echo 'Error inserting data';
     }   

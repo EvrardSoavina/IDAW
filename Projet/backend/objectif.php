@@ -63,7 +63,9 @@ function add() {
     $stmt = $pdo->prepare("INSERT INTO objectif (id_indicateur, login, quantite) VALUES (?, ?, ?)");
 
     if($stmt->execute([$id_indicateur, $login, $quantite])) {
-        echo 'Data inserted';
+        $data = array('id_indicateur' => $id_indicateur, 'login' => $login, 'quantite' => $quantite);
+        $json = json_encode($data);
+        echo $json;
     } else {
         echo 'Error inserting data';
     }

@@ -55,10 +55,11 @@
 		event.preventDefault();
 		$.ajax({
 			type: 'POST',
-			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/indicateur_nutritionnel.php',
-			data: JSON.stringify({nom: "test",recommandation_oms: "0"}),
+			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/journal.php',
+			data: JSON.stringify({id_type_repas: "1",login: "Lelea",date: "2022-01-01 01:01:03"}),
 			success: function(data) {
-					$('#display-result').html(data);
+				obj = JSON.parse(data)
+				$('#display-result').html(obj.id_journal);
 			}
 		});
 	});

@@ -72,7 +72,10 @@ function add() {
     $stmt = $pdo->prepare("INSERT INTO Utilisateur (nom, prenom) VALUES ( ? , ?)");
 
     if($stmt->execute([$nom, $prenom])) {
-        echo 'Data inserted';
+        $id = $pdo->lastInsertId();
+        $indicateur = array('id_indicateur' => $id, 'nom' => $nom, 'prenom' => $prenom);
+        $json = json_encode($indicateur);
+        echo $json;
     } else {
         echo 'Error inserting data';
     }

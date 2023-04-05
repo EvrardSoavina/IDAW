@@ -47,10 +47,12 @@
 							url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/journal.php',
 							data: JSON.stringify({id_type_repas: id_type_repasss,login: login,date: dateFormatee}),
 							success: function(data) {
+								obj = JSON.parse(data)
+								id_journal = obj.id_journal
 								$.ajax({
 									type: 'POST',
 									url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/consommation.php',
-									data: JSON.stringify({id_journal: "100",id_aliment: id_aliment,quantite: quantite}),
+									data: JSON.stringify({id_journal: id_journal,id_aliment: id_aliment,quantite: quantite}),
 									success: function(data) {
 											$('#display-result').html(data);
 									}

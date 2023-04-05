@@ -76,7 +76,9 @@ function createAliment() {
     $stmt = $pdo->prepare("INSERT INTO aliments (id_aliment, nom, id_type) VALUES (?, ?, ?)");
 
     if ($stmt->execute([$id_aliment, $nom, $id_type])) {
-        http_response_code(201);
+        $data = array('id_aliment' => $id_aliment, 'nom' => $nom, 'id_type' => $id_type);
+        $json = json_encode($data);
+        echo $json;
     } else {
         echo 'Error inserting data';
     }

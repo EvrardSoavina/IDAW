@@ -80,7 +80,9 @@ function createUser() {
     $stmt = $pdo->prepare("INSERT INTO Utilisateur (login, motdepasse, prenom, nom, email, date_de_naissance, taille, poids, id_sexe, id_tranche_age, id_niveau) VALUES ( ? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     if($stmt->execute([$login, $motdepasse, $prenom, $nom, $email, $date_de_naissance, $taille, $poids, $id_sexe, $id_tranche_age, $id_niveau])) {
-        echo 'Data inserted';
+        $data = array('login' => $login, 'motdepasse' => $motdepasse, 'prenom' => $prenom, 'nom' => $nom);
+        $json = json_encode($data);
+        echo $json;
     } else {
         echo 'Error inserting data';
     }
