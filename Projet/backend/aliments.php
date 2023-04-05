@@ -10,7 +10,9 @@ switch($request_method)
     case 'GET':
         if(isset($_GET['id_aliment'])){
             getAliment($_GET['id_aliment']);
-        }else{
+        } else if (isset($_GET['nom'])) {
+            getId($_GET['nom']);
+        } else{
             getAllAliments();
         }
         break;
@@ -53,6 +55,16 @@ function getAliment($id_aliment){
     http_response_code(200);
 }
 
+function getId($nom){
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT * FROM aliments WHERE nom = ?");
+    $stmt->execute([$nom]);
+    $aliment = $stmt->fetchAll(PDO::FETCH_OBJ);
+    $json = json_encode($aliment);
+    echo $json;
+    http_response_code(200);
+}
+
 function createAliment() {
     global $pdo;
     $alimentData = json_decode(file_get_contents('php://input'), true);
@@ -64,7 +76,9 @@ function createAliment() {
     $stmt = $pdo->prepare("INSERT INTO aliments (id_aliment, nom, id_type) VALUES (?, ?, ?)");
 
     if ($stmt->execute([$id_aliment, $nom, $id_type])) {
-        http_response_code(201);
+        $data = array('id_aliment' => $id_aliment, 'nom' => $nom, 'id_type' => $id_type);
+        $json = json_encode($data);
+        echo $json;
     } else {
         echo 'Error inserting data';
     }

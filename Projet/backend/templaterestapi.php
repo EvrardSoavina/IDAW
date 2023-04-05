@@ -1,7 +1,7 @@
 <?php
 
 require_once('config.php');
-require_once('connexionBD.php');
+require_once('init_pdo.php');
 
 $request_method = $_SERVER["REQUEST_METHOD"];
 
@@ -72,7 +72,10 @@ function add() {
     $stmt = $pdo->prepare("INSERT INTO Utilisateur (nom, prenom) VALUES ( ? , ?)");
 
     if($stmt->execute([$nom, $prenom])) {
-        http_response_code(201);
+        $id = $pdo->lastInsertId();
+        $indicateur = array('id_indicateur' => $id, 'nom' => $nom, 'prenom' => $prenom);
+        $json = json_encode($indicateur);
+        echo $json;
     } else {
         echo 'Error inserting data';
     }

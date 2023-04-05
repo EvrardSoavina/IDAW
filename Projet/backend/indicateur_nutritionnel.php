@@ -1,7 +1,7 @@
 <?php
 
 require_once('config.php');
-require_once('connexionBD.php');
+require_once('init_pdo.php');
 
 $request_method = $_SERVER["REQUEST_METHOD"];
 
@@ -60,10 +60,9 @@ function add() {
     $stmt = $pdo->prepare("INSERT INTO indicateur_nutritionnel (nom, recommandation_oms) VALUES (?, ?)");
     if($stmt->execute([$nom, $recommandation_oms])){
         $id = $pdo->lastInsertId();
-        $indicateur = array('id_indicateur' => $id, 'nom' => $nom, 'recommandation_oms' => $recommandation_oms);
-        $json = json_encode($indicateur);
+        $data = array('id_indicateur' => $id, 'nom' => $nom, 'recommandation_oms' => $recommandation_oms);
+        $json = json_encode($data);
         echo $json;
-        http_response_code(201);
     }else{
         echo 'Error inserting data';
     }

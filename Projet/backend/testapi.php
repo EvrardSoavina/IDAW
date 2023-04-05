@@ -30,7 +30,7 @@
 		event.preventDefault();
 		$.ajax({
 			type: 'GET',
-			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/objectif.php',
+			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/aliments.php',
 			success: function(data) {
 					$('#display-result').html(data);
 			}
@@ -38,11 +38,16 @@
 	});
 	$('#get-form2').submit(function(event) {
 		event.preventDefault();
+		let nom_aliment = 'Gin' // A CHANGER
 		$.ajax({
 			type: 'GET',
-			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/objectif.php?login=Ezz_87',
+			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/aliments.php?nom='+nom_aliment,
 			success: function(data) {
-					$('#display-result').html(data);
+				responseObject = JSON.parse(data);
+				id_type_repas = responseObject[0].id_aliment;
+				id_aliment = id_type_repas
+				//id_aliment = responseObject[0].id_aliment;
+				$('#display-result').html(id_aliment);
 			}
 		});
 	});
@@ -50,10 +55,11 @@
 		event.preventDefault();
 		$.ajax({
 			type: 'POST',
-			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/objectif.php',
-			data: JSON.stringify({id_indicateur: "1",login: "Lelea",quantite: "100"}),
+			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/journal.php',
+			data: JSON.stringify({id_type_repas: "1",login: "Lelea",date: "2022-01-01 01:01:03"}),
 			success: function(data) {
-					$('#display-result').html(data);
+				obj = JSON.parse(data)
+				$('#display-result').html(obj.id_journal);
 			}
 		});
 	});
@@ -61,7 +67,7 @@
 		event.preventDefault();
 		$.ajax({
 			type: 'PUT',
-			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/objectif.php',
+			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/journal.php',
 			data: JSON.stringify({id_indicateur: "1",login: "Lelea",quantite: "49"}),
 			success: function(data) {
 					$('#display-result').html(data);
@@ -72,7 +78,7 @@
 		event.preventDefault();
 		$.ajax({
 			type: 'DELETE',
-			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/objectif.php',
+			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/journal.php',
 			data: JSON.stringify({id_indicateur: "1",login: "Lelea"}),
 			success: function(data) {
 					$('#display-result').html(data);

@@ -14,6 +14,7 @@
 ||||||
 | Read | GET | - | /aliments.php | Returns all the food |
 | Read | GET | - | /aliments.php?id_aliment= | Returns a single food |
+| Read | GET | - | /aliments.php?nom= | Returns a single food |
 | Create | POST | {id_aliment: nom: ,id_type: } | /aliments.php | Add a new food |
 | Update | PUT | {id_aliment: nom: ,id_type: } | /aliments.php | Modifiy a food |
 | Delete | DELETE | {id_aliment: } | /aliments.php | Delete a food |
@@ -30,11 +31,18 @@
 | Update | PUT | {id_indicateur: ,login: ,quantite: } | /objectif.php |  |
 | Delete | DELETE | {id_indicateur: ,login: } | /objectif.php |  |
 ||||||
-| Read | GET | - | /.php |  |
-| Read | GET | - | /.php?= |  |
-| Create | POST | {: } | /.php | |
-| Update | PUT | {: } | /.php |  |
-| Delete | DELETE | {: } | /.php |  |
+| Read | GET | - | /consommation.php |  |
+| Read | GET | - | /consommation.php?id_journal= &id_aliment= |  |
+| Create | POST | {id_journal: ,id_aliment: ,quantite: } | /consommation.php | |
+| Update | PUT | {id_journal: ,id_aliment: ,quantite: } | /consommation.php |  |
+| Delete | DELETE | {id_journal: ,id_aliment: } | /consommation.php |  |
+| Read | GET | - | /journal.php |  |
+| Read | GET | - | /journal.php?id_journal= |  |
+| Create | POST | {id_type_repas: ,login: ,date: } | /journal.php | |
+| Update | PUT | {id_journal: ,id_type_repas: ,login: ,date: } | /journal.php |  |
+| Delete | DELETE | {id_journal: } | /journal.php |  |
+| Read | GET | - | /type_repas.php |  |
+| Read | GET | - | /type_repas.php?nom_repas= |  |
 | Read | GET | - | /.php |  |
 | Read | GET | - | /.php?= |  |
 | Create | POST | {: } | /.php | |
