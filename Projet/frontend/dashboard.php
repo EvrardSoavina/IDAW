@@ -1,6 +1,6 @@
 <?php
-require_once('cookie_session.php');
 require_once('header.php');
+require_once('cookie_session.php');
 ?>
 
 <body>
@@ -22,7 +22,7 @@ require_once('header.php');
                 <div class="container">
                     <div class="row slider-text align-items-center justify-content-center">
                         <div class="col-md-8 text-center col-sm-12 ">
-                            <h1 data-aos="fade-up">Welcome <?php echo isset($_SESSION['login']) ? $_SESSION['login'] : 'Guest'; ?>!</h1>
+                            <h1 data-aos="fade-up">Welcome </br> <?php echo isset($_SESSION['login']) ? $_SESSION['login'] : 'Guest'; ?>!</h1>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@ require_once('header.php');
                 <div class="container">
                     <div class="row slider-text align-items-center justify-content-center">
                         <div class="col-md-8 text-center col-sm-12 ">
-                            <h1 data-aos="fade-up">Welcome <?php echo isset($_SESSION['login']) ? $_SESSION['login'] : 'Guest'; ?>!</h1>
+                            <h1 data-aos="fade-up">Welcome </br> <?php echo isset($_SESSION['login']) ? $_SESSION['login'] : 'Guest'; ?>!</h1>
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@ require_once('header.php');
                 <div class="row" style="display: flex; align-items: flex-end;">
 
                     <!-- breakfast select bar + button -->
-                    <div class="col-md-4 form-group">
+                    <div class="col-md-4 form-group" >
                         <label for="breakfast">Breakfast</label>
                         <select id="breakfast" class="form-control">
                         </select>
@@ -103,7 +103,7 @@ require_once('header.php');
                     <!-- breakfast select bar  + button -->
 
                     <!-- snacks select bar  + button -->
-                    <div class="col-md-4 form-group">
+                    <div class="col-md-4 form-group" >
                         <label for="snacks">Snacks</label>
                         <select id="snacks" class="form-control">
                         </select>
@@ -148,7 +148,7 @@ require_once('header.php');
                 <div class="row" style="display: flex; align-items: flex-end;">
 
                     <!-- lunch select bar + button -->
-                    <div class="col-md-4 form-group">
+                    <div class="col-md-4 form-group" >
                         <label for="lunch">Lunch</label>
                         <select id="lunch" class="form-control">
                         </select>
@@ -159,7 +159,7 @@ require_once('header.php');
                     <!-- lunch select bar + button -->
 
                     <!-- water select bar + button -->
-                    <div class="col-md-4 form-group ">
+                    <div class="col-md-4 form-group " >
                         <label for="water ">Water</label>
                         <input type="number" id="water" class="form-control " placeholder="Glasses of water">
                     </div>
@@ -189,7 +189,7 @@ require_once('header.php');
                 <div class="row" style="display: flex; align-items: flex-end;">
 
                     <!-- dinner select bar + button -->
-                    <div class="col-md-4 form-group">
+                    <div class="col-md-4 form-group" >
                         <label for="dinner">Dinner</label>
                         <select id="dinner" class="form-control">
                         </select>
@@ -202,7 +202,7 @@ require_once('header.php');
                 </div>
 
                 <!-- dinner table meal -->
-                <div class="col-md-6 form-group">
+                <div class="col-md-6 form-group" >
                     <table class="table table-striped" id="add-dinner-table">
                         <thead>
                             <tr>

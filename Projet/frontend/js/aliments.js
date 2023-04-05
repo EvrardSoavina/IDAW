@@ -1,11 +1,14 @@
+var aliments = [];
+
 $(document).ready(function () {
+
   // Collect the aliments from the server
   $.ajax({
     url: apifolder + '/backend/aliments.php',
     type: 'GET',
     success: function (data) {
       // Parse the JSON response
-      var aliments = JSON.parse(data);
+      aliments = JSON.parse(data);
 
       // Append options to each select
       $("#breakfast, #snacks, #lunch, #dinner").each(function () {
@@ -20,31 +23,39 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+
+  function loadTableDataFromCookie(id, userId) {
+    var tableData = Cookies.get(userId + '-' + id + '-table-data');
+    console.log('Cookie get:', userId + '-' + id, tableData);
+    if (tableData) {
+      $('#' + id + ' tbody').html(tableData);
+    }
+  }
+
   // Add an event listener to each add button
   $('#add-breakfast, #add-snacks, #add-lunch, #add-dinner').click(function () {
     console.log("Le bouton Add a été cliqué !");
+    var id = $(this).attr("id") + '-table-data';
     var mealType = $(this).attr("id").replace("add-", "");
-  var selectedMeal = $("#" + mealType).val();
-  var tableId = "#add-" + mealType + "-table";
-  
-  if (selectedMeal != "") {
-    $(tableId + " tbody").append("<tr><td>" + selectedMeal + "</td></tr>");
-  }
+    var selectedMealId = $("#" + mealType).val();
+    var selectedMealName = "";
+    for (var i = 0; i < aliments.length; i++) {
+      if (aliments[i].id_aliment == selectedMealId) {
+        selectedMealName = aliments[i].nom;
+        break;
+      }
+    }
+    var tableId = "#add-" + mealType + "-table";
+    var table = $(tableId + " tbody");
+    if (selectedMealName != "") {
+      $(tableId + " tbody").append("<tr><td>" + selectedMealName + "</td></tr>");
+    }
 
     // Save the table data to a cookie
+    var userId = $("#user_id").val();
     var tableData = table.html();
-    Cookies.set(id + '-table-data', tableData, { expires: 1 }); // Expires in 1 day
+    Cookies.set(userId + '-' + id + '-table-data', tableData, { expires: 1 }); // Expires in 1 day
+    console.log('Cookie set:', userId + '-' + id, tableData);
   });
 
-  // Load the table data from cookies
-  $('.form-group').each(function () {
-    var id = $(this).find('select').attr('id');
-    var table = $('#' + id + '-table');
-    var tableData = Cookies.get(id + '-table-data');
-    if (tableData) {
-      table.html(tableData);
-    }
-  });
-});
-
-
+})
