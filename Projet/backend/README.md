@@ -43,6 +43,8 @@
 | Delete | DELETE | {id_journal: } | /journal.php |  |
 | Read | GET | - | /type_repas.php |  |
 | Read | GET | - | /type_repas.php?nom_repas= |  |
+| Read | GET | - | /dashboard.php?date='+date+'&login='+login+'&id_indicateur='+id_indicateur |  |
+| Read | GET | - | /dashboard.php?date='+date+'&login='+login |  |
 | Read | GET | - | /.php |  |
 | Read | GET | - | /.php?= |  |
 | Create | POST | {: } | /.php | |
