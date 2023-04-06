@@ -88,33 +88,31 @@ require_once('cookie_session.php');
             </div>
 
             <div>
+
                 <!-- first Row -->
+
                 <div class="row" style="display: flex; align-items: flex-end;">
 
                     <!-- breakfast select bar + button -->
-                    <div class="col-md-4 form-group" >
+                    <div class="col-md-7 form-group">
                         <label for="breakfast">Breakfast</label>
                         <select id="breakfast" class="form-control">
                         </select>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="quantity ">Quantity</label>
+                        <input type="number" id="quantity_breakfast" class="form-control " placeholder="Enter Quantity">
                     </div>
                     <div class="col-md-2 form-group">
                         <button type="button" class="btn btn-primary add-btn" id="add-breakfast">Add</button>
                     </div>
                     <!-- breakfast select bar  + button -->
 
-                    <!-- snacks select bar  + button -->
-                    <div class="col-md-4 form-group" >
-                        <label for="snacks">Snacks</label>
-                        <select id="snacks" class="form-control">
-                        </select>
-                    </div>
-                    <div class="col-md-2 form-group">
-                        <button type="button" class="btn btn-primary add-btn" id="add-snacks">Add</button>
-                    </div>
-                    <!-- breakfast select bar  + button -->
+                    <!-- first Row -->
+                    <!-- Second Row -->
 
                     <!-- breakfast table meal -->
-                    <div class="col-md-6 form-group">
+                    <div class="col-md-12 form-group">
                         <table class="table table-striped" id="add-breakfast-table">
                             <thead>
                                 <tr>
@@ -127,8 +125,32 @@ require_once('cookie_session.php');
                     </div>
                     <!-- breakfast table meal -->
 
+                    <!-- Second Row -->
+                </div>
+
+                <div class="row" style="display: flex; align-items: flex-end;">
+
+                    <!-- Third Row -->
+
+                    <!-- snacks select bar  + button -->
+                    <div class="col-md-7 form-group">
+                        <label for="snacks">Snacks</label>
+                        <select id="snacks" class="form-control">
+                        </select>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="quantity ">Quantity</label>
+                        <input type="number" id="quantity_snacks" class="form-control " placeholder="Enter Quantity">
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <button type="button" class="btn btn-primary add-btn" id="add-snacks">Add</button>
+                    </div>
+                    <!-- snacks select bar  + button -->
+
+                    <!-- Third Row -->
+
                     <!-- snacks table meal -->
-                    <div class="col-md-6 form-group">
+                    <div class="col-md-12 form-group">
                         <table class="table table-striped" id="add-snacks-table">
                             <thead>
                                 <tr>
@@ -141,35 +163,36 @@ require_once('cookie_session.php');
                     </div>
                     <!-- snacks table meal -->
 
-                </div>
-                <!-- first Row -->
+                    <!-- Third Row -->
 
-                <!-- Second Row -->
+                </div>
+
+
                 <div class="row" style="display: flex; align-items: flex-end;">
 
+                    <!-- Fourth Row -->
+
                     <!-- lunch select bar + button -->
-                    <div class="col-md-4 form-group" >
+                    <div class="col-md-7 form-group">
                         <label for="lunch">Lunch</label>
                         <select id="lunch" class="form-control">
                         </select>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="quantity ">Quantity</label>
+                        <input type="number" id="quantity_lunch" class="form-control " placeholder="Enter Quantity">
                     </div>
                     <div class="col-md-2 form-group">
                         <button type="button" class="btn btn-primary add-btn" id="add-lunch">Add</button>
                     </div>
                     <!-- lunch select bar + button -->
 
-                    <!-- water select bar + button -->
-                    <div class="col-md-4 form-group " >
-                        <label for="water ">Water</label>
-                        <input type="number" id="water" class="form-control " placeholder="Glasses of water">
-                    </div>
-                    <div class="col-md-2 form-group">
-                        <button type="button" class="btn btn-primary add-btn" id="add-water">Add</button>
-                    </div>
-                    <!-- water select bar + button -->
+                    <!-- Fourth Row -->
+
+                    <!-- Fifth Row -->
 
                     <!-- lunch table meal -->
-                    <div class="col-md-6 form-group">
+                    <div class="col-md-12 form-group">
                         <table class="table table-striped" id="add-lunch-table">
                             <thead>
                                 <tr>
@@ -182,27 +205,39 @@ require_once('cookie_session.php');
                     </div>
                     <!-- lunch table meal -->
 
-                </div>
-                <!-- Second Row -->
-
-                <!-- third Row -->
-                <div class="row" style="display: flex; align-items: flex-end;">
-
-                    <!-- dinner select bar + button -->
-                    <div class="col-md-4 form-group" >
-                        <label for="dinner">Dinner</label>
-                        <select id="dinner" class="form-control">
-                        </select>
-                    </div>
-                    <div class="col-md-2 form-group">
-                        <button type="button" class="btn btn-primary add-btn" id="add-dinner">Add</button>
-                    </div>
-                    <!-- dinner select bar + button -->
+                    <!-- Fifth Row -->
 
                 </div>
+            </div>
+
+
+
+            <div class="row" style="display: flex; align-items: flex-end;">
+
+                <!-- Sixth Row -->
+
+                <!-- dinner select bar + button -->
+                <div class="col-md-7 form-group">
+                    <label for="dinner">Dinner</label>
+                    <select id="dinner" class="form-control">
+                    </select>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for="quantity ">Quantity</label>
+                    <input type="number" id="quantity_dinner" class="form-control " placeholder="Enter Quantity">
+                </div>
+
+                <div class="col-md-2 form-group">
+                    <button type="button" class="btn btn-primary add-btn" id="add-dinner">Add</button>
+                </div>
+                <!-- dinner select bar + button -->
+
+                <!-- Sixth Row -->
+
+                <!-- Seventh Row -->
 
                 <!-- dinner table meal -->
-                <div class="col-md-6 form-group" >
+                <div class="col-md-12 form-group">
                     <table class="table table-striped" id="add-dinner-table">
                         <thead>
                             <tr>
@@ -215,8 +250,32 @@ require_once('cookie_session.php');
                 </div>
                 <!-- dinner table meal -->
 
+                <!-- Seventh Row -->
+
             </div>
-            <!-- third Row -->
+
+
+            <div class="row" style="display: flex; align-items: flex-end;">
+
+                <!-- water select bar + button -->
+                <div class="col-md-4 form-group">
+                    <label for="water">Water</label>
+                    <input type="number" id="water" class="form-control" placeholder="Glasses of water">
+                </div>
+                <div class="col-md-2 form-group pr-0">
+                    <button type="button" class="btn btn-primary add-btn" id="add-water">Add</button>
+                </div>
+                <div class="col-md-2 form-group pl-0">
+                    <button type="button" class="btn btn-danger remove-btn" id="remove-water" style="text-align:right">Remove</button>
+                </div>
+                <!-- water select bar + buttons -->
+
+                <div class="col-md-4 form-group" id="water_circles">
+                    <!-- 6 blocks here for the blue circles-->
+                </div>
+
+            </div>
+
         </div>
     </section>
 
