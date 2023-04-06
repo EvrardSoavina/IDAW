@@ -33,46 +33,46 @@ require_once('cookie_session.php');
       <div class="row justify-content-center">
         <div class="col-lg-12">
 
-<form id="objectives-form">
-    <div id="indicator-forms">
-        <!-- Indicator forms will be dynamically added here -->
-        <div class="indicator-form row">
-            <div class="col-md-6 form-group">
-                <select id="id_indicateur" class="form-control">
+          <form id="objectives-form">
+            <div id="indicator-forms">
+              <!-- Indicator forms will be dynamically added here -->
+              <div class="indicator-form row">
+                <div class="col-md-6 form-group">
+                  <select id="id_indicateur" class="form-control">
                     <option value="">Select the nutritional indicator</option>
-                </select>
-            </div>
-            <div class="col-md-6">
-                <div class="row">
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
                     <div class="col-md-8 form-group">
-                        <input type="number" id="quantite" class="form-control" placeholder="quantity" required>
+                      <input type="number" id="quantite" class="form-control" placeholder="quantity" required>
                     </div>
                     <div class="col-md-4 form-group">
-                        <div class="remove-btn-wrap">
+                      <div class="remove-btn-wrap">
                         <button type="button" class="btn btn-danger remove-btn" style="display: flex; justify-content: center;">Remove</button>
-                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </div>
-        </div>
+              </div>
 
-        <!-- .add indicator button -->
-        <div class="row">
-            <div class="col-md-12 form-group text-center">
-                <button type="button" class="btn btn-primary" id="add-indicator">Add an indicator</button>
-            </div>
-        </div>
-        <!-- .add indicator button -->
+              <!-- .add indicator button -->
+              <div class="row">
+                <div class="col-md-12 form-group text-center">
+                  <button type="button" class="btn btn-primary" id="add-indicator">Add an indicator</button>
+                </div>
+              </div>
+              <!-- .add indicator button -->
 
-        <!-- .enter button -->
-        <div class="row">
-            <div class="col-md-12 form-group text-center">
-                <input type="submit" value="Enter" class="btn btn-primary">
+              <!-- .enter button -->
+              <div class="row">
+                <div class="col-md-12 form-group text-center">
+                  <input type="submit" value="Enter" class="btn btn-primary">
+                </div>
+              </div>
+              <!-- .enter button -->
             </div>
-        </div>
-        <!-- .enter button -->
-    </div>
-</form>
+          </form>
 
 
         </div>

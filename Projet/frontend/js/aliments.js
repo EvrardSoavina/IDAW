@@ -24,14 +24,6 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 
-  function loadTableDataFromCookie(id, userId) {
-    var tableData = Cookies.get(userId + '-' + id + '-table-data');
-    console.log('Cookie get:', userId + '-' + id, tableData);
-    if (tableData) {
-      $('#' + id + ' tbody').html(tableData);
-    }
-  }
-
   // Add an event listener to each add button
   $('#add-breakfast, #add-snacks, #add-lunch, #add-dinner').click(function () {
     console.log("Le bouton Add a été cliqué !");
@@ -46,16 +38,31 @@ $(document).ready(function () {
       }
     }
     var tableId = "#add-" + mealType + "-table";
-    var table = $(tableId + " tbody");
     if (selectedMealName != "") {
       $(tableId + " tbody").append("<tr><td>" + selectedMealName + "</td></tr>");
     }
-
-    // Save the table data to a cookie
-    var userId = $("#user_id").val();
-    var tableData = table.html();
-    Cookies.set(userId + '-' + id + '-table-data', tableData, { expires: 1 }); // Expires in 1 day
-    console.log('Cookie set:', userId + '-' + id, tableData);
-  });
+  })
 
 })
+
+var water_circles = document.getElementById("water_circles");
+
+document.getElementById("add-water").addEventListener("click", function() {
+  var glassesOfWater = parseInt(document.getElementById("water").value);
+
+  for (var i = 0; i < glassesOfWater; i++) {
+    var circle = document.createElement("div");
+    circle.classList.add("circle");
+    water_circles.appendChild(circle);
+    
+  }
+});
+
+document.getElementById("remove-water").addEventListener("click", function() {
+  var circles = document.querySelectorAll("#water_circles .circle");
+  if (circles.length > 0) {
+    var lastCircle = circles[circles.length - 1];
+    lastCircle.parentNode.removeChild(lastCircle);
+  }
+});
+

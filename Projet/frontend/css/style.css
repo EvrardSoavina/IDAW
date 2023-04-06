@@ -1817,3 +1817,19 @@ header .navbar .cta-btn a:hover {
   padding-bottom: 0 !important;
 }
 
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: #5AC8D8;
+  border-radius: 50%;
+  padding: 3px;
+}
+
+#water_circles {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 1em;
+}
+
+
+
