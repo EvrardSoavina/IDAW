@@ -8,7 +8,7 @@ $request_method = $_SERVER["REQUEST_METHOD"];
 switch($request_method)
 {
     case 'GET':
-        if(isset($_POST['id_indicateur']) && isset($_POST['login'])) {
+        if(isset($_GET['id_indicateur']) && isset($_GET['login'])) {
             getone($_GET['id_indicateur'],$_GET['login']);
         }else{
             getall();
@@ -43,7 +43,7 @@ function getall() {
 function getone($id_indicateur, $login) {
     global $pdo;
     $stmt = $pdo->prepare("SELECT * FROM objectif WHERE id_indicateur = ? AND login = ?");
-    $stmt->execute([$id_indicateur]);
+    $stmt->execute([$id_indicateur, $login]);
     $objectifs = $stmt->fetchAll(PDO::FETCH_OBJ);
 
     $json = json_encode($objectifs);
