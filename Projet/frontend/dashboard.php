@@ -91,7 +91,7 @@ require_once('cookie_session.php');
 
                 <!-- first Row -->
 
-                <div class="row" style="display: flex; align-items: flex-end;">
+                <form id="breakfast-form" class="row" style="display: flex; align-items: flex-end;">
 
                     <!-- breakfast select bar + button -->
                     <div class="col-md-7 form-group">
@@ -126,9 +126,9 @@ require_once('cookie_session.php');
                     <!-- breakfast table meal -->
 
                     <!-- Second Row -->
-                </div>
+                </form>
 
-                <div class="row" style="display: flex; align-items: flex-end;">
+                <form id="snacks-form" class="row" style="display: flex; align-items: flex-end;">
 
                     <!-- Third Row -->
 
@@ -165,10 +165,10 @@ require_once('cookie_session.php');
 
                     <!-- Third Row -->
 
-                </div>
+                </form>
 
 
-                <div class="row" style="display: flex; align-items: flex-end;">
+                <form id="lunch-form" class="row" style="display: flex; align-items: flex-end;">
 
                     <!-- Fourth Row -->
 
@@ -207,12 +207,12 @@ require_once('cookie_session.php');
 
                     <!-- Fifth Row -->
 
-                </div>
+                </form>
             </div>
 
 
 
-            <div class="row" style="display: flex; align-items: flex-end;">
+            <form id="dinner-form" class="row" style="display: flex; align-items: flex-end;">
 
                 <!-- Sixth Row -->
 
@@ -252,10 +252,10 @@ require_once('cookie_session.php');
 
                 <!-- Seventh Row -->
 
-            </div>
+            </form>
 
 
-            <div class="row" style="display: flex; align-items: flex-end;">
+            <form id="water-form" class="row" style="display: flex; align-items: flex-end;">
 
                 <!-- water select bar + button -->
                 <div class="col-md-4 form-group">
@@ -274,7 +274,7 @@ require_once('cookie_session.php');
                     <!-- 6 blocks here for the blue circles-->
                 </div>
 
-            </div>
+            </form>
 
         </div>
     </section>

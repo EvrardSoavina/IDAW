@@ -1,5 +1,3 @@
-var aliments = [];
-
 $(document).ready(function () {
 
   // Collect the aliments from the server
@@ -8,42 +6,49 @@ $(document).ready(function () {
     type: 'GET',
     success: function (data) {
       // Parse the JSON response
-      aliments = JSON.parse(data);
+      var aliments = JSON.parse(data);
 
       // Append options to each select
       $("#breakfast, #snacks, #lunch, #dinner").each(function () {
         var select = $(this);
         select.append('<option value="">Add ' + select.attr("id") + '</option>');
-        for (var i = 0; i < aliments.length; i++) {
-          select.append('<option value="' + aliments[i].id_aliment + '">' + aliments[i].nom + '</option>');
+        $.each(aliments, function (index, value) {
+          select.append('<option value="' + value.id_aliment + '">' + value.nom + '</option>');
+        });
+      });
+
+      // Add an event listener to each add button
+      $('#add-breakfast, #add-snacks, #add-lunch, #add-dinner').click(function () {
+        console.log("Le bouton Add a été cliqué !");
+        var id = $(this).attr("id") + '-table-data';
+        var mealType = $(this).attr("id").replace("add-", "");
+        var selectedMealId = $("#" + mealType).val();
+        var selectedMeal = aliments.find(function (element) {
+          return element.id_aliment == selectedMealId;
+        });
+        var selectedMealName = selectedMeal ? selectedMeal.nom : "";
+        var tableId = "#add-" + mealType + "-table";
+        if (selectedMealName != "") {
+          $(tableId + " tbody").append("<tr><td>" + selectedMealName + "</td></tr>");
         }
       });
+
     }
+  });
+
+});
+
+$(document).ready(function() {
+  $('#breakfast-form, #lunch-form, #dinner-form, #snacks-form').submit(function(event) {
+    console.log("hola");
+    event.preventDefault();
+
+    // Récupérer le nom du repas et du plat en fonction du formulaire soumis
+  
+
   });
 });
 
-$(document).ready(function () {
-
-  // Add an event listener to each add button
-  $('#add-breakfast, #add-snacks, #add-lunch, #add-dinner').click(function () {
-    console.log("Le bouton Add a été cliqué !");
-    var id = $(this).attr("id") + '-table-data';
-    var mealType = $(this).attr("id").replace("add-", "");
-    var selectedMealId = $("#" + mealType).val();
-    var selectedMealName = "";
-    for (var i = 0; i < aliments.length; i++) {
-      if (aliments[i].id_aliment == selectedMealId) {
-        selectedMealName = aliments[i].nom;
-        break;
-      }
-    }
-    var tableId = "#add-" + mealType + "-table";
-    if (selectedMealName != "") {
-      $(tableId + " tbody").append("<tr><td>" + selectedMealName + "</td></tr>");
-    }
-  })
-
-})
 
 var water_circles = document.getElementById("water_circles");
 
