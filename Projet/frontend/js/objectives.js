@@ -1,7 +1,5 @@
 $(document).ready(function () {
     // Counter for new form ids
-    var indicatorCount = 1;
-
     var counter = 0;
 
     $("#add-indicator").click(function () {
@@ -112,7 +110,7 @@ $(document).ready(function () {
 
         // Make the AJAX request with the modified data object
         $.ajax({
-            url: apifolder + '/backend/objectif.php',
+            url: apifolder + '/backend/objectif2.php',
             method: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
