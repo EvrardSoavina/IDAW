@@ -18,7 +18,7 @@
   <script>
       let apifolder = '<?php echo _API_URL; ?>';
   </script>
-  <script src="js/log.js"></script>
+  <script src="js/login.js"></script>
   <script src="js/signup.js"></script>
   <script src="js/objectives.js"></script>
   <script src="js/aliments.js"></script>

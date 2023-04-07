@@ -5,12 +5,11 @@ require_once('init_pdo.php');
 
 $request_method = $_SERVER["REQUEST_METHOD"];
 
-switch($request_method)
-{
+switch ($request_method) {
     case 'GET':
-        if(isset($_GET['id_indicateur']) && isset($_GET['login'])) {
-            getone($_GET['id_indicateur'],$_GET['login']);
-        }else{
+        if (isset($_GET['id_indicateur']) && isset($_GET['login'])) {
+            getone($_GET['id_indicateur'], $_GET['login']);
+        } else {
             getall();
         }
         break;
@@ -28,7 +27,8 @@ switch($request_method)
         break;
 };
 
-function getall() {
+function getall()
+{
     global $pdo;
     $request = $pdo->prepare('SELECT * FROM objectif');
     $request->execute();
@@ -40,7 +40,8 @@ function getall() {
     http_response_code(200);
 }
 
-function getone($id_indicateur, $login) {
+function getone($id_indicateur, $login)
+{
     global $pdo;
     $stmt = $pdo->prepare("SELECT * FROM objectif WHERE id_indicateur = ? AND login = ?");
     $stmt->execute([$id_indicateur, $login]);
@@ -52,28 +53,38 @@ function getone($id_indicateur, $login) {
     http_response_code(200);
 }
 
-function add() {
+function add()
+{
     global $pdo;
-    $objectifData = json_decode(file_get_contents('php://input'),true);
+    $objectifData = json_decode(file_get_contents('php://input'), true);
 
-    $id_indicateur = $objectifData['id_indicateur'];
-    $login = $objectifData['login'];
-    $quantite = $objectifData['quantite'];
+    foreach ($objectifData['data'] as $row) {
+        $id_indicateur = $row['id_indicateur'];
+        $login = $row['login'];
+        $quantite = $row['quantite'];
 
-    $stmt = $pdo->prepare("INSERT INTO objectif (id_indicateur, login, quantite) VALUES (?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO objectif (id_indicateur, login, quantite) VALUES (?, ?, ?)");
 
-    if($stmt->execute([$id_indicateur, $login, $quantite])) {
-        $data = array('id_indicateur' => $id_indicateur, 'login' => $login, 'quantite' => $quantite);
-        $json = json_encode($data);
-        echo $json;
-    } else {
-        echo 'Error inserting data';
+        try {
+            if ($stmt->execute([$id_indicateur, $login, $quantite])) {
+                $data = array('id_indicateur' => $id_indicateur, 'login' => $login, 'quantite' => $quantite);
+                $json = json_encode($data);
+                echo $json;
+            } else {
+                echo json_encode(array('error' => 'Error inserting data'));
+            }
+        } catch (PDOException $e) {
+            echo json_encode(array('error' => $e->getMessage()));
+        }
     }
 }
 
-function modify(){
+
+
+function modify()
+{
     global $pdo;
-    $objectifData = json_decode(file_get_contents('php://input'),true);
+    $objectifData = json_decode(file_get_contents('php://input'), true);
 
     $id_indicateur = $objectifData['id_indicateur'];
     $login = $objectifData['login'];
@@ -81,15 +92,16 @@ function modify(){
 
     $stmt = $pdo->prepare('UPDATE objectif SET quantite = ? WHERE id_indicateur = ? AND login = ?');
 
-    $stmt -> execute([$quantite, $id_indicateur, $login]);
+    $stmt->execute([$quantite, $id_indicateur, $login]);
 
     $response = array('status' => 'success', 'message' => 'Objectif modifié avec succès');
     echo json_encode($response);
 }
 
-function delete() {
+function delete()
+{
     global $pdo;
-    $objectifData = json_decode(file_get_contents('php://input'),true);
+    $objectifData = json_decode(file_get_contents('php://input'), true);
 
     $id_indicateur = $objectifData['id_indicateur'];
     $login = $objectifData['login'];
@@ -101,8 +113,7 @@ function delete() {
     }
 
     $stmt = $pdo->prepare('DELETE FROM objectif WHERE id_indicateur = ? AND login = ?');
-    $stmt -> execute([$id_indicateur, $login]);
+    $stmt->execute([$id_indicateur, $login]);
 }
 
 $pdo = null;
-?>

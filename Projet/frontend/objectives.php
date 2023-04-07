@@ -34,24 +34,31 @@ require_once('cookie_session.php');
         <div class="col-lg-12">
 
           <form id="objectives-form">
+          <input type="hidden" id="login" value="<?php echo $login; ?>">
+
             <div id="indicator-forms">
               <!-- Indicator forms will be dynamically added here -->
               <div class="indicator-form row">
                 <div class="col-md-6 form-group">
                   <select id="id_indicateur" class="form-control">
-                    <option value="">Select the nutritional indicator</option>
                   </select>
                 </div>
                 <div class="col-md-6">
                   <div class="row">
+                    
+                    <!-- quantity -->
                     <div class="col-md-8 form-group">
                       <input type="number" id="quantite" class="form-control" placeholder="quantity" required>
                     </div>
+                    <!-- quantity -->
+
+                    <!-- remove button -->
                     <div class="col-md-4 form-group">
                       <div class="remove-btn-wrap">
                         <button type="button" class="btn btn-danger remove-btn" style="display: flex; justify-content: center;">Remove</button>
                       </div>
                     </div>
+                    
                   </div>
                 </div>
               </div>

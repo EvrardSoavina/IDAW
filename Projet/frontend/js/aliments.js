@@ -38,17 +38,6 @@ $(document).ready(function () {
 
 });
 
-$(document).ready(function() {
-  $('#breakfast-form, #lunch-form, #dinner-form, #snacks-form').submit(function(event) {
-    console.log("hola");
-    event.preventDefault();
-
-    // Récupérer le nom du repas et du plat en fonction du formulaire soumis
-  
-
-  });
-});
-
 
 var water_circles = document.getElementById("water_circles");
 
