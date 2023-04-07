@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mer. 05 avr. 2023 à 17:26
+-- Généré le : jeu. 06 avr. 2023 à 23:36
 -- Version du serveur : 5.7.39
 -- Version de PHP : 8.2.0
 
@@ -3244,7 +3244,9 @@ CREATE TABLE `consommation` (
 INSERT INTO `consommation` (`id_journal`, `id_aliment`, `quantite`) VALUES
 (2, 25909, '200'),
 (3, 25615, '200'),
-(14, 1002, '100');
+(14, 1002, '100'),
+(3, 23805, '1000'),
+(3, 1008, '100');
 
 -- --------------------------------------------------------
 
@@ -159370,7 +159372,7 @@ CREATE TABLE `journal` (
   `id_journal` int(11) NOT NULL,
   `id_type_repas` int(11) NOT NULL,
   `login` varchar(18) NOT NULL,
-  `date` datetime NOT NULL
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -159378,19 +159380,18 @@ CREATE TABLE `journal` (
 --
 
 INSERT INTO `journal` (`id_journal`, `id_type_repas`, `login`, `date`) VALUES
-(1, 1, 'Al-BD', '2023-04-03 12:13:47'),
-(2, 3, 'Lelea', '2023-04-01 19:16:37'),
-(3, 2, 'Lelea', '2023-04-01 12:20:18'),
-(4, 1, 'Lelea', '2023-04-01 07:20:33'),
-(5, 4, 'Lelea', '2023-04-01 16:20:51'),
-(6, 5, 'Lelea', '2023-04-01 12:21:07'),
-(7, 5, 'Lelea', '2023-04-01 14:21:22'),
-(8, 2, 'Lelea', '2023-04-05 00:54:53'),
-(10, 1, 'Lelea', '2022-01-01 01:01:01'),
-(11, 1, 'Lelea', '2022-01-01 01:01:02'),
-(12, 1, 'Lelea', '2022-01-01 01:01:03'),
-(13, 1, 'Lelea', '2022-01-01 01:01:03'),
-(14, 2, 'Lelea', '2023-04-05 12:08:16');
+(1, 1, 'Al-BD', '2023-04-03'),
+(2, 3, 'Lelea', '2023-04-01'),
+(3, 2, 'Lelea', '2023-04-01'),
+(5, 4, 'Lelea', '2023-04-01'),
+(6, 5, 'Lelea', '2023-04-01'),
+(7, 5, 'Lelea', '2023-04-01'),
+(8, 2, 'Lelea', '2023-04-05'),
+(10, 1, 'Lelea', '2022-01-01'),
+(11, 1, 'Lelea', '2022-01-01'),
+(12, 1, 'Lelea', '2022-01-01'),
+(13, 1, 'Lelea', '2022-01-01'),
+(14, 1, 'Lelea', '2023-04-01');
 
 -- --------------------------------------------------------
 
@@ -159423,6 +159424,13 @@ CREATE TABLE `objectif` (
   `login` varchar(18) NOT NULL,
   `quantite` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `objectif`
+--
+
+INSERT INTO `objectif` (`id_indicateur`, `login`, `quantite`) VALUES
+(1, 'Lelea', '2000');
 
 -- --------------------------------------------------------
 
@@ -159737,7 +159745,7 @@ ALTER TABLE `indicateur_nutritionnel`
 -- AUTO_INCREMENT pour la table `journal`
 --
 ALTER TABLE `journal`
-  MODIFY `id_journal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_journal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT pour la table `niveau_de_pratique_sportive`
