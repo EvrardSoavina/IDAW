@@ -10,7 +10,9 @@ switch($request_method)
     case 'GET':
         if(isset($_GET['id_journal'])){
             getonejournal($_GET['id_journal']);
-        }else{
+        } else if (isset($_GET['date']) && isset($_GET['login'])) {
+            getone($_GET['date'], $_GET['login']);
+        } else {
             getalljournal();
         }
         break;
@@ -49,6 +51,21 @@ function getonejournal($id) {
     $stmt = $pdo->prepare("SELECT * FROM journal WHERE id_journal = ?");
     $stmt->execute([$id]);
     $journal = $stmt->fetch(PDO::FETCH_OBJ);
+    
+    // Conversion en JSON
+    $json = json_encode($journal);
+    echo $json; // on envoie la réponse de la requête 
+
+    // HTPP response of 200 OK
+    http_response_code(200);  
+}
+
+function getone($date, $login) {
+    global $pdo;
+    // Récupération du journal
+    $stmt = $pdo->prepare("SELECT * FROM journal WHERE login = ? AND date = ?");
+    $stmt->execute([$login, $date]);
+    $journal = $stmt->fetchAll(PDO::FETCH_OBJ);
     
     // Conversion en JSON
     $json = json_encode($journal);

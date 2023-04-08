@@ -22,6 +22,7 @@
 		<input type="submit" value="delete request">
 	</form>
 	<div id="display-result"></div>
+	<div id="display-result2"></div>
 </body>
 </html>
 <script>
@@ -32,11 +33,11 @@
 		let date = '2023-04-01' // A CHANGER
 		$.ajax({
 			type: 'GET',
-			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/dashboard.php?date='+date+'&login='+login,
+			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/journal.php?date='+date+'&login='+login,
 			success: function(data) {
 				responseObject = JSON.parse(data);
-				const datas = [{"nom":"Bouillon de viande et legumes type pot-au-feu, pret a consommer","quantite":"200"},{"nom":"Salade de pates, vegetarienne","quantite":"200"},{"nom":"Blini","quantite":"1000"},{"nom":"Vodka","quantite":"100"},{"nom":"Gin","quantite":"100"}];
 				$('#display-result').html(data);
+				$('#display-result2').html(responseObject[0].id_journal);
 			}
 		});
 	});

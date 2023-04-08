@@ -40,6 +40,7 @@
 | Delete | DELETE | {id_journal: ,id_aliment: } | /consommation.php |  |
 | Read | GET | - | /journal.php |  |
 | Read | GET | - | /journal.php?id_journal= |  |
+| Read | GET | - | /journal.php?date= &login=|  |
 | Create | POST | {id_type_repas: ,login: ,date: } | /journal.php | |
 | Update | PUT | {id_journal: ,id_type_repas: ,login: ,date: } | /journal.php |  |
 | Delete | DELETE | {id_journal: } | /journal.php |  |
