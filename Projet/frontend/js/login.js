@@ -24,9 +24,10 @@ $(document).ready(function () {
 
                     // Call the journal API
                     $.ajax({
-                        url: apifolder + '/backend/journal.php?date=dateFormatee&?login=login',
+                        url: apifolder + '/backend/journal.php?date=date'+dateFormatee+'&login='+login,
                         type: 'GET',
                         data: {
+                            date: dateFormatee,
                             login: login
                         },
                         success: function (response) {
