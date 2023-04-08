@@ -63,8 +63,12 @@ require_once('cookie_session.php');
                 <form>
                     <label for="date">Date :</label>
                     <input type="date" id="date" name="date">
-                    <button type="button" onclick="getSum()">Obtenir</button>
+
+                    <button type="button" onclick="getSum()">Obtenir la somme</button>
                 </form>
+            </div>
+            <div class="row mb-5 justify-content-center" data-aos="fade">
+                <div id="result"></div>
             </div>
 
             
@@ -193,9 +197,9 @@ require_once('cookie_session.php');
 
     function getSum() {
         var date = document.getElementById("date").value;
-        var login = document.getElementById("login").value;
+        var login = '<?php echo $_SESSION['login'] ?>';
 
-        var xhr = new XMLHttpRequest();
+        var xhr = new XMLHttpRequest(); 
         xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
             document.getElementById("result").innerHTML = this.responseText;

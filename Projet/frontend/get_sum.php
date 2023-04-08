@@ -18,7 +18,7 @@ $result = json_decode($result, true);
 echo "<table>";
 echo "<tr><th>Nom</th><th>Quantité</th></tr>";
 foreach ($result as $row) {
-    echo "<tr><td>".$row['nom']."</td></tr>";
+    echo "<tr><td>".$row['nom']."</td><td>".$row['quantite']." g</td></tr>"; 
 }
 echo "</table>";
 ?>
