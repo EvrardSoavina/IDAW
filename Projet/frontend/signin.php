@@ -68,20 +68,9 @@ require_once('cookie_session.php');
 
 
     <footer class="site-footer" role="contentinfo">
-      <div class="row">
-        <div class="col-12 text-md-center text-left">
-          <p>
-            <!-- Link back to Free-Template.co can't be removed. Template is licensed under CC BY 3.0. -->
-            <small class="block">&copy; 2019 <strong class="text-black">Foody</strong> Free Template. All Rights
-              Reserved. <br> Design by <a href="https://free-template.co/" target="_blank">Free-Template.co</a></small>
-          </p>
-        </div>
-      </div>
-      </div>
-    </footer>
-    <!-- END footer -->
 
     <?php
+    require_once('footer.php');
     require_once('loader.php');
     ?>
 

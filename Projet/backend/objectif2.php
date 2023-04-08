@@ -6,52 +6,16 @@ require_once('init_pdo.php');
 $request_method = $_SERVER["REQUEST_METHOD"];
 
 switch ($request_method) {
-    case 'GET':
-        if (isset($_GET['id_indicateur']) && isset($_GET['login'])) {
-            getone($_GET['id_indicateur'], $_GET['login']);
-        } else {
-            getall();
-        }
-        break;
     case 'POST':
         addOrUpdate();
         break;
     case 'PUT':
         modify();
         break;
-    case 'DELETE':
-        delete();
-        break;
     default:
         header("HTTP/1.0 405 Method Not Allowed");
         break;
 };
-
-function getall()
-{
-    global $pdo;
-    $request = $pdo->prepare('SELECT * FROM objectif');
-    $request->execute();
-    $objectifs = $request->fetchAll(PDO::FETCH_OBJ);
-
-    $json = json_encode($objectifs);
-    echo $json;
-
-    http_response_code(200);
-}
-
-function getone($id_indicateur, $login)
-{
-    global $pdo;
-    $stmt = $pdo->prepare("SELECT * FROM objectif WHERE id_indicateur = ? AND login = ?");
-    $stmt->execute([$id_indicateur, $login]);
-    $objectifs = $stmt->fetchAll(PDO::FETCH_OBJ);
-
-    $json = json_encode($objectifs);
-    echo $json;
-
-    http_response_code(200);
-}
 
 function modify()
 {
@@ -93,26 +57,6 @@ function modify()
     $response = array('status' => 'success', 'message' => 'Objectif modified with success');
     echo json_encode($response);
 }
-
-
-function delete()
-{
-    global $pdo;
-    $objectifData = json_decode(file_get_contents('php://input'), true);
-
-    $id_indicateur = $objectifData['id_indicateur'];
-    $login = $objectifData['login'];
-
-    if (empty($id_indicateur) || empty($login)) {
-        header('HTTP/1.1 400 Bad Request');
-        echo 'Missing parameter';
-        return;
-    }
-
-    $stmt = $pdo->prepare('DELETE FROM objectif WHERE id_indicateur = ? AND login = ?');
-    $stmt->execute([$id_indicateur, $login]);
-}
-
 
 function addOrUpdate()
 {
