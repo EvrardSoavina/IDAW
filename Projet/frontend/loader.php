@@ -22,6 +22,7 @@
   <script src="js/signup.js"></script>
   <script src="js/objectives.js"></script>
   <script src="js/aliments.js"></script>
+  <script src="js/testapi.js"></script>
 
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/magnific-popup-options.js"></script>

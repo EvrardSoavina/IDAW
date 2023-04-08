@@ -124,22 +124,20 @@ function addOrUpdate()
         $login = $row['login'];
         $quantite = $row['quantite'];
 
-        // Check if the id_indicateur already exists in the objectif table
-        $stmt = $pdo->prepare("SELECT * FROM objectif WHERE id_indicateur = ?");
-        $stmt->execute([$id_indicateur]);
+        // Check if the combination of id_indicateur and login already exists in objectif table
+        $stmt = $pdo->prepare('SELECT * FROM objectif WHERE id_indicateur = ? AND login = ?');
+        $stmt->execute([$id_indicateur, $login]);
+        $result = $stmt->fetch();
 
-        if ($stmt->rowCount() > 0) {
-            // id_indicateur already exists, update the existing row
-            $stmt = $pdo->prepare("UPDATE objectif SET quantite = ? WHERE id_indicateur = ?");
-            if ($stmt->execute([$quantite, $id_indicateur])) {
-                $data = array('id_indicateur' => $id_indicateur, 'login' => $login, 'quantite' => $quantite);
-                $json = json_encode($data);
-                echo $json;
-            } else {
-                echo json_encode(array('error' => 'Error updating data'));
-            }
+        if ($result) {
+            // If the combination already exists, update the quantite
+            $stmt = $pdo->prepare('UPDATE objectif SET quantite = ? WHERE id_indicateur = ? AND login = ?');
+            $stmt->execute([$quantite, $id_indicateur, $login]);
+            $data = array('id_indicateur' => $id_indicateur, 'login' => $login, 'quantite' => $quantite);
+            $json = json_encode($data);
+            echo $json;
         } else {
-            // id_indicateur does not exist, insert a new row
+            // If the combination doesn't exist, insert a new row
             $stmt = $pdo->prepare("INSERT INTO objectif (id_indicateur, login, quantite) VALUES (?, ?, ?)");
 
             try {
@@ -155,7 +153,11 @@ function addOrUpdate()
             }
         }
     }
+
+    $response = array('status' => 'success', 'message' => 'Objectif added/modified with success');
+    echo json_encode($response);
 }
+
 
 
 $pdo = null;

@@ -31,6 +31,8 @@
 | Update | PUT | {id_indicateur: ,login: ,quantite: } | /objectif.php |  |
 | Delete | DELETE | {id_indicateur: ,login: } | /objectif.php |  |
 ||||||
+| Create | POST | {id_indicateur: ,login: ,quantite: } | /objectif2.php | verify if an id is linked to a login and modify or add |
+||||||
 | Read | GET | - | /consommation.php |  |
 | Read | GET | - | /consommation.php?id_journal= &id_aliment= |  |
 | Create | POST | {id_journal: ,id_aliment: ,quantite: } | /consommation.php | |

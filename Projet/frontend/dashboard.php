@@ -100,8 +100,8 @@ require_once('cookie_session.php');
                         </select>
                     </div>
                     <div class="col-md-3 form-group">
-                        <label for="quantity ">Quantity</label>
-                        <input type="number" id="quantity_breakfast" class="form-control " placeholder="Enter Quantity">
+                        <label for="breakfast-quantity ">Quantity</label>
+                        <input type="number" id="breakfast-quantity" class="form-control " placeholder="Enter Quantity">
                     </div>
                     <div class="col-md-2 form-group">
                         <button type="button" class="btn btn-primary add-btn" id="add-breakfast">Add</button>
@@ -117,6 +117,7 @@ require_once('cookie_session.php');
                             <thead>
                                 <tr>
                                     <th>Add breakfast</th>
+                                    <th>Quantity</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -139,8 +140,8 @@ require_once('cookie_session.php');
                         </select>
                     </div>
                     <div class="col-md-3 form-group">
-                        <label for="quantity ">Quantity</label>
-                        <input type="number" id="quantity_snacks" class="form-control " placeholder="Enter Quantity">
+                        <label for="snacks-quantity ">Quantity</label>
+                        <input type="number" id="snacks-quantity" class="form-control " placeholder="Enter Quantity">
                     </div>
                     <div class="col-md-2 form-group">
                         <button type="button" class="btn btn-primary add-btn" id="add-snacks">Add</button>
@@ -155,6 +156,7 @@ require_once('cookie_session.php');
                             <thead>
                                 <tr>
                                     <th>Add Snacks</th>
+                                    <th>Quantity</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -179,8 +181,8 @@ require_once('cookie_session.php');
                         </select>
                     </div>
                     <div class="col-md-3 form-group">
-                        <label for="quantity ">Quantity</label>
-                        <input type="number" id="quantity_lunch" class="form-control " placeholder="Enter Quantity">
+                        <label for="lunch-quantity ">Quantity</label>
+                        <input type="number" id="lunch-quantity" class="form-control " placeholder="Enter Quantity">
                     </div>
                     <div class="col-md-2 form-group">
                         <button type="button" class="btn btn-primary add-btn" id="add-lunch">Add</button>
@@ -197,6 +199,7 @@ require_once('cookie_session.php');
                             <thead>
                                 <tr>
                                     <th>Add Lunch</th>
+                                    <th>Quantity</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -223,8 +226,8 @@ require_once('cookie_session.php');
                     </select>
                 </div>
                 <div class="col-md-3 form-group">
-                    <label for="quantity ">Quantity</label>
-                    <input type="number" id="quantity_dinner" class="form-control " placeholder="Enter Quantity">
+                    <label for="dinner-quantity ">Quantity</label>
+                    <input type="number" id="dinner-quantity" class="form-control " placeholder="Enter Quantity">
                 </div>
 
                 <div class="col-md-2 form-group">
@@ -242,6 +245,7 @@ require_once('cookie_session.php');
                         <thead>
                             <tr>
                                 <th>Add Dinner</th>
+                                <th>Quantity</th>
                             </tr>
                         </thead>
                         <tbody>
