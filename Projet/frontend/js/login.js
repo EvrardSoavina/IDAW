@@ -13,6 +13,50 @@ $(document).ready(function () {
             success: function (data) {
                 if (data == 'Valid credentials') {
                     createCookie('login', login, 1); // création du cookie contenant le login
+                    let date = new Date();
+                    let annee = date.getFullYear();
+                    let mois = ("0" + (date.getMonth() + 1)).slice(-2);
+                    let jour = ("0" + date.getDate()).slice(-2);
+                    let heures = ("0" + date.getHours()).slice(-2);
+                    let minutes = ("0" + date.getMinutes()).slice(-2);
+                    let secondes = ("0" + date.getSeconds()).slice(-2);
+                    let dateFormatee = `${annee}-${mois}-${jour} ${heures}:${minutes}:${secondes}`;
+
+                    // Call the journal API
+                    $.ajax({
+                        url: apifolder + '/backend/journal.php?date=dateFormatee&?login=login',
+                        type: 'GET',
+                        data: {
+                            login: login
+                        },
+                        success: function (response) {
+                            if (response == null) {
+                                // Send a POST request to the journal API
+                                $.ajax({
+                                    url: apifolder + '/backend/journal.php',
+                                    type: 'POST',
+                                    data: JSON.stringify({
+                                        "login": login,
+                                        "date": dateFormatee
+                                    }),
+                                    contentType: 'application/json',
+                                    dataType: 'json',
+                                    success: function (data) {
+                                        console.log(data);
+                                    },
+                                    error: function (xhr, textStatus, errorThrown) {
+                                        console.log('Error: ' + errorThrown);
+                                    }
+                                });
+                            } else {
+                                console.log(response);
+                            }
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.log('Error: ' + errorThrown);
+                        }
+                    });
+
                     window.location.href = 'dashboard.php'; // redirection vers la page "dashboard.php"
                 } else {
                     $('#error-message').html('Invalid credentials');
