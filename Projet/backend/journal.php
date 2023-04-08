@@ -65,7 +65,7 @@ function getone($date, $login) {
     // Récupération du journal
     $stmt = $pdo->prepare("SELECT * FROM journal WHERE login = ? AND date = ?");
     $stmt->execute([$login, $date]);
-    $journal = $stmt->fetch(PDO::FETCH_OBJ);
+    $journal = $stmt->fetchAll(PDO::FETCH_OBJ);
     
     // Conversion en JSON
     $json = json_encode($journal);
