@@ -45,15 +45,16 @@
 		event.preventDefault();
 		let login = 'Lelea' // A CHANGER
 		let id_indicateur = '1' // A CHANGER
-		let date = '2023-04-01'
+		let startdate = '2023-04-01'
+		let enddate = '2023-04-01'
 		$.ajax({
 			type: 'GET',
-			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/dashboard.php?date='+date+'&login='+login+'&id_indicateur='+id_indicateur,
+			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/dashboard.php?startdate='+startdate+'&enddate='+enddate+'&login='+login,
 			success: function(data) {
 				responseObject = JSON.parse(data);
-				id_type_repas = parseFloat(responseObject[0].quantite_fois_ratio).toFixed(1);
+				//id_type_repas = parseFloat(responseObject[0].quantite_fois_ratio).toFixed(1);
 				//id_aliment = id_type_repas
-				$('#display-result').html(id_type_repas);
+				$('#display-result').html(data);
 			}
 		});
 	});

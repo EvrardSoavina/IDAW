@@ -1,11 +1,12 @@
 <?php
 
 // Récupération des paramètres
-$date = $_POST['date'];
+$startdate = $_POST['startdate'];
+$enddate = $_POST['enddate'];
 $login = $_POST['login'];
 
 // Appel à l'API GET
-$url = 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/dashboard.php?date=' . $date . '&login=' . $login;
+$url = 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/dashboard.php?startdate=' . $startdate . '&enddate=' . $enddate . '&login=' . $login;
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $result = curl_exec($ch);
@@ -18,7 +19,7 @@ $result = json_decode($result, true);
 echo "<table>";
 echo "<tr><th>Nom</th><th>Quantité</th></tr>";
 foreach ($result as $row) {
-    echo "<tr><td>".$row['nom']."</td><td>".$row['quantite']." g</td></tr>"; 
+    echo "<tr><td>".$row['date']."</td><td>".$row['nom']."</td><td>".$row['quantite']." g</td></tr>"; 
 }
 echo "</table>";
 ?>

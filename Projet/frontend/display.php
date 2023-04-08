@@ -48,7 +48,7 @@ require_once('cookie_session.php');
         <div class="container">
 
             <div class="row mb-5 justify-content-center" data-aos="fade">
-                <h1 data-aos="fade-up">My dashboard</h1>
+                <h1 data-aos="fade-up">My dashboard</h1> 
             </div>
             <div class="row mb-5 justify-content-center" data-aos="fade">
                 <div class="col-md-7 text-center heading-wrap">
@@ -61,10 +61,13 @@ require_once('cookie_session.php');
             </div>
             <div class="row mb-5 justify-content-center" data-aos="fade">
                 <form>
-                    <label for="date">Date :</label>
-                    <input type="date" id="date" name="date">
+                    <label for="start-date">Date de début :</label>
+                    <input type="date" id="start-date" name="start-date">
 
-                    <button type="button" onclick="getSum()">Obtenir la somme</button>
+                    <label for="end-date">Date de fin :</label>
+                    <input type="date" id="end-date" name="end-date">
+
+                    <button type="button" onclick="getdashboard()">Obtenir la somme</button>
                 </form>
             </div>
             <div class="row mb-5 justify-content-center" data-aos="fade">
@@ -180,23 +183,9 @@ require_once('cookie_session.php');
         }
     });
 
-    /*function getSum() {
-        var date = document.getElementById("date").value;
-        var login = '<?php echo $_SESSION['login'] ?>'
-
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("result").innerHTML = this.responseText;
-            }
-        };
-        xhr.open("POST", "get_sum.php", true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.send("date="+date+"&login="+login);
-    }*/
-
-    function getSum() {
-        var date = document.getElementById("date").value;
+    function getdashboard() {
+        var startdate = document.getElementById("start-date").value;
+        var enddate = document.getElementById("end-date").value;
         var login = '<?php echo $_SESSION['login'] ?>';
 
         var xhr = new XMLHttpRequest(); 
@@ -205,9 +194,9 @@ require_once('cookie_session.php');
             document.getElementById("result").innerHTML = this.responseText;
             }
         };
-        xhr.open("POST", "get_sum.php", true);
+        xhr.open("POST", "get_dashboard.php", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.send("date="+date+"&login="+login);
+        xhr.send("startdate="+startdate+"&enddate="+enddate+"&login="+login);
     }
     
         

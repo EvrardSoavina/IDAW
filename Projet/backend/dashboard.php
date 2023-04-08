@@ -12,6 +12,8 @@ switch($request_method)
             getmirconutriment($_GET['date'], $_GET['login'], $_GET['id_indicateur']);
         } else if (isset($_GET['date']) && isset($_GET['login'])) {
             getalimentconsommees($_GET['date'], $_GET['login']);
+        } else if (isset($_GET['startdate']) && isset($_GET['enddate']) && isset($_GET['login'])) {
+            getalimentconsommeeentreinterval($_GET['startdate'], $_GET['enddate'], $_GET['login']);
         } else {
             header("HTTP/1.0 405 Method Not ALlowed");
         }
@@ -59,8 +61,28 @@ function getalimentconsommees($date, $login) {
     echo $json; // on envoie la réponse de la requête 
 
     // HTPP response of 200 OK
-    http_response_code(200);
-    
+    http_response_code(200); 
 }
+
+function getalimentconsommeeentreinterval($startdate, $enddate, $login) {
+    global $pdo;
+    // Récupération des utilisateurs
+    $stmt = $pdo->prepare("SELECT journal.date, aliments.nom, consommation.quantite
+                            FROM journal
+                            INNER JOIN consommation ON journal.id_journal = consommation.id_journal
+                            INNER JOIN aliments ON consommation.id_aliment = aliments.id_aliment
+                            WHERE journal.date BETWEEN ? AND ? AND journal.login = ? ");
+    $stmt->execute([$startdate, $enddate, $login]);
+    $users = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    // Conversion en JSON
+    $json = json_encode($users);
+    echo $json; // on envoie la réponse de la requête 
+
+    // HTPP response of 200 OK
+    http_response_code(200); 
+}
+
+
     $pdo = null;
 ?>
