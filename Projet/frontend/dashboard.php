@@ -22,7 +22,7 @@ require_once('cookie_session.php');
                 <div class="container">
                     <div class="row slider-text align-items-center justify-content-center">
                         <div class="col-md-8 text-center col-sm-12 ">
-                            <h1 data-aos="fade-up">Welcome </br> <?php echo $login ?>!</h1>
+                            <h1 data-aos="fade-up">Welcome </br> <?php echo isset($_SESSION['login']) ? $_SESSION['login'] : 'Guest'; ?>!</h1>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@ require_once('cookie_session.php');
                 <div class="container">
                     <div class="row slider-text align-items-center justify-content-center">
                         <div class="col-md-8 text-center col-sm-12 ">
-                            <h1 data-aos="fade-up">Welcome </br> <?php echo $login ?>!</h1>
+                            <h1 data-aos="fade-up">Welcome </br> <?php echo isset($_SESSION['login']) ? $_SESSION['login'] : 'Guest'; ?>!</h1>
                         </div>
                     </div>
                 </div>
