@@ -73,6 +73,17 @@ require_once('cookie_session.php');
             <div class="row mb-5 justify-content-center" data-aos="fade">
                 <div id="result"></div>
             </div>
+            <div class="row mb-5 justify-content-center" data-aos="fade">
+                <div class="col-md-4">
+                    <canvas id="activeEnergyRing2"></canvas>
+                </div>
+                <div class="col-md-4">
+                    <canvas id="activeEnergyRing3"></canvas>
+                </div>
+                <div class="col-md-4">
+                    <canvas id="activeEnergyRing4"></canvas>
+                </div>
+            </div>
 
             
         </div>
@@ -88,19 +99,20 @@ require_once('cookie_session.php');
 <script>
 
     let login = '<?php echo $_SESSION['login'] ?>'
-    let id_indicateur = '1' // A CHANGER
     let date = new Date();
     let annee = date.getFullYear();
     let mois = ("0" + (date.getMonth() + 1)).slice(-2);
     let jour = ("0" + date.getDate()).slice(-2);
     let dateFormatee = '2023-04-01' //`${annee}-${mois}-${jour}`;
     //let date = '2023-04-01';
-    $.ajax({
+
+    function createring(id_indicateur, elementid, unite) {
+        $.ajax({
         type: 'GET',
         url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/objectif.php?login='+login+'&id_indicateur='+id_indicateur,
         success: function(data) {
             responseObject = JSON.parse(data);
-            calories_objectif = responseObject[0].quantite
+            indicateur_objectif = responseObject[0].quantite
             $.ajax({
                 type: 'GET',
                 url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/dashboard.php?date='+dateFormatee+'&login='+login+'&id_indicateur='+id_indicateur,
@@ -110,7 +122,7 @@ require_once('cookie_session.php');
                     // Données pour l'anneau de l'énergie active
                     var activeEnergyData = {
                         datasets: [{
-                            data: [calories_consommées, calories_objectif-calories_consommées],
+                            data: [calories_consommées, indicateur_objectif-calories_consommées],
                             backgroundColor: ['#FF2D55', '#EDEDED'],
                             borderWidth: 1
                         }]
@@ -128,7 +140,7 @@ require_once('cookie_session.php');
                         },
                         title: {
                             display: true,
-                            text: parseFloat(calories_consommées).toFixed()+' kcal/'+parseFloat(calories_objectif).toFixed(),
+                            text: parseFloat(calories_consommées).toFixed()+' '+unite+'/'+parseFloat(indicateur_objectif).toFixed(),
                             position: 'bottom',
                             fontSize: 20,
                             fontFamily: 'Arial',
@@ -140,7 +152,7 @@ require_once('cookie_session.php');
                     };
 
                     // Créer l'objet Chart pour l'anneau de l'énergie active
-                    var activeEnergyCtx = document.getElementById('activeEnergyRing').getContext('2d');
+                    var activeEnergyCtx = document.getElementById(elementid).getContext('2d');
                     var activeEnergyChart = new Chart(activeEnergyCtx, {
                         type: 'doughnut',
                         data: activeEnergyData,
@@ -149,7 +161,15 @@ require_once('cookie_session.php');
                 }
             });
         }
-    });
+        });
+    }
+
+    createring('1', 'activeEnergyRing', 'kcal');
+    createring('2', 'activeEnergyRing2', 'g');
+    createring('1', 'activeEnergyRing3', 'kcal');
+    createring('1', 'activeEnergyRing4', 'kcal');
+    createring('1', 'activeEnergyRing5', 'kcal');
+
 
     $.ajax({
         method: "GET",
