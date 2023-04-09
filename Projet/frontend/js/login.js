@@ -24,7 +24,7 @@ $(document).ready(function () {
 
                     // Call the journal API
                     $.ajax({
-                        url: apifolder + '/backend/journal.php?date=date'+dateFormatee+'&login='+login,
+                        url: apifolder + '/backend/journal.php?date=date' + dateFormatee + '&login=' + login,
                         type: 'GET',
                         data: {
                             date: dateFormatee,
@@ -33,22 +33,25 @@ $(document).ready(function () {
                         success: function (response) {
                             if (response == null) {
                                 // Send a POST request to the journal API
-                                $.ajax({
-                                    url: apifolder + '/backend/journal.php',
-                                    type: 'POST',
-                                    data: JSON.stringify({
-                                        "login": login,
-                                        "date": dateFormatee
-                                    }),
-                                    contentType: 'application/json',
-                                    dataType: 'json',
-                                    success: function (data) {
-                                        console.log(data);
-                                    },
-                                    error: function (xhr, textStatus, errorThrown) {
-                                        console.log('Error: ' + errorThrown);
-                                    }
-                                });
+                                for (let i = 1; i <= 5; i++) {
+                                    $.ajax({
+                                        url: apifolder + '/backend/journal.php',
+                                        type: 'POST',
+                                        data: JSON.stringify({
+                                            "login": login,
+                                            "date": dateFormatee,
+                                            "id_type_repas": i
+                                        }),
+                                        contentType: 'application/json',
+                                        dataType: 'json',
+                                        success: function (data) {
+                                            console.log(data);
+                                        },
+                                        error: function (xhr, textStatus, errorThrown) {
+                                            console.log('Error: ' + errorThrown);
+                                        }
+                                    });
+                                }
                             } else {
                                 console.log(response);
                             }
@@ -80,5 +83,4 @@ $(document).ready(function () {
         document.cookie = name + "=" + value + expires + "; path=/";
     }
 });
-
 

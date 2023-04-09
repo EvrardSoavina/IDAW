@@ -17,24 +17,86 @@ $(document).ready(function () {
         });
       });
 
-      // Add an event listener to each add button
-      $('#add-breakfast, #add-snacks, #add-lunch, #add-dinner').click(function () {
-        console.log("Le bouton Add a été cliqué !");
-        var id = $(this).attr("id") + '-table-data';
-        var mealType = $(this).attr("id").replace("add-", "");
-        var selectedMealId = $("#" + mealType).val();
-        var selectedMeal = aliments.find(function (element) {
-          return element.id_aliment == selectedMealId;
-        });
-        var selectedMealName = selectedMeal ? selectedMeal.nom : "";
-        var selectedMealQty = $("#" + mealType + "-quantity").val();
-        var tableId = "#add-" + mealType + "-table";
-        if (selectedMealName != "" && selectedMealQty != "") {
-          $(tableId + " tbody").append("<tr><td>" + selectedMealName + "</td><td>" + selectedMealQty + "</td></tr>");
-        }
-      });
-
     }
+  });
+
+  var id_type_repas = null;
+  let date = new Date();
+  let annee = date.getFullYear();
+  let mois = ("0" + (date.getMonth() + 1)).slice(-2);
+  let jour = ("0" + date.getDate()).slice(-2);
+  let heures = ("0" + date.getHours()).slice(-2);
+  let minutes = ("0" + date.getMinutes()).slice(-2);
+  let secondes = ("0" + date.getSeconds()).slice(-2);
+  let dateFormatee = `${annee}-${mois}-${jour} ${heures}:${minutes}:${secondes}`;
+
+  $("#breakfast_add").on("click", function () {
+    id_type_repas = 1;
+  });
+
+  $("#lunch_add").on("click", function () {
+    id_type_repas = 2;
+  });
+
+  $("#dinner_add").on("click", function () {
+    id_type_repas = 3;
+  });
+
+  $("#snacks_add").on("click", function () {
+    id_type_repas = 4;
+  });
+
+  $(".add_aliment").on("click", function (event) {
+    event.preventDefault();
+
+    // Récupérer la valeur de l'aliment et la quantité
+    var id_aliment = $(this).siblings("select").val();
+    var quantite = $(this).siblings("input[type=number]").val();
+
+    // Appeler le backend pour récupérer l'id_journal correspondant
+    $.ajax({
+      url: apifolder + '/backend/journal.php?date=date' + dateFormatee + '&login=' + login,
+      method: "GET",
+      data: {
+        login: login,
+        date: date
+      },
+      dataType: "json",
+      success: function (response) {
+        // Trouver l'id_journal correspondant à id_type_repas
+        var id_journal = null;
+        for (var i = 0; i < response.length; i++) {
+          if (response[i].id_type_repas === id_type_repas) {
+            id_journal = response[i].id_journal;
+            break;
+          }
+        }
+
+        if (id_journal === null) {
+          alert("Erreur : pas de journal trouvé pour ce type de repas");
+        } else {
+          // Envoyer la consommation à consommation.php
+          $.ajax({
+            url: "consommation.php",
+            method: "POST",
+            data: {
+              id_journal: id_journal,
+              id_aliment: id_aliment,
+              quantite: quantite
+            },
+            success: function () {
+              alert("Consommation enregistrée !");
+            },
+            error: function () {
+              alert("Erreur lors de l'enregistrement de la consommation");
+            }
+          });
+        }
+      },
+      error: function () {
+        alert("Erreur lors de la récupération du journal");
+      }
+    });
   });
 
 });
