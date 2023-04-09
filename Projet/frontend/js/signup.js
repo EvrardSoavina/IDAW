@@ -40,7 +40,6 @@ $(document).ready(function () {
                 }),
                 success: function (response) {
                     if (response == "Data inserted") {
-                        createCookie('login', login, 1); // création du cookie contenant le login.
                         window.location.href = "signin.php";
                     } else {
                         alert("Error. Login already used");
