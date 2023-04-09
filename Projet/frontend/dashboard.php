@@ -118,6 +118,7 @@ require_once('cookie_session.php');
                                 <tr>
                                     <th>Add breakfast</th>
                                     <th>Quantity</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -161,6 +162,7 @@ require_once('cookie_session.php');
                                 <tr>
                                     <th>Add Lunch</th>
                                     <th>Quantity</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -207,6 +209,7 @@ require_once('cookie_session.php');
                             <tr>
                                 <th>Add Dinner</th>
                                 <th>Quantity</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -249,6 +252,7 @@ require_once('cookie_session.php');
                             <tr>
                                 <th>Add Snacks</th>
                                 <th>Quantity</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -266,11 +270,11 @@ require_once('cookie_session.php');
                 <input type="hidden" id="login" value="<?php echo $login; ?>">
                 <!-- water select bar + button -->
                 <div class="col-md-4 form-group">
-                    <label for="water">Water</label>
-                    <input type="number" id="water" class="form-control" placeholder="Glasses of water">
+                    <label for="water-quantity">Water</label>
+                    <input type="number" id="water-quantity" class="form-control" placeholder="Glasses of water" required>
                 </div>
                 <div class="col-md-2 form-group pr-0">
-                    <button type="button" class="btn btn-primary add-btn" id="add-water">Add</button>
+                    <button type="submit" class="btn btn-primary" id="add-water">Add</button>
                 </div>
                 <div class="col-md-2 form-group pl-0">
                     <button type="button" class="btn btn-danger remove-btn" id="remove-water" style="text-align:right">Remove</button>
