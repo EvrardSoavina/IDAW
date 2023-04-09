@@ -46,6 +46,10 @@ $(document).ready(function () {
     id_type_repas = 4;
   });
 
+  $("#add-water").on("click", function () {
+    id_type_repas = 5;
+  });
+
 
   var isRunning = false;
   $("#add-breakfast, #add-lunch, #add-dinner, #add-snacks").on("click", function (event) {
@@ -70,7 +74,11 @@ $(document).ready(function () {
     } else if (id_type_repas === 4) {
       id_aliment = $("#snacks").val();
       quantite = $("#snacks-quantity").val();
+    }else if (id_type_repas === 5) {
+      id_aliment = 0;
+      quantite = $("#water-quantity").val();
     }
+
     if (quantite.length === 0 || id_aliment.length === 0) {
       alert("Please fill in both the breakfast and quantity fields.");
       return;
