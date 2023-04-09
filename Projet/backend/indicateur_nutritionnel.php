@@ -42,14 +42,10 @@ function getone($id) {
     global $pdo;
     $stmt = $pdo->prepare("SELECT * FROM indicateur_nutritionnel WHERE id_indicateur = ?");
     $stmt->execute([$id]);
-    $indicateur = $stmt->fetch(PDO::FETCH_OBJ);
-    if($indicateur){
-        $json = json_encode($indicateur);
-        echo $json;
-        http_response_code(200);
-    }else{
-        http_response_code(404);
-    }
+    $indicateur = $stmt->fetchAll(PDO::FETCH_OBJ);
+    $json = json_encode($indicateur);
+    echo $json;
+    http_response_code(200);
 }
 
 function add() {

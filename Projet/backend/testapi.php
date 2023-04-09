@@ -33,11 +33,11 @@
 		let date = '2023-04-01' // A CHANGER
 		$.ajax({
 			type: 'GET',
-			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/journal.php?date='+date+'&login='+login,
+			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/indicateur_nutritionnel.php',
 			success: function(data) {
 				responseObject = JSON.parse(data);
 				$('#display-result').html(data);
-				$('#display-result2').html(responseObject[0].id_journal);
+				$('#display-result2').html(responseObject[0].recommandation_oms);
 			}
 		});
 	});
@@ -46,15 +46,17 @@
 		let login = 'Lelea' // A CHANGER
 		let id_indicateur = '1' // A CHANGER
 		let startdate = '2023-04-01'
-		let enddate = '2023-04-01'
+		let poids = '100'
 		$.ajax({
 			type: 'GET',
-			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/dashboard.php?startdate='+startdate+'&enddate='+enddate+'&login='+login,
+			url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/indicateur_nutritionnel.php?id_indicateur=3',
 			success: function(data) {
 				responseObject = JSON.parse(data);
 				//id_type_repas = parseFloat(responseObject[0].quantite_fois_ratio).toFixed(1);
 				//id_aliment = id_type_repas
-				$('#display-result').html(data);
+				recommandation_par_kilo = responseObject[0].recommandation_oms
+                recommandation = recommandation_par_kilo * poids
+				$('#display-result').html(recommandation);
 			}
 		});
 	});

@@ -40,6 +40,36 @@ $(document).ready(function () {
                 }),
                 success: function (response) {
                     if (response == "Data inserted") {
+                        for (let i = 1; i <= 5; i++) {
+                            $.ajax({
+                                url: apifolder + '/backend/indicateur_nutritionnel.php?id_indicateur='+i,
+                                type: 'GET',
+                                success: function (data) {
+                                    responseObject = JSON.parse(data);
+                                    if (i==3){
+                                        recommandation_par_kilo = responseObject[0].recommandation_oms
+                                        recommandation = recommandation_par_kilo * poids
+                                    } else {
+                                        recommandation = responseObject[0].recommandation_oms
+                                    }
+                                    $.ajax({
+                                        url: apifolder + '/backend/objectif.php',
+                                        type: 'POST',
+                                        data: JSON.stringify({id_indicateur: i,login: login,quantite: recommandation}),
+                                        success: function (data) {
+                                            console.log('Objectif inserted');
+                                        },
+                                        error: function (xhr, textStatus, errorThrown) {
+                                            console.log('Error: ' + errorThrown);
+                                        }
+                                    });
+
+                                },
+                                error: function (xhr, textStatus, errorThrown) {
+                                    console.log('Error: ' + errorThrown);
+                                }
+                            });
+                        }
                         window.location.href = "signin.php";
                     } else {
                         alert("Error. Login already used");
