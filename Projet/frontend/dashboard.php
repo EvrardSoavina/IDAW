@@ -16,7 +16,6 @@ require_once('cookie_session.php');
     <div class="slider-wrap">
         <section class="home-slider owl-carousel">
 
-
             <div class="slider-item" style="background-image: url('img/hero_1.jpg');">
 
                 <div class="container">
@@ -43,7 +42,6 @@ require_once('cookie_session.php');
         </section>
         <!-- END slider -->
     </div>
-
 
     <section class="section bg-light py-5  bottom-slant-gray">
         <div class="container">
@@ -129,8 +127,6 @@ require_once('cookie_session.php');
 
                     <!-- Second Row -->
                 </form>
-
-
 
                 <form id="lunch-form" class="row" style="display: flex; align-items: flex-end;">
                     <input type="hidden" id="login" value="<?php echo $login; ?>">
@@ -264,7 +260,6 @@ require_once('cookie_session.php');
                 <!-- Third Row -->
 
             </form>
-
 
             <form id="water-form" class="row" style="display: flex; align-items: flex-end;">
                 <input type="hidden" id="login" value="<?php echo $login; ?>">

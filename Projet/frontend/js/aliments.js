@@ -52,7 +52,7 @@ $(document).ready(function () {
 
 
   var isRunning = false;
-  $("#add-breakfast, #add-lunch, #add-dinner, #add-snacks").on("click", function (event) {
+  $("#add-breakfast, #add-lunch, #add-dinner, #add-snacks, #add-water").on("click", function (event) {
     if (isRunning) {
       return; // Do nothing if the function is already running
     }
@@ -75,7 +75,7 @@ $(document).ready(function () {
       id_aliment = $("#snacks").val();
       quantite = $("#snacks-quantity").val();
     }else if (id_type_repas === 5) {
-      id_aliment = 0;
+      id_aliment = 9999;
       quantite = $("#water-quantity").val();
     }
 
@@ -154,7 +154,7 @@ $(document).ready(function () {
   var water_circles = document.getElementById("water_circles");
 
   document.getElementById("add-water").addEventListener("click", function () {
-    var glassesOfWater = parseInt(document.getElementById("water").value);
+    var glassesOfWater = parseInt(document.getElementById("water-quantity").value);
 
     for (var i = 0; i < glassesOfWater; i++) {
       var circle = document.createElement("div");
