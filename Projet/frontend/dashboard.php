@@ -116,7 +116,7 @@ require_once('cookie_session.php');
                         <table class="table table-striped" id="add-breakfast-table">
                             <thead>
                                 <tr>
-                                    <th>Add breakfast</th>
+                                    <th>My breakfast</th>
                                     <th>Quantity</th>
                                     <th>Actions</th>
                                 </tr>
@@ -160,7 +160,7 @@ require_once('cookie_session.php');
                         <table class="table table-striped" id="add-lunch-table">
                             <thead>
                                 <tr>
-                                    <th>Add Lunch</th>
+                                    <th>My Lunch</th>
                                     <th>Quantity</th>
                                     <th>Actions</th>
                                 </tr>
@@ -207,7 +207,7 @@ require_once('cookie_session.php');
                     <table class="table table-striped" id="add-dinner-table">
                         <thead>
                             <tr>
-                                <th>Add Dinner</th>
+                                <th>My Dinner</th>
                                 <th>Quantity</th>
                                 <th>Actions</th>
                             </tr>
@@ -250,7 +250,7 @@ require_once('cookie_session.php');
                     <table class="table table-striped" id="add-snacks-table">
                         <thead>
                             <tr>
-                                <th>Add Snacks</th>
+                                <th>My Snacks</th>
                                 <th>Quantity</th>
                                 <th>Actions</th>
                             </tr>
