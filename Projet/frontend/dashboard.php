@@ -96,15 +96,15 @@ require_once('cookie_session.php');
                     <!-- breakfast select bar + button -->
                     <div class="col-md-7 form-group">
                         <label for="breakfast">Breakfast</label>
-                        <select id="breakfast" class="form-control">
+                        <select id="breakfast" class="form-control" required>
                         </select>
                     </div>
                     <div class="col-md-3 form-group">
                         <label for="breakfast-quantity ">Quantity</label>
-                        <input type="number" id="breakfast-quantity" class="form-control " placeholder="Enter Quantity">
+                        <input type="number" id="breakfast-quantity" class="form-control " placeholder="Enter Quantity" required>
                     </div>
                     <div class="col-md-2 form-group">
-                        <button type="button" class="btn btn-primary add-btn" id="add-breakfast">Add</button>
+                        <button type="submit" class="btn btn-primary" id="add-breakfast">Add</button>
                     </div>
                     <!-- breakfast select bar  + button -->
 
@@ -129,45 +129,6 @@ require_once('cookie_session.php');
                     <!-- Second Row -->
                 </form>
 
-                <form id="snacks-form" class="row" style="display: flex; align-items: flex-end;">
-                    <input type="hidden" id="login" value="<?php echo $login; ?>">
-                    <!-- Third Row -->
-
-                    <!-- snacks select bar  + button -->
-                    <div class="col-md-7 form-group">
-                        <label for="snacks">Snacks</label>
-                        <select id="snacks" class="form-control">
-                        </select>
-                    </div>
-                    <div class="col-md-3 form-group">
-                        <label for="snacks-quantity ">Quantity</label>
-                        <input type="number" id="snacks-quantity" class="form-control " placeholder="Enter Quantity">
-                    </div>
-                    <div class="col-md-2 form-group">
-                        <button type="button" class="btn btn-primary add-btn" id="add-snacks">Add</button>
-                    </div>
-                    <!-- snacks select bar  + button -->
-
-                    <!-- Third Row -->
-
-                    <!-- snacks table meal -->
-                    <div class="col-md-12 form-group">
-                        <table class="table table-striped" id="add-snacks-table">
-                            <thead>
-                                <tr>
-                                    <th>Add Snacks</th>
-                                    <th>Quantity</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- snacks table meal -->
-
-                    <!-- Third Row -->
-
-                </form>
 
 
                 <form id="lunch-form" class="row" style="display: flex; align-items: flex-end;">
@@ -177,15 +138,15 @@ require_once('cookie_session.php');
                     <!-- lunch select bar + button -->
                     <div class="col-md-7 form-group">
                         <label for="lunch">Lunch</label>
-                        <select id="lunch" class="form-control">
+                        <select id="lunch" class="form-control" required>
                         </select>
                     </div>
                     <div class="col-md-3 form-group">
                         <label for="lunch-quantity ">Quantity</label>
-                        <input type="number" id="lunch-quantity" class="form-control " placeholder="Enter Quantity">
+                        <input type="number" id="lunch-quantity" class="form-control " placeholder="Enter Quantity" required>
                     </div>
                     <div class="col-md-2 form-group">
-                        <button type="button" class="btn btn-primary add-btn" id="add-lunch">Add</button>
+                        <button type="submit" class="btn btn-primary" id="add-lunch">Add</button>
                     </div>
                     <!-- lunch select bar + button -->
 
@@ -222,16 +183,16 @@ require_once('cookie_session.php');
                 <!-- dinner select bar + button -->
                 <div class="col-md-7 form-group">
                     <label for="dinner">Dinner</label>
-                    <select id="dinner" class="form-control">
+                    <select id="dinner" class="form-control" required>
                     </select>
                 </div>
                 <div class="col-md-3 form-group">
                     <label for="dinner-quantity ">Quantity</label>
-                    <input type="number" id="dinner-quantity" class="form-control " placeholder="Enter Quantity">
+                    <input type="number" id="dinner-quantity" class="form-control " placeholder="Enter Quantity" required>
                 </div>
 
                 <div class="col-md-2 form-group">
-                    <button type="button" class="btn btn-primary add-btn" id="add-dinner">Add</button>
+                    <button type="submit" class="btn btn-primary " id="add-dinner">Add</button>
                 </div>
                 <!-- dinner select bar + button -->
 
@@ -255,6 +216,48 @@ require_once('cookie_session.php');
                 <!-- dinner table meal -->
 
                 <!-- Seventh Row -->
+
+            </form>
+
+
+
+            <form id="snacks-form" class="row" style="display: flex; align-items: flex-end;">
+                <input type="hidden" id="login" value="<?php echo $login; ?>">
+                <!-- Third Row -->
+
+                <!-- snacks select bar  + button -->
+                <div class="col-md-7 form-group">
+                    <label for="snacks">Snacks</label>
+                    <select id="snacks" class="form-control" required>
+                    </select>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for="snacks-quantity ">Quantity</label>
+                    <input type="number" id="snacks-quantity" class="form-control " placeholder="Enter Quantity" required>
+                </div>
+                <div class="col-md-2 form-group">
+                    <button type="submit" class="btn btn-primary" id="add-snacks">Add</button>
+                </div>
+                <!-- snacks select bar  + button -->
+
+                <!-- Third Row -->
+
+                <!-- snacks table meal -->
+                <div class="col-md-12 form-group">
+                    <table class="table table-striped" id="add-snacks-table">
+                        <thead>
+                            <tr>
+                                <th>Add Snacks</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- snacks table meal -->
+
+                <!-- Third Row -->
 
             </form>
 
@@ -290,7 +293,7 @@ require_once('cookie_session.php');
         require_once('loader.php');
         ?>
         <script src="js/aliments.js"></script>
-        
+
 </body>
 
 </html>
