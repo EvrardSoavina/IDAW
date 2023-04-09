@@ -48,7 +48,7 @@ function getmirconutriment($date, $login, $id_indicateur) {
 function getalimentconsommees($date, $login) {
     global $pdo;
     // Récupération des utilisateurs
-    $stmt = $pdo->prepare("SELECT aliments.nom, consommation.quantite
+    $stmt = $pdo->prepare("SELECT aliments.nom, consommation.quantite, journal.id_type_repas
                             FROM journal
                             INNER JOIN consommation ON journal.id_journal = consommation.id_journal
                             INNER JOIN aliments ON consommation.id_aliment = aliments.id_aliment
