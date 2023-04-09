@@ -16,10 +16,24 @@ curl_close($ch);
 $result = json_decode($result, true);
 
 // Affichage du résultat
-echo "<table>";
-echo "<tr><th>Nom</th><th>Quantité</th></tr>";
-foreach ($result as $row) {
-    echo "<tr><td>".$row['date']."</td><td>".$row['nom']."</td><td>".$row['quantite']." g</td></tr>"; 
-}
-echo "</table>";
 ?>
+<table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Type d'aliment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($result as $row): ?>
+        <tr>
+            <td><?= $row['date'] ?></td>
+            <td><?= $row['nom'] ?></td>
+            <td><?= $row['quantite'] ?> g</td>
+            <td><?= $row['type'] ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

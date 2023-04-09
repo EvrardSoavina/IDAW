@@ -67,10 +67,11 @@ function getalimentconsommees($date, $login) {
 function getalimentconsommeeentreinterval($startdate, $enddate, $login) {
     global $pdo;
     // Récupération des utilisateurs
-    $stmt = $pdo->prepare("SELECT journal.date, aliments.nom, consommation.quantite
+    $stmt = $pdo->prepare("SELECT journal.date, aliments.nom, consommation.quantite, type_aliment.type
                             FROM journal
                             INNER JOIN consommation ON journal.id_journal = consommation.id_journal
                             INNER JOIN aliments ON consommation.id_aliment = aliments.id_aliment
+                            INNER JOIN type_aliment ON type_aliment.id_type = aliments.id_type
                             WHERE journal.date BETWEEN ? AND ? AND journal.login = ? ");
     $stmt->execute([$startdate, $enddate, $login]);
     $users = $stmt->fetchAll(PDO::FETCH_OBJ);
