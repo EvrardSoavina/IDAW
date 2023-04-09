@@ -235,6 +235,7 @@ require_once('cookie_session.php');
     require_once('footer.php');
     require_once('loader.php');
     ?>
+    <script src="js/signup.js"></script>
 
 </body>
 

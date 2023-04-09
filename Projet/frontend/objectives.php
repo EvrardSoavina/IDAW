@@ -97,6 +97,7 @@ require_once('cookie_session.php');
   require_once('loader.php');
   ?>
 
+<script src="js/objectives.js"></script>
 </body>
 
 </html>

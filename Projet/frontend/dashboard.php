@@ -88,11 +88,11 @@ require_once('cookie_session.php');
             </div>
 
             <div>
-    
+
                 <!-- first Row -->
 
                 <form id="breakfast-form" class="row" style="display: flex; align-items: flex-end;">
-                <input type="hidden" id="login" value="<?php echo $login; ?>">
+                    <input type="hidden" id="login" value="<?php echo $login; ?>">
                     <!-- breakfast select bar + button -->
                     <div class="col-md-7 form-group">
                         <label for="breakfast">Breakfast</label>
@@ -130,7 +130,7 @@ require_once('cookie_session.php');
                 </form>
 
                 <form id="snacks-form" class="row" style="display: flex; align-items: flex-end;">
-                <input type="hidden" id="login" value="<?php echo $login; ?>">
+                    <input type="hidden" id="login" value="<?php echo $login; ?>">
                     <!-- Third Row -->
 
                     <!-- snacks select bar  + button -->
@@ -171,7 +171,7 @@ require_once('cookie_session.php');
 
 
                 <form id="lunch-form" class="row" style="display: flex; align-items: flex-end;">
-                <input type="hidden" id="login" value="<?php echo $login; ?>">
+                    <input type="hidden" id="login" value="<?php echo $login; ?>">
                     <!-- Fourth Row -->
 
                     <!-- lunch select bar + button -->
@@ -216,7 +216,7 @@ require_once('cookie_session.php');
 
 
             <form id="dinner-form" class="row" style="display: flex; align-items: flex-end;">
-            <input type="hidden" id="login" value="<?php echo $login; ?>">
+                <input type="hidden" id="login" value="<?php echo $login; ?>">
                 <!-- Sixth Row -->
 
                 <!-- dinner select bar + button -->
@@ -260,7 +260,7 @@ require_once('cookie_session.php');
 
 
             <form id="water-form" class="row" style="display: flex; align-items: flex-end;">
-            <input type="hidden" id="login" value="<?php echo $login; ?>">
+                <input type="hidden" id="login" value="<?php echo $login; ?>">
                 <!-- water select bar + button -->
                 <div class="col-md-4 form-group">
                     <label for="water">Water</label>
@@ -284,11 +284,13 @@ require_once('cookie_session.php');
     </section>
 
     <footer class="site-footer-dashboard" role="contentinfo">
+
+        <?php
+        require_once('footer.php');
+        require_once('loader.php');
+        ?>
+        <script src="js/aliments.js"></script>
         
-    <?php
-    require_once('footer.php');
-    require_once('loader.php');
-    ?>
 </body>
 
 </html>

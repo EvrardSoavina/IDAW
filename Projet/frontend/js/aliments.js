@@ -25,10 +25,7 @@ $(document).ready(function () {
   let annee = date.getFullYear();
   let mois = ("0" + (date.getMonth() + 1)).slice(-2);
   let jour = ("0" + date.getDate()).slice(-2);
-  let heures = ("0" + date.getHours()).slice(-2);
-  let minutes = ("0" + date.getMinutes()).slice(-2);
-  let secondes = ("0" + date.getSeconds()).slice(-2);
-  let dateFormatee = `${annee}-${mois}-${jour} ${heures}:${minutes}:${secondes}`;
+  let dateFormatee = `${annee}-${mois}-${jour}`;
 
   $("#breakfast_add").on("click", function () {
     id_type_repas = 1;

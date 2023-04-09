@@ -11,27 +11,27 @@ $(document).ready(function () {
                 "motdepasse": password
             }),
             success: function (data) {
+                console.log('bien ouej');
                 if (data == 'Valid credentials') {
                     createCookie('login', login, 1); // création du cookie contenant le login
                     let date = new Date();
                     let annee = date.getFullYear();
                     let mois = ("0" + (date.getMonth() + 1)).slice(-2);
                     let jour = ("0" + date.getDate()).slice(-2);
-                    let heures = ("0" + date.getHours()).slice(-2);
-                    let minutes = ("0" + date.getMinutes()).slice(-2);
-                    let secondes = ("0" + date.getSeconds()).slice(-2);
-                    let dateFormatee = `${annee}-${mois}-${jour} ${heures}:${minutes}:${secondes}`;
+                    let dateFormatee = `${annee}-${mois}-${jour}`;
 
                     // Call the journal API
+
                     $.ajax({
-                        url: apifolder + '/backend/journal.php?date=date' + dateFormatee + '&login=' + login,
+                        url: apifolder + '/backend/journal.php?date=' + dateFormatee + '&login=' + login,
                         type: 'GET',
                         data: {
                             date: dateFormatee,
                             login: login
                         },
                         success: function (response) {
-                            if (response == null) {
+                            var data = JSON.parse(response);
+                            if (Array.isArray(data) && data.length === 0) {
                                 // Send a POST request to the journal API
                                 for (let i = 1; i <= 5; i++) {
                                     $.ajax({
@@ -53,6 +53,7 @@ $(document).ready(function () {
                                     });
                                 }
                             } else {
+                                console.log(typeof response);
                                 console.log(response);
                             }
                         },
