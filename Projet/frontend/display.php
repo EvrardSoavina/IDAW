@@ -56,7 +56,7 @@ require_once('cookie_session.php');
                 </div>
                 <div class="col-md-5">
                     <h3 data-aos="fade-up">Aliments consommés aujourd'hui</h3>
-                    <table id="aliments_consommées_auj"></table>
+                    <table class="table" id="aliments_consommées_auj"></table>
                 </div>
             </div>
             <div class="row mb-5 justify-content-center" data-aos="fade">
@@ -175,6 +175,7 @@ require_once('cookie_session.php');
                 quantiteCell.innerText = aliment.quantite+' g';
                 quantiteCell.style.textAlign = "center";
             });
+            
         
         },
         error: function(jqXHR, textStatus, errorThrown) {
