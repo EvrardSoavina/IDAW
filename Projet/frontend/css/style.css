@@ -1823,6 +1823,7 @@ header .navbar .cta-btn a:hover {
   background-color: #5AC8D8;
   border-radius: 50%;
   padding: 3px;
+  margin: 0.5%;
 }
 
 #water_circles {

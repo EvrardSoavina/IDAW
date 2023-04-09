@@ -74,7 +74,6 @@ require_once('cookie_session.php');
             </div>
           </form>
 
-
         </div>
       </div>
     </div>
