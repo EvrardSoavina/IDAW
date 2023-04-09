@@ -51,13 +51,6 @@ require_once('cookie_session.php');
                       <input type="number" id="quantite" class="form-control" placeholder="quantity" required>
                     </div>
                     <!-- quantity -->
-
-                    <!-- remove button -->
-                    <div class="col-md-4 form-group">
-                      <div class="remove-btn-wrap">
-                        <button type="button" class="btn btn-danger remove-btn" style="display: flex; justify-content: center;">Remove</button>
-                      </div>
-                    </div>
                     
                   </div>
                 </div>
