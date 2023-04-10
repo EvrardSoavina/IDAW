@@ -61,4 +61,4 @@
 
 ### Bouton Update :
 
-- Pas encore implémenté, mais il était sénsé permettre de modifier une quantité pour un aliment, cependant la supression et l'ajout de ce nouvel aliment peut fonctionner le temps d'une nouvelle MAJ :-)
+- Pas encore implémenté, mais il était cénsé permettre de modifier une quantité pour un aliment, cependant la supression et l'ajout de ce nouvel aliment peut fonctionner le temps d'une nouvelle MAJ :-)

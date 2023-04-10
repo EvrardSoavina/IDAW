@@ -40,7 +40,7 @@ require_once('cookie_session.php');
               <p class="sched-time">
                 <span><span class="fa fa-calendar"></span> February 22, 2023</span> <br>
               </p>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>If you're looking for a fresh and healthy meal, a salad is a great option.</p>
 
               <p><a href="#" class="btn btn-primary btn-sm">Read More</a></p>
 
@@ -56,7 +56,7 @@ require_once('cookie_session.php');
               <p class="sched-time">
                 <span><span class="fa fa-calendar"></span> February 28, 2023</span> <br>
               </p>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>Sweet potatoes are a delicious and nutritious vegetable that can be cooked in a variety of ways.</p>
 
               <p><a href="#" class="btn btn-primary btn-sm">Read More</a></p>
 
@@ -73,7 +73,7 @@ require_once('cookie_session.php');
               <p class="sched-time">
                 <span><span class="fa fa-calendar"></span> March 2, 2023</span> <br>
               </p>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>Noodles are a popular dish that can be made in a variety of ways, from stir-fried to boiled in soups.</p>
 
               <p><a href="#" class="btn btn-primary btn-sm">Read More</a></p>
 
@@ -89,7 +89,7 @@ require_once('cookie_session.php');
               <p class="sched-time">
                 <span><span class="fa fa-calendar"></span> March 7, 2023</span> <br>
               </p>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>Learn the basics of creating a tasty salad with this step-by-step guide.</p>
 
               <p><a href="#" class="btn btn-primary btn-sm">Read More</a></p>
 
@@ -106,7 +106,7 @@ require_once('cookie_session.php');
               <p class="sched-time">
                 <span><span class="fa fa-calendar"></span> March 9, 2023</span> <br>
               </p>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>Learn the basics of creating a tasty salad with this step-by-step guide.</p>
 
               <p><a href="#" class="btn btn-primary btn-sm">Read More</a></p>
 
@@ -122,7 +122,7 @@ require_once('cookie_session.php');
               <p class="sched-time">
                 <span><span class="fa fa-calendar"></span> March 24, 2023</span> <br>
               </p>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>Discover the best techniques for cooking sweet potatoes and enjoy a delicious meal.</p>
 
               <p><a href="#" class="btn btn-primary btn-sm">Read More</a></p>
 
@@ -156,7 +156,6 @@ require_once('cookie_session.php');
           <div class="row">
             <div class="col-md-12 mb-3">
               <h3>Subsribe Newsletter</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore ex temporibus magni ipsam inventore dolorum sunt, amet vel.</p>
             </div>
 
             <form action="" class="col-12 mb-5">

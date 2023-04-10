@@ -2,7 +2,7 @@
       <div class="row mb-5">
         <div class="col-md-4 mb-5">
           <h3>About Us</h3>
-          <p class="mb-5">We are a group of student-engineers building an website in HTML/CSS/JS/PHP/SQL to have a healthier alimentation</p>
+          <p class="mb-5">We are a group of student-engineers building an website in HTML/CSS/JS/PHP/SQL to have a healthier feed</p>
           <ul class="list-unstyled footer-link d-flex footer-social">
             <li><a href="#" class="p-2"><span class="fa fa-twitter"></span></a></li>
             <li><a href="#" class="p-2"><span class="fa fa-facebook"></span></a></li>

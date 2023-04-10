@@ -49,25 +49,25 @@ require_once('cookie_session.php');
   <section class="section bg-light py-5  bottom-slant-gray">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-left service-block" data-aos="fade-up" data-aos-delay="">
-          <span class="wrap-icon"><span class="flaticon-dinner d-block mb-4"></span></span>
-          <h3 class="mb-2 text-primary">Enjoy Eating</h3>
-          <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-        </div>
         <div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-left service-block" data-aos="fade-up" data-aos-delay="100">
           <span class="wrap-icon"><span class="flaticon-fish d-block mb-4"></span></span>
-          <h3 class="mb-2 text-primary">Fresh Sea Foods</h3>
-          <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+          <h3 class="mb-2 text-primary">Learn. Follow. Progress.</h3>
+          <p>Keeping a food diary gives you a better understanding of your habits and increases your chances of reaching your goals.</p>
         </div>
         <div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-left service-block" data-aos="fade-up" data-aos-delay="200">
           <span class="wrap-icon"><span class="flaticon-hot-coffee-rounded-cup-on-a-plate-from-side-view d-block mb-4"></span></span>
-          <h3 class="mb-2 text-primary">Cup of Coffees</h3>
-          <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+          <h3 class="mb-2 text-primary">Record more easily.</h3>
+          <p>Scan barcodes, save meals and recipes, and use Quick Tools for quick and easy food tracking.</p>
         </div>
         <div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-left service-block" data-aos="fade-up" data-aos-delay="300">
           <span class="wrap-icon"><span class="flaticon-meat d-block mb-4"></span></span>
-          <h3 class="mb-2 text-primary">Meat Eaters</h3>
-          <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+          <h3 class="mb-2 text-primary">Stay motivated.</h3>
+          <p>Join the world's largest fitness community for tips and tricks, plus 24/7 support.</p>
+        </div>
+        <div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-left service-block" data-aos="fade-up" data-aos-delay="">
+          <span class="wrap-icon"><span class="flaticon-dinner d-block mb-4"></span></span>
+          <h3 class="mb-2 text-primary">Recipes & Inspiration</h3>
+          <p>Get nutritionist-approved recipes and motivational workout tips</p>
         </div>
       </div>
     </div>
@@ -77,8 +77,8 @@ require_once('cookie_session.php');
     <div class="container">
       <div class="row mb-5 justify-content-center" data-aos="fade">
         <div class="col-md-7 text-center heading-wrap">
-          <h2 data-aos="fade-up">The Restaurant</h2>
-          <p data-aos="fade-up" data-aos-delay="100">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+          <h2 data-aos="fade-up">Good health starts with good nutrition.</h2>
+          <p data-aos="fade-up" data-aos-delay="100">Want to be more careful about what you eat? Track your meals, learn more about your habits, and reach your goals with Eat's Me.</p>
         </div>
       </div>
       <div class="row align-items-center">
@@ -118,7 +118,7 @@ require_once('cookie_session.php');
             <div class="bg-image order-2" style="background-image: url('img/dishes_4.jpg');" data-aos="fade"></div>
             <div class="text order-1">
               <h3>Grilled Caesar salad, shaved reggiano</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
+              <p></p>
               <p class="text-primary h3">584 kcal</p>
             </div>
 
@@ -128,7 +128,7 @@ require_once('cookie_session.php');
             <div class="bg-image" style="background-image: url('img/dishes_1.jpg');" data-aos="fade"></div>
             <div class="text">
               <h3>Spicy Calamari and beans</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
+              <p></p>                
               <p class="text-primary h3">398 kcal</p>
 
             </div>
@@ -142,7 +142,7 @@ require_once('cookie_session.php');
             <div class="bg-image order-2" style="background-image: url('img/dishes_2.jpg');" data-aos="fade"></div>
             <div class="text order-1">
               <h3>Bacon wrapped wild gulf prawns</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
+              <p></p>
               <p class="text-primary h3">579 kcal</p>
 
             </div>
@@ -153,7 +153,7 @@ require_once('cookie_session.php');
             <div class="bg-image" style="background-image: url('img/dishes_3.jpg');" data-aos="fade"></div>
             <div class="text">
               <h3>Seared ahi tuna fillet*, honey-ginger sauce</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
+              <p></p>
               <p class="text-primary h3">630 kcal</p>
 
             </div>
@@ -186,7 +186,7 @@ require_once('cookie_session.php');
           <div class="owl-carousel centernonloop2">
             <div class="slide" data-aos="fade-left" data-aos-delay="100">
               <blockquote class="testimonial">
-                <p>&ldquo; Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. &rdquo;</p>
+                <p>&ldquo; Eat's Me allowed me to sound the alarm bells about my diet, and to clearly understand what I absolutely had to change. &rdquo;</p>
                 <div class="d-flex author">
                   <img src="img/person_1.jpg" alt="" class="mr-4">
                   <div class="author-info">
@@ -198,7 +198,7 @@ require_once('cookie_session.php');
             </div>
             <div class="slide" data-aos="fade-left" data-aos-delay="200">
               <blockquote class="testimonial">
-                <p>&ldquo; Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. &rdquo;</p>
+                <p>&ldquo; Now, when my friends get into running and get frustrated, I tell them to hang in there because eventually they'll go faster. &rdquo;</p>
                 <div class="d-flex author">
                   <img src="img/person_2.jpg" alt="" class="mr-4">
                   <div class="author-info">
@@ -210,7 +210,7 @@ require_once('cookie_session.php');
             </div>
             <div class="slide" data-aos="fade-left" data-aos-delay="300">
               <blockquote class="testimonial">
-                <p>&ldquo; Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. &rdquo;</p>
+                <p>&ldquo; I naturally adopted the concept of conscious eating.. it takes 15 to 20 minutes for food to reach the stomach, so I started eating more slowly. &rdquo;</p>
                 <div class="d-flex author">
                   <img src="img/person_3.jpg" alt="" class="mr-4">
                   <div class="author-info">
@@ -248,11 +248,11 @@ require_once('cookie_session.php');
           <div class="blog d-block">
             <a class="bg-image d-block" href="single.php" style="background-image: url('img/dishes_1.jpg');"></a>
             <div class="text">
-              <h3><a href="single.php">How To Cook Pasta?</a></h3>
+              <h3><a href="single.php">15 Make-Ahead Breakfasts Under 300 Calories</a></h3>
               <p class="sched-time">
                 <span><span class="fa fa-calendar"></span> April 22, 2018</span> <br>
               </p>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>We've all heard more than once that starting the day with a healthy breakfast is great for the brain and the belly. But with all that prework hustle and bustle, not everyone has time to whip up a hot stack of pancakes or bake a fancy frittata. Make your morning routine a breeze by preparing a few nutritious staples ahead of time, like hearty oatmeal cups, simple egg dishes and grab-and-go bars.</p>
 
               <p><a href="#" class="btn btn-primary btn-sm">Read More</a></p>
 
@@ -264,11 +264,11 @@ require_once('cookie_session.php');
           <div class="blog d-block">
             <a class="bg-image d-block" href="single.php" style="background-image: url('img/dishes_2.jpg');"></a>
             <div class="text">
-              <h3><a href="single.php">How To Cook Pasta?</a></h3>
+              <h3><a href="single.php">The Problem with Cheat Days</a></h3>
               <p class="sched-time">
                 <span><span class="fa fa-calendar"></span> April 22, 2018</span> <br>
               </p>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>As a registered dietitian, I shudder when I hear the term “cheat day.” Not because I'm thinking of people shoving donuts and cheeseburgers in their mouths left and right, but because it's a term rooted in diet culture that firmly places food in “good” or “bad” camps.</p>
 
               <p><a href="#" class="btn btn-primary btn-sm">Read More</a></p>
 
@@ -288,7 +288,6 @@ require_once('cookie_session.php');
           <div class="row">
             <div class="col-md-12 mb-3">
               <h3>Subsribe Newsletter</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore ex temporibus magni ipsam inventore dolorum sunt, amet vel.</p>
             </div>
 
             <form action="" class="col-12 mb-5">

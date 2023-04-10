@@ -45,36 +45,7 @@ require_once('cookie_session.php');
 
     <section class="section bg-light py-5  bottom-slant-gray">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-left service-block" data-aos="fade-up" data-aos-delay="">
-                    <span class="wrap-icon"><span class="flaticon-dinner d-block mb-4"></span></span>
-                    <h3 class="mb-2 text-primary">Enjoy Eating</h3>
-                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                </div>
-                <div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-left service-block" data-aos="fade-up" data-aos-delay="100">
-                    <span class="wrap-icon"><span class="flaticon-fish d-block mb-4"></span></span>
-                    <h3 class="mb-2 text-primary">Fresh Sea Foods</h3>
-                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                </div>
-                <div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-left service-block" data-aos="fade-up" data-aos-delay="200">
-                    <span class="wrap-icon"><span class="flaticon-hot-coffee-rounded-cup-on-a-plate-from-side-view d-block mb-4"></span></span>
-                    <h3 class="mb-2 text-primary">Cup of Coffees</h3>
-                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                </div>
-                <div class="col-md-6 mb-4 mb-lg-0 col-lg-3 text-left service-block" data-aos="fade-up" data-aos-delay="300">
-                    <span class="wrap-icon"><span class="flaticon-meat d-block mb-4"></span></span>
-                    <h3 class="mb-2 text-primary">Meat Eaters</h3>
-                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="section pb-0">
-        <div class="container">
-
-            <div class="row mb-5 justify-content-center" data-aos="fade">
+        <div class="row mb-5 justify-content-center" data-aos="fade">
                 <div class="col-md-7 text-center heading-wrap">
                     <h2 data-aos="fade-up">My dashboard</h2>
                     <p data-aos="fade-up" data-aos-delay="100">
@@ -84,52 +55,69 @@ require_once('cookie_session.php');
                     </p>
                 </div>
             </div>
+        </div>
+    </section>
 
+
+    <section class="section pb-0">
+        <div class="container">
+
+
+<!-- Affichage du dashboard -->
             <div class="row mb-5 justify-content-center" data-aos="fade">
-                <h1 data-aos="fade-up">My dashboard</h1> 
+                <h2 data-aos="fade-up">My daily nutritional indicators </h2> 
             </div>
             <div class="row mb-5 justify-content-center" data-aos="fade">
                 <div class="col-md-7 text-center heading-wrap">
                     <canvas id="activeEnergyRing"></canvas>
+                    <div style="text-align: center">Energy/Énergie</div>
                 </div>
-                <div class="col-md-5">
-                    <h3 data-aos="fade-up">Aliments consommés aujourd'hui</h3>
-                    <table class="table" id="aliments_consommées_auj"></table>
-                </div>
-            </div>
-            <div class="row mb-5 justify-content-center" data-aos="fade">
-                <form>
-                    <label for="start-date">Date de début :</label>
-                    <input type="date" id="start-date" name="start-date">
-
-                    <label for="end-date">Date de fin :</label>
-                    <input type="date" id="end-date" name="end-date">
-
-                    <button type="button" onclick="getdashboard()">Afficher</button>
-                </form>
-            </div>
-            <div class="row mb-5 justify-content-center" data-aos="fade">
-                <div id="result"></div>
             </div>
             <div class="row mb-5 justify-content-center" data-aos="fade">
                 <div class="col-md-3">
                     <canvas id="activeEnergyRing2"></canvas>
-                    <div style="text-align: center">Eau</div>
+                    <div style="text-align: center">Water/Eau</div>
                 </div>
                 <div class="col-md-3">
                     <canvas id="activeEnergyRing3"></canvas>
-                    <div style="text-align: center">Proteine</div>
+                    <div style="text-align: center">Protein/Protéine</div>
                 </div>
                 <div class="col-md-3">
                     <canvas id="activeEnergyRing4"></canvas>
-                    <div style="text-align: center">Glucides</div>
+                    <div style="text-align: center">Carbohydrates/Glucides</div>
                 </div>
                 <div class="col-md-3">
                     <canvas id="activeEnergyRing5"></canvas>
-                    <div style="text-align: center">Lipides</div>
+                    <div style="text-align: center">Lipids/Lipides</div>
                 </div>
             </div>
+            <div class="row mb-5 justify-content-center" data-aos="fade">
+                <h2 data-aos="fade-up">Your intake over the past days: </h2> 
+            </div>
+            <div class="row mb-5 justify-content-center" data-aos="fade">
+                <form>
+                    <label for="start-date">Start date :</label>
+                    <input type="date" id="start-date" name="start-date" value="<?php echo date('Y-m-d'); ?>">
 
+                    <label for="end-date">End date :</label>
+                    <input type="date" id="end-date" name="end-date" value="<?php echo date('Y-m-d'); ?>">
+
+                    <button type="button" onclick="getdashboard()">Display</button>
+                </form>
+
+                <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    getdashboard();
+                });
+                </script>
+            </div>
+            <div class="row mb-5 justify-content-center" data-aos="fade">
+                <div id="result"></div>
+            </div>
+<!-- Ajout d'aliments -->
+            <div class="row mb-5 justify-content-center" data-aos="fade">
+                <h1 data-aos="fade-up">ADD FOOD: </h1> 
+            </div>
             <div>
 
                 <!-- first Row -->
@@ -338,138 +326,10 @@ require_once('cookie_session.php');
         <?php
         require_once('footer.php');
         require_once('loader.php');
+        require_once('js/js_pour_dashboard.php');
         ?>
         <script src="js/aliments.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-<script>
 
-    let login = '<?php echo $_SESSION['login'] ?>'
-    let date = new Date();
-    let annee = date.getFullYear();
-    let mois = ("0" + (date.getMonth() + 1)).slice(-2);
-    let jour = ("0" + date.getDate()).slice(-2);
-    let dateFormatee = `${annee}-${mois}-${jour}`;
-    //let date = '2023-04-01';
-
-    function createring(id_indicateur, elementid, unite) {
-        $.ajax({
-        type: 'GET',
-        url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/objectif.php?login='+login+'&id_indicateur='+id_indicateur,
-        success: function(data) {
-            responseObject = JSON.parse(data);
-            indicateur_objectif = responseObject[0].quantite
-            console.log(indicateur_objectif);
-            $.ajax({
-                type: 'GET',
-                url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/dashboard.php?date='+dateFormatee+'&login='+login+'&id_indicateur='+id_indicateur,
-                success: function(data) {
-                    responseObject = JSON.parse(data);
-                    calories_consommées = responseObject[0].quantite_fois_ratio;
-                    // Données pour l'anneau de l'énergie active
-                    var activeEnergyData = {
-                        datasets: [{
-                            data: [calories_consommées, indicateur_objectif-calories_consommées],
-                            backgroundColor: ['#FF2D55', '#EDEDED'],
-                            borderWidth: 1
-                        }]
-                    };
-                    // Options pour l'anneau de l'énergie active
-                    var activeEnergyOptions = {
-                        rotation: 0.5 * Math.PI,
-                        circumference: 2 * Math.PI,
-                        cutoutPercentage: 75,
-                        tooltips: {
-                            enabled: false
-                        },
-                        hover: {
-                            mode: null
-                        },
-                        title: {
-                            display: true,
-                            text: parseFloat(calories_consommées).toFixed()+' '+unite+'/'+parseFloat(indicateur_objectif).toFixed(),
-                            position: 'bottom',
-                            fontSize: 15,
-                            fontFamily: 'Arial',
-                            fontColor: '#333',
-                            fontStyle: 'bold',
-                            lineHeight: 1.2,
-                            padding: 10
-                        }
-                    };
-
-                    // Créer l'objet Chart pour l'anneau de l'énergie active
-                    var activeEnergyCtx = document.getElementById(elementid).getContext('2d');
-                    var activeEnergyChart = new Chart(activeEnergyCtx, {
-                        type: 'doughnut',
-                        data: activeEnergyData,
-                        options: activeEnergyOptions
-                    });
-                    
-                    // Appeler la fonction createring suivante
-                    if (id_indicateur < 5) {
-                        createring(parseInt(id_indicateur) + 1, 'activeEnergyRing' + (parseInt(id_indicateur) + 1), 'g');
-                    }
-                }
-            });
-        }
-        });
-    }
-
-    createring('1', 'activeEnergyRing', 'kcal');
-
-
-    $.ajax({
-        method: "GET",
-        url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/dashboard.php?date='+dateFormatee+'&login='+login,
-        success: function(datas) {
-
-            const data = JSON.parse(datas);
-
-            const table = document.getElementById("aliments_consommées_auj");
-            // Créez une ligne pour les en-têtes
-            const headerRow = table.insertRow(0);
-            const nomHeader = headerRow.insertCell(0);
-            nomHeader.innerHTML = "<b>Nom</b>";
-            const quantiteHeader = headerRow.insertCell(1);
-            quantiteHeader.innerHTML = "<b>Quantité</b>";
-
-            // Ajoutez une ligne pour chaque aliment
-            data.forEach((aliment, index) => {
-                const row = table.insertRow(index + 1);
-                const nomCell = row.insertCell(0);
-                nomCell.innerText = aliment.nom;
-                const quantiteCell = row.insertCell(1);
-                quantiteCell.innerText = aliment.quantite+' g';
-                quantiteCell.style.textAlign = "center";
-            });
-            
-        
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            alert("Erreur pour récupere les données de la table MySQL");
-            console.log(textStatus, errorThrown);
-        }
-    });
-
-    function getdashboard() {
-        var startdate = document.getElementById("start-date").value;
-        var enddate = document.getElementById("end-date").value;
-        var login = '<?php echo $_SESSION['login'] ?>';
-
-        var xhr = new XMLHttpRequest(); 
-        xhr.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("result").innerHTML = this.responseText;
-            }
-        };
-        xhr.open("POST", "get_dashboard.php", true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.send("startdate="+startdate+"&enddate="+enddate+"&login="+login);
-    }
-    
-        
-
-</script>
 
 </body>
 
