@@ -17,7 +17,7 @@ $result = json_decode($result, true);
 
 // Affichage du résultat
 ?>
-<table class="table">
+<table id="table" class="table">
     <thead>
         <tr>
         <th scope="col">Date</th>
