@@ -67,7 +67,7 @@ require_once('cookie_session.php');
                     <label for="end-date">Date de fin :</label>
                     <input type="date" id="end-date" name="end-date">
 
-                    <button type="button" onclick="getdashboard()">Obtenir la somme</button>
+                    <button type="button" onclick="getdashboard()">Afficher</button>
                 </form>
             </div>
             <div class="row mb-5 justify-content-center" data-aos="fade">

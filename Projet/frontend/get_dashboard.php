@@ -17,6 +17,7 @@ $result = json_decode($result, true);
 
 // Affichage du résultat
 ?>
+
 <table id="table" class="table">
     <thead>
         <tr>
