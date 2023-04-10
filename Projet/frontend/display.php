@@ -74,14 +74,21 @@ require_once('cookie_session.php');
                 <div id="result"></div>
             </div>
             <div class="row mb-5 justify-content-center" data-aos="fade">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <canvas id="activeEnergyRing2"></canvas>
+                    <div style="text-align: center">Eau</div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <canvas id="activeEnergyRing3"></canvas>
+                    <div style="text-align: center">Proteine</div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <canvas id="activeEnergyRing4"></canvas>
+                    <div style="text-align: center">Glucides</div>
+                </div>
+                <div class="col-md-3">
+                    <canvas id="activeEnergyRing5"></canvas>
+                    <div style="text-align: center">Lipides</div>
                 </div>
             </div>
 
@@ -95,7 +102,7 @@ require_once('cookie_session.php');
     require_once('footer.php');
     require_once('loader.php');
     ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script>
 
     let login = '<?php echo $_SESSION['login'] ?>'
@@ -103,7 +110,7 @@ require_once('cookie_session.php');
     let annee = date.getFullYear();
     let mois = ("0" + (date.getMonth() + 1)).slice(-2);
     let jour = ("0" + date.getDate()).slice(-2);
-    let dateFormatee = '2023-04-01' //`${annee}-${mois}-${jour}`;
+    let dateFormatee = `${annee}-${mois}-${jour}`;
     //let date = '2023-04-01';
 
     function createring(id_indicateur, elementid, unite) {
@@ -113,6 +120,7 @@ require_once('cookie_session.php');
         success: function(data) {
             responseObject = JSON.parse(data);
             indicateur_objectif = responseObject[0].quantite
+            console.log(indicateur_objectif);
             $.ajax({
                 type: 'GET',
                 url: 'http://localhost:8888/Projet_IDAW/IDAW/Projet/backend/dashboard.php?date='+dateFormatee+'&login='+login+'&id_indicateur='+id_indicateur,
@@ -142,7 +150,7 @@ require_once('cookie_session.php');
                             display: true,
                             text: parseFloat(calories_consommées).toFixed()+' '+unite+'/'+parseFloat(indicateur_objectif).toFixed(),
                             position: 'bottom',
-                            fontSize: 20,
+                            fontSize: 15,
                             fontFamily: 'Arial',
                             fontColor: '#333',
                             fontStyle: 'bold',
@@ -158,6 +166,11 @@ require_once('cookie_session.php');
                         data: activeEnergyData,
                         options: activeEnergyOptions
                     });
+                    
+                    // Appeler la fonction createring suivante
+                    if (id_indicateur < 5) {
+                        createring(parseInt(id_indicateur) + 1, 'activeEnergyRing' + (parseInt(id_indicateur) + 1), 'g');
+                    }
                 }
             });
         }
@@ -165,10 +178,6 @@ require_once('cookie_session.php');
     }
 
     createring('1', 'activeEnergyRing', 'kcal');
-    createring('2', 'activeEnergyRing2', 'g');
-    createring('1', 'activeEnergyRing3', 'kcal');
-    createring('1', 'activeEnergyRing4', 'kcal');
-    createring('1', 'activeEnergyRing5', 'kcal');
 
 
     $.ajax({
