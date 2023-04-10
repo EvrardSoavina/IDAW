@@ -47,6 +47,7 @@ h1, h2, h3, h4, h5 {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   border-radius: 0px !important;
+  margin:1%;
 }
 
 .btn:focus, .btn:active, .form-control:focus, .form-control:active {
@@ -1826,11 +1827,20 @@ header .navbar .cta-btn a:hover {
   margin: 0.5%;
 }
 
+.meal-th {
+  width: 60%;
+}
+
 #water_circles {
   display: flex;
   justify-content: flex-end;
   padding-bottom: 1em;
 }
+
+th {
+  text-align: center;
+}
+
 
 
 

@@ -107,26 +107,27 @@ require_once('cookie_session.php');
                     <!-- breakfast select bar  + button -->
 
                     <!-- first Row -->
-                    <!-- Second Row -->
-
-                    <!-- breakfast table meal -->
-                    <div class="col-md-12 form-group">
-                        <table class="table table-striped" id="add-breakfast-table">
-                            <thead>
-                                <tr>
-                                    <th>My breakfast</th>
-                                    <th>Quantity</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- breakfast table meal -->
-
-                    <!-- Second Row -->
                 </form>
+                <!-- Second Row -->
+
+                <!-- breakfast table meal -->
+                <div class="col-md-12 form-group">
+                    <table class="table table-striped" id="add-breakfast-table">
+                        <thead>
+                            <tr>
+                                <th class="meal-th" >My breakfast</th>
+                                <th>Quantity</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- breakfast table meal -->
+
+                <!-- Second Row -->
+
 
                 <form id="lunch-form" class="row" style="display: flex; align-items: flex-end;">
                     <input type="hidden" id="login" value="<?php echo $login; ?>">
@@ -148,28 +149,29 @@ require_once('cookie_session.php');
                     <!-- lunch select bar + button -->
 
                     <!-- Fourth Row -->
-
-                    <!-- Fifth Row -->
-
-                    <!-- lunch table meal -->
-                    <div class="col-md-12 form-group">
-                        <table class="table table-striped" id="add-lunch-table">
-                            <thead>
-                                <tr>
-                                    <th>My Lunch</th>
-                                    <th>Quantity</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- lunch table meal -->
-
-                    <!-- Fifth Row -->
-
                 </form>
+
+                <!-- Fifth Row -->
+
+                <!-- lunch table meal -->
+                <div class="col-md-12 form-group">
+                    <table class="table table-striped" id="add-lunch-table">
+                        <thead>
+                            <tr>
+                                <th class="meal-th">My Lunch</th>
+                                <th>Quantity</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- lunch table meal -->
+
+                <!-- Fifth Row -->
+
+
             </div>
 
 
@@ -195,28 +197,29 @@ require_once('cookie_session.php');
                 <!-- dinner select bar + button -->
 
                 <!-- Sixth Row -->
-
-                <!-- Seventh Row -->
-
-                <!-- dinner table meal -->
-                <div class="col-md-12 form-group">
-                    <table class="table table-striped" id="add-dinner-table">
-                        <thead>
-                            <tr>
-                                <th>My Dinner</th>
-                                <th>Quantity</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- dinner table meal -->
-
-                <!-- Seventh Row -->
-
             </form>
+
+            <!-- Seventh Row -->
+
+            <!-- dinner table meal -->
+            <div class="col-md-12 form-group">
+                <table class="table table-striped" id="add-dinner-table">
+                    <thead>
+                        <tr>
+                            <th class="meal-th">My Dinner</th>
+                            <th>Quantity</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!-- dinner table meal -->
+
+            <!-- Seventh Row -->
+
+
 
 
 
@@ -240,26 +243,25 @@ require_once('cookie_session.php');
                 <!-- snacks select bar  + button -->
 
                 <!-- Third Row -->
-
-                <!-- snacks table meal -->
-                <div class="col-md-12 form-group">
-                    <table class="table table-striped" id="add-snacks-table">
-                        <thead>
-                            <tr>
-                                <th>My Snacks</th>
-                                <th>Quantity</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- snacks table meal -->
-
-                <!-- Third Row -->
-
             </form>
+
+            <!-- snacks table meal -->
+            <div class="col-md-12 form-group">
+                <table class="table table-striped" id="add-snacks-table">
+                    <thead>
+                        <tr>
+                            <th class="meal-th">My Snacks</th>
+                            <th>Quantity</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!-- snacks table meal -->
+
+            <!-- Third Row -->
 
             <form id="water-form" class="row" style="display: flex; align-items: flex-end;">
                 <input type="hidden" id="login" value="<?php echo $login; ?>">
@@ -271,16 +273,17 @@ require_once('cookie_session.php');
                 <div class="col-md-2 form-group pr-0">
                     <button type="submit" class="btn btn-primary" id="add-water">Add</button>
                 </div>
-                <div class="col-md-2 form-group pl-0">
-                    <button type="button" class="btn btn-danger remove-btn" id="remove-water" style="text-align:right">Remove</button>
-                </div>
-                <!-- water select bar + buttons -->
-
-                <div class="col-md-4 form-group" id="water_circles">
-                    <!-- 6 blocks here for the blue circles-->
-                </div>
-
             </form>
+            <div class="col-md-2 form-group pl-0">
+                <button type="button" class="btn btn-danger remove-btn" id="remove-water" style="text-align:right">Remove</button>
+            </div>
+            <!-- water select bar + buttons -->
+
+            <div class="col-md-4 form-group" id="water_circles">
+                <!-- 6 blocks here for the blue circles-->
+            </div>
+
+
 
         </div>
     </section>
