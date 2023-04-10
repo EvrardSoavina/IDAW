@@ -1,5 +1,46 @@
 # README FRONT END
 
+# Installation
+
+Pour utiliser ce site, il vous suffit de:
+1. cloner ce projet avec git clone https://github.com/EvrardSoavina/IDAW.git
+2. import de la base de donnée via le fichier backend/sql/database.sql dans PHPMyAdmin local
+3. édition des identifiants de connexion à la BD dans backend/config.php
+4. édition du prefixe de l'URL de l'API REST http://localhost/NOM_Prenom dans frontend/config.php
+5. Aller sur http://localhost/[...]/Projet/frontend
+
+# Description
+
+## Technologies utilisées
+
+- HTML
+- CSS
+- JavaScript
+- jQuery
+- SQL
+
+## Pages du site : 
+
+- index.php est la page d'accueil du site
+- recipes.php est une page de contenu
+- signup.php est la page pour s'inscrire sur le site
+- news.php est une page de contenu
+- objectives.php permet à l'utilisateur une fois connecté de modifier ses objectifs
+- dashboard.php est la page centrale du site. Elle permet de visualiser toutes les données et d'ajouter des aliments
+- signin.php est la page pour se connecter au site
+- logout.php permet de se déconnecter du site
+
+
+### Pages permettant le bon fonctionnement du site et d'améliorer la lisibilité du code
+
+- config.php
+- banner.php
+- header.php
+- loader.php
+- footer.php
+- get_dashboard.php
+- cookie_session.php
+
 
 ## login.js : 
 
@@ -59,6 +100,7 @@
 
 - Le script gère également la situation où l'utilisateur clique plusieurs fois sur le bouton d'ajout en même temps. Dans ce cas, la fonction d'ajout ne sera exécutée qu'une seule fois.
 
-### Bouton Update :
 
-- Pas encore implémenté, mais il était cénsé permettre de modifier une quantité pour un aliment, cependant la supression et l'ajout de ce nouvel aliment peut fonctionner le temps d'une nouvelle MAJ :-)
+## Améliorations possibles :
+
+- Bouton update dans dashboard.php: Pas encore implémenté, mais il était cénsé permettre de modifier une quantité pour un aliment, cependant la supression et l'ajout de ce nouvel aliment peut fonctionner le temps d'une nouvelle MAJ :-)
