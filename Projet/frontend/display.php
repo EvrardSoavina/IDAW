@@ -16,7 +16,6 @@ require_once('cookie_session.php');
     <div class="slider-wrap">
         <section class="home-slider owl-carousel">
 
-
             <div class="slider-item" style="background-image: url('img/hero_1.jpg');">
 
                 <div class="container">
