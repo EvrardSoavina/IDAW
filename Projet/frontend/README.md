@@ -1,9 +1,9 @@
-#EADME FRONT END
+# README FRONT END
 
 
-##login.js : 
+## login.js : 
 
-- Le script login.js écoute la soumission du formulaire (#login-form) et l'empêche de recharger la page.
+- Le script login.js écoute la soumission du formulaire (#login-form).
   
 - Les valeurs de login et password sont récupérées et envoyées en JSON à backend/login.php via une requête AJAX POST.
   
@@ -17,7 +17,7 @@
 
 
 
-##signup.js : 
+## signup.js : 
 
 - La fonction Javascript "signup-form" est exécutée lorsque le formulaire d'inscription est soumis.
 
@@ -34,7 +34,7 @@
 - La page est redirigée vers la page de connexion si l'insertion de données est réussie. Sinon, une alerte est affichée à l'utilisateur.
 
 
-##objectives.js : 
+## objectives.js : 
 
 - Section 1: Ajoute des formulaires indicateurs avec des champs pour sélectionner un indicateur nutritionnel et une quantité. L'utilisateur peut ajouter ou supprimer un formulaire.
 
@@ -43,7 +43,7 @@
 - Section 3: Gestionnaire d'événements pour le formulaire d'objectif. Les valeurs des formulaires indicateurs sont collectées et envoyées à un API pour être enregistrées lors de la soumission.
 
 
-##aliments.js :
+## aliments.js :
 
 - Permet de collecter des informations sur les aliments consommés à différents moments de la journée et de les afficher dans des tableaux.
 
@@ -59,6 +59,6 @@
 
 - Le script gère également la situation où l'utilisateur clique plusieurs fois sur le bouton d'ajout en même temps. Dans ce cas, la fonction d'ajout ne sera exécutée qu'une seule fois.
 
-####Bouton Update :
+### Bouton Update :
 
 - Pas encore implémenté, mais il était sénsé permettre de modifier une quantité pour un aliment, cependant la supression et l'ajout de ce nouvel aliment peut fonctionner le temps d'une nouvelle MAJ :-)
