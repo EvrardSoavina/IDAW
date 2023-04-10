@@ -90,6 +90,7 @@ $(document).ready(function () {
           const id_journal = parseInt(row.querySelector('.id-journal').textContent);
           const id_aliment = parseInt(row.querySelector('.id-aliment').textContent);
 
+
           $.ajax({
             url: apifolder + '/backend/consommation.php',
             type: 'DELETE',
@@ -97,7 +98,7 @@ $(document).ready(function () {
               id_journal: id_journal,
               id_aliment: id_aliment
             }),
-            contentType: 'application/json',
+            contentType: 'application/json',            
             success: function () {
               // remove the row from the table
               row.remove();
@@ -108,155 +109,163 @@ $(document).ready(function () {
           });
         });
 
-
-        //update button
         const updateBtn = document.createElement('button');
         updateBtn.textContent = 'Update';
         updateBtn.classList.add('btn', 'btn-primary');
-
         updateBtn.addEventListener('click', () => {
-            //put the update code here
+          // code to update item in table
         });
+        const updateRemoveCell = document.createElement('td');
+        updateRemoveCell.appendChild(removeBtn);
+        updateRemoveCell.appendChild(updateBtn);
+        row.appendChild(updateRemoveCell);
+        tableBody.appendChild(row);
+      });
+    },
+    error: function (error) {
+      console.error(error);
+    }
+  });
 
-        $("#add-breakfast").on("click", function () {
-          id_type_repas = 1;
-        });
+  $("#add-breakfast").on("click", function () {
+    id_type_repas = 1;
+  });
 
-        $("#add-lunch").on("click", function () {
-          id_type_repas = 2;
-        });
+  $("#add-lunch").on("click", function () {
+    id_type_repas = 2;
+  });
 
-        $("#add-dinner").on("click", function () {
-          id_type_repas = 3;
-        });
+  $("#add-dinner").on("click", function () {
+    id_type_repas = 3;
+  });
 
-        $("#add-snacks").on("click", function () {
-          id_type_repas = 4;
-        });
+  $("#add-snacks").on("click", function () {
+    id_type_repas = 4;
+  });
 
-        $("#add-water").on("click", function () {
-          id_type_repas = 5;
-        });
+  $("#add-water").on("click", function () {
+    id_type_repas = 5;
+  });
 
 
-        var isRunning = false;
-        $("#add-breakfast, #add-lunch, #add-dinner, #add-snacks, #add-water").on("click", function (event) {
-          if (isRunning) {
-            return; // Do nothing if the function is already running
+  var isRunning = false;
+  $("#add-breakfast, #add-lunch, #add-dinner, #add-snacks, #add-water").on("click", function (event) {
+    if (isRunning) {
+      return; // Do nothing if the function is already running
+    }
+    event.preventDefault();
+    console.log(id_type_repas);
+
+    // Récupérer la valeur de l'aliment et la quantité
+    var id_aliment, quantite;
+
+    if (id_type_repas === 1) {
+      id_aliment = $("#breakfast").val();
+      quantite = $("#breakfast-quantity").val();
+    } else if (id_type_repas === 2) {
+      id_aliment = $("#lunch").val();
+      quantite = $("#lunch-quantity").val();
+    } else if (id_type_repas === 3) {
+      id_aliment = $("#dinner").val();
+      quantite = $("#dinner-quantity").val();
+    } else if (id_type_repas === 4) {
+      id_aliment = $("#snacks").val();
+      quantite = $("#snacks-quantity").val();
+    } else if (id_type_repas === 5) {
+      id_aliment = 9999;
+      quantite = $("#water-quantity").val();
+    }
+
+    if (quantite.length === 0 || id_aliment.length === 0) {
+      alert("Please fill in both the breakfast and quantity fields.");
+      return;
+    }
+
+    // Appeler le backend pour récupérer l'id_journal correspondant
+    $.ajax({
+      url: apifolder + '/backend/journal.php?date=' + dateFormatee + '&login=' + login,
+      type: 'GET',
+      data: {
+        date: dateFormatee,
+        login: login
+      },
+      beforeSend: function () {
+        isRunning = true; // Set the flag to true before sending the request
+      },
+      success: function (response) {
+        var data = JSON.parse(response);
+
+        // Trouver l'id_journal correspondant à id_type_repas
+        var id_journal = null;
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].id_type_repas === id_type_repas) {
+            id_journal = data[i].id_journal;
+            break;
           }
-          event.preventDefault();
-          console.log(id_type_repas);
+        }
+        console.log(id_journal);
 
-          // Récupérer la valeur de l'aliment et la quantité
-          var id_aliment, quantite;
+        if (id_journal === null) {
+          alert("Error: No journal found");
+        } else {
+          // Envoyer la consommation à consommation.php
 
-          if (id_type_repas === 1) {
-            id_aliment = $("#breakfast").val();
-            quantite = $("#breakfast-quantity").val();
-          } else if (id_type_repas === 2) {
-            id_aliment = $("#lunch").val();
-            quantite = $("#lunch-quantity").val();
-          } else if (id_type_repas === 3) {
-            id_aliment = $("#dinner").val();
-            quantite = $("#dinner-quantity").val();
-          } else if (id_type_repas === 4) {
-            id_aliment = $("#snacks").val();
-            quantite = $("#snacks-quantity").val();
-          } else if (id_type_repas === 5) {
-            id_aliment = 9999;
-            quantite = $("#water-quantity").val();
-          }
+          console.log(typeof id_journal);
+          console.log('id_journal:', id_journal);
+          console.log(typeof id_aliment);
+          console.log('id_aliment:', id_aliment);
+          console.log(typeof quantite);
+          console.log('quantite:', quantite);
 
-          if (quantite.length === 0 || id_aliment.length === 0) {
-            alert("Please fill in both the breakfast and quantity fields.");
-            return;
-          }
-
-          // Appeler le backend pour récupérer l'id_journal correspondant
           $.ajax({
-            url: apifolder + '/backend/journal.php?date=' + dateFormatee + '&login=' + login,
-            type: 'GET',
-            data: {
-              date: dateFormatee,
-              login: login
-            },
-            beforeSend: function () {
-              isRunning = true; // Set the flag to true before sending the request
-            },
+            url: apifolder + '/backend/consommation.php',
+            method: "POST",
+            data: JSON.stringify({
+              id_journal: id_journal,
+              id_aliment: id_aliment,
+              quantite: quantite
+            }),
+            contentType: 'application/json',
             success: function (response) {
-              var data = JSON.parse(response);
-
-              // Trouver l'id_journal correspondant à id_type_repas
-              var id_journal = null;
-              for (var i = 0; i < data.length; i++) {
-                if (data[i].id_type_repas === id_type_repas) {
-                  id_journal = data[i].id_journal;
-                  break;
-                }
-              }
-              console.log(id_journal);
-
-              if (id_journal === null) {
-                alert("Error: No journal found");
-              } else {
-                // Envoyer la consommation à consommation.php
-
-                console.log(typeof id_journal);
-                console.log('id_journal:', id_journal);
-                console.log(typeof id_aliment);
-                console.log('id_aliment:', id_aliment);
-                console.log(typeof quantite);
-                console.log('quantite:', quantite);
-
-                $.ajax({
-                  url: apifolder + '/backend/consommation.php',
-                  method: "POST",
-                  data: JSON.stringify({
-                    id_journal: id_journal,
-                    id_aliment: id_aliment,
-                    quantite: quantite
-                  }),
-                  contentType: 'application/json',
-                  success: function (response) {
-                    console.log(response);
-                  },
-                  error: function (xhr, textStatus, errorThrown) {
-                    console.log('Error: ' + errorThrown);
-                  },
-                  complete: function () {
-                    isRunning = false; // Reset the flag when the request is completed
-                  }
-                });
-              }
+              console.log(response);
             },
-            error: function () {
-              alert("Error retrieving journal's infos");
-              isRunning = false; // Reset the flag on error
+            error: function (xhr, textStatus, errorThrown) {
+              console.log('Error: ' + errorThrown);
+            },
+            complete: function () {
+              isRunning = false; // Reset the flag when the request is completed
             }
           });
-        });
+        }
+      },
+      error: function () {
+        alert("Error retrieving journal's infos");
+        isRunning = false; // Reset the flag on error
+      }
+    });
+  });
 
 
-        var water_circles = document.getElementById("water_circles");
+  var water_circles = document.getElementById("water_circles");
 
-        document.getElementById("add-water").addEventListener("click", function () {
-          var glassesOfWater = parseInt(document.getElementById("water-quantity").value);
+  document.getElementById("add-water").addEventListener("click", function () {
+    var glassesOfWater = parseInt(document.getElementById("water-quantity").value);
 
-          for (var i = 0; i < glassesOfWater; i++) {
-            var circle = document.createElement("div");
-            circle.classList.add("circle");
-            water_circles.appendChild(circle);
+    for (var i = 0; i < glassesOfWater; i++) {
+      var circle = document.createElement("div");
+      circle.classList.add("circle");
+      water_circles.appendChild(circle);
 
-          }
-        });
+    }
+  });
 
-        document.getElementById("remove-water").addEventListener("click", function () {
-          var circles = document.querySelectorAll("#water_circles .circle");
-          if (circles.length > 0) {
-            var lastCircle = circles[circles.length - 1];
-            lastCircle.parentNode.removeChild(lastCircle);
-          }
-        });
+  document.getElementById("remove-water").addEventListener("click", function () {
+    var circles = document.querySelectorAll("#water_circles .circle");
+    if (circles.length > 0) {
+      var lastCircle = circles[circles.length - 1];
+      lastCircle.parentNode.removeChild(lastCircle);
+    }
+  });
 
-      });
+});
 
